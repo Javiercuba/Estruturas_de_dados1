@@ -4,7 +4,7 @@
 
 typedef struct
 {
-    // int codigo;
+    int codigo;
     int numero;
     char endereco[15];
     char nome[10];
@@ -54,11 +54,17 @@ int cria_cliente()
 
 int main()
 {
-    Cliente cliente;
+    Cliente *cliente;
+
+    cliente = malloc(sizeof(Aluno));
     char teste[10] = "string";
-   // cliente.nome = {teste};
+
+    printf("Qual é o nome do aluno? ");
+    scanf("%s", cliente[i].nome);
+
+    // cliente.nome = {teste};
     printf("%s", cliente.nome);
-    cria_cliente();
+    //cria_cliente();
 
 
 }
