@@ -8,9 +8,9 @@ typedef struct
     int numero;
     char endereco[15];
     char nome[10];
-    // char data_primeira_compra[10];
-    // char data_ultima_compra[10];
-    // int valor_ultima_compra;
+    int data_primeira_compra;
+    int data_ultima_compra;
+    int valor_ultima_compra;
 
 } Cliente;
 
@@ -51,20 +51,30 @@ int cria_cliente()
     lista_cliente();
 }
 
-
 int main()
 {
-    Cliente *cliente;
+    Cliente cliente;
 
-    cliente = malloc(sizeof(Aluno));
-    char teste[10] = "string";
+    cliente.nome* = (char *)malloc(21 * sizeof(char));
 
-    printf("Qual é o nome do aluno? ");
-    scanf("%s", cliente[i].nome);
+    printf("Qual é o codigo do cliente?\n");
+    scanf("%d", &cliente.codigo);
+   
 
-    // cliente.nome = {teste};
-    printf("%s", cliente.nome);
+    printf("Qual é o nome do cliente?\n");
+    scanf("%s", cliente.nome);
+
+    
+    printf("Qual é o numero do cliente?\n");
+    scanf("%d", &cliente.numero);
+
+    printf("Qual é a data da primeira compra do cliente?\n");
+    scanf("%d", &cliente.data_primeira_compra);
+    
+
+    printf("nome : %s\n", cliente.nome);
+    printf("codigo: %d\n", cliente.codigo);
+    printf("numero: %d\n", cliente.numero);
+    
     //cria_cliente();
-
-
 }
