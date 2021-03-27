@@ -2,7 +2,7 @@
 #define matriz_h
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 
 int preenche_matriz(int matriz[3][3])
 {
@@ -59,4 +59,10 @@ int multiplica_matrizes(int A[3][3], int B[3][3])
         }
 }
 
+int calcula_tempo(clock_t t0,clock_t t1)
+{
+    double tempo_gasto = ((double)(t1 - t0)) / ((double)CLOCKS_PER_SEC);
+    printf("Tempos gasto %.4f ms\n", tempo_gasto *1000);
+
+}
 #endif
