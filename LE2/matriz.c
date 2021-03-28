@@ -18,8 +18,8 @@ int main()
     preenche_matriz(B);
     printf("Voce deseja atribuir qual operacao nas matrizes\n 1-Somar\n 2-Multiplicar\n");
     scanf("%d", &valor);
-   printf("\n"),
-    
+    printf("\n");
+
     switch (valor)
     {
    case 1:
@@ -36,7 +36,7 @@ int main()
         t0 = clock();
         multiplica_matrizes(A, B);
         tf = clock();
-        calcula_tempo(t0, tf)
+        calcula_tempo(t0, tf);
         main();
         break;
     case 3:
