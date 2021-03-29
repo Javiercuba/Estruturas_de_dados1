@@ -6,8 +6,8 @@
 
 int main()
 {
-    int A[3][3];
-    int B[3][3];
+    int A[TAM][TAM];
+    int B[TAM][TAM];
     int valor;
 
     clock_t t0, tf;
@@ -19,6 +19,15 @@ int main()
     printf("Voce deseja atribuir qual operacao nas matrizes\n 1-Somar\n 2-Multiplicar\n");
     scanf("%d", &valor);
     printf("\n");
+    /*
+        Tamanho n | Tempo Soma | Numero operacoes Soma| Tempo Multiplicacao | Numero operacoes Multi
+           100       0.0002 ms           10000                0.0071 ms            1000000
+           200       0.0007 ms           40000                0.0522 ms            8000000
+           300       0.0011 ms           90000                0.0928 ms           27000000
+           400       0.0021 ms          160000                0.1842 ms           64000000
+           500       0.0025 ms          250000                0.3532 ms          125000000
+           800       0.0071 ms          640000                1.5606 ms          512000000
+    */
 
     switch (valor)
     {
@@ -37,7 +46,6 @@ int main()
         multiplica_matrizes(A, B);
         tf = clock();
         calcula_tempo(t0, tf);
-        main();
         break;
     case 3:
         printf("MULTIPLICA e SOMA A e B\n");
@@ -53,5 +61,7 @@ int main()
         printf("Essa opção não existe!\n");
         break;
     }
+    
+
     
 }
