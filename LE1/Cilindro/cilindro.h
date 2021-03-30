@@ -52,8 +52,8 @@ void atribui_valores(cilindro *c, int raio, int altura)
 //IMPRIMINDO OS RESULTADOS FINAIS
 void ImprimeResultado(formula resultado)
 {
-    printf("Area do Cilindro = %f\n", resultado.area_total);
-    printf("Volume do Cilindro = %f\n", resultado.volume);
+    printf("Area do Cilindro = %.2f\n", resultado.area_total);
+    printf("Volume do Cilindro = %.2f\n", resultado.volume);
 }
 
 #endif

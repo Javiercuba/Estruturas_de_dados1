@@ -10,6 +10,7 @@ int calcula_raiz(float raiz, float approx, float tolerancia)
     {
         calcula_raiz(raiz, ((approx*approx) + raiz)/(2*approx), tolerancia);
     }
+    printf("%.3f\n", approx);
 }
 
 #endif

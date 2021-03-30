@@ -4,9 +4,9 @@
 
 int main()
 {
-    printf("Primeira raiz a ser calculada\n");
+    printf("Primeira raiz a ser calculada (5)\n");
     calcula_raiz(5, 2, 0.01);
 
-    printf("Segunda raiz a ser calculada\n");
+    printf("Segunda raiz a ser calculada (4)\n");
     calcula_raiz(4, 2, 0.01);
 }
