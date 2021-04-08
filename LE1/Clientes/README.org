@@ -61,7 +61,7 @@ typedef struct
 16      fclose(csvfile);
 17 }
 #+end_src C
-Na linha =3= o ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo,
+*** Na linha =3= o ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo,
 que no nosso caso é clientes.csv
 
 
