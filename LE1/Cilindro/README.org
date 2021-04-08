@@ -36,7 +36,7 @@ typedef struct
 Essa função recebe dois parâmetros.
  1. Struct do tipo =cilindro= 
  2. Struct do tipo =formula=
-Aqui =formula.base= vai receber o resultado desse cálculo(=raio^2 * pi=)
+ =formula.base= recebe o resultado do cálculo da base de um cilindro (=raio^2 * pi=)
 #+begin_src C
 int calcula_base(cilindro c, formula *p)
 {
