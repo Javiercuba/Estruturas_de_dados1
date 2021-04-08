@@ -68,7 +68,8 @@ int calcula_volume(cilindro c, formula *p)
 
 *** - Calcula área total do cilindro
 Essa função recebe um parâmetro, struct do tipo =formula=,
-Aqui =formula.area_total= vai receber o resultado o seguinte cálculo - =(2 * Area da base) +(2 * Area Lateral))=
+Aqui =formula.area_total= vai receber o 
+resultado o seguinte cálculo - =(2 * Area da base) +(2 * Area Lateral))=
 #+begin_src C
 int calcula_area_total(formula *p)
 {
