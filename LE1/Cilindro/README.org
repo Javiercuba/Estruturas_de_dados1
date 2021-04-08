@@ -5,11 +5,7 @@
 Explicando o funcionamento do projeto. 
 
 ** Arquivo Cilindro.h
-<<<<<<< HEAD
 No começo do arquivo, defino a struct Cilindro:
-=======
-No começo do arquivo, defino a STRUCT Cilindro:
->>>>>>> bd4ca8637fba80a9ad175ff88090d5a362f5414c
 
 #+begin_src C
 typedef struct
@@ -18,7 +14,7 @@ typedef struct
   float altura;
 } cilindro;
 #+end_src C
-<<<<<<< HEAD
+
 
 Crio também struct para os resultados das equações (Depois que eu fiz percebi que não fazia sentido):
 
@@ -32,9 +28,6 @@ typedef struct
 
 } formula;
 #+end_src C
-
-=======
->>>>>>> bd4ca8637fba80a9ad175ff88090d5a362f5414c
 
 Exporto apenas as funções que serão acessíveis aos outros módulos e
 mantenho privado, em especial, a estrututra do =TAD=.
