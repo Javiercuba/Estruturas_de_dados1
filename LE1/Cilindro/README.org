@@ -101,7 +101,7 @@ void atribui_valores(cilindro *c, int raio, int altura)
 
 
 
-*** 5. Imprime resultados da area e volume do cilindro
+*** 6. Imprime resultados da area e volume do cilindro
 Essa função recebe um parâmetros:
 1. Struct do tipo =formula=
  Imprimindo a =formula.area_total= e o =formula.volume=
@@ -115,14 +115,12 @@ void ImprimeResultado(formula resultado)
 #+end_src C
 
 
-
-
-
-
-
-
 ** Arquivo cilindro.c
-   Primeiro, defino o =TAD= e seus construtores de tipos:
+   Primeiro, chamo o cilindro.h criado.
+   
+#+begin_src C
+#include "cilindro.h"
+#+end_src C
 
    #+begin_src haskell
      type Altura = Double
