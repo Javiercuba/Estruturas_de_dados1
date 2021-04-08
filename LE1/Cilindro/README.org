@@ -29,8 +29,8 @@ typedef struct
 } formula;
 #+end_src C
 
-*** Funções 
-
+** Funções Presentes 
+   Dentro desse arquivo tenho as seguintes funções 
 
 
 
