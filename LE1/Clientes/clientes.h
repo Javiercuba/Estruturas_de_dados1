@@ -27,9 +27,6 @@ int lista_cliente()
     while (line_size >= 0)
     {
         line_size = getline(&line_buf, &line_buf_size, csvfile);
-
-        /* Show the line details */
-        // printf("line[%02d]: chars=%03zd, buf size=%06zu, contents: %s", numero_linhas, line_size, line_buf_size, line_buf);
         printf("linha[%02d]: %s", numero_linhas, line_buf);
         numero_linhas++;
     }

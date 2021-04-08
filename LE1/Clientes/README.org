@@ -1,46 +1,50 @@
-#+title: Cilindro
+#+title: Clientes
 #+author: Javier Ernesto Lopez del real
 #+email: javierernesto2000@gmail.com
 
 Explicando o funcionamento do projeto. 
 
+** 
+
 ** Arquivo Cilindro.h
-No começo do arquivo, defino a struct Cilindro:
-
-#+begin_src c
-typedef struct
-{   
-  float raio;
-  float altura;
-} cilindro;
-#+end_src c
-
-
-Crio também struct para os resultados das equações (Depois que eu fiz percebi que não fazia muito sentido)
+No começo do arquivo, defino a struct Cliente:
 
 #+begin_src c
 typedef struct
 {
-    float area_base;
-    float area_lateral;
-    float area_total;
-    float volume;
+    int codigo;
+    int numero;
+    char endereco[15];
+    char nome[10];
+    char data_primeira_compra[10];
+    char data_ultima_compra[10];
+    int valor_ultima_compra;
 
-} formula;
+} Cliente;
 #+end_src c
 
 ** Funções Presentes 
    Dentro desse arquivo tenho as seguintes funções 
 
-*** 1. Calcula base do cilindro
-Essa função recebe dois parâmetros:
- 1. Struct do tipo =cilindro= 
- 2. Struct do tipo =formula=
- =formula.area_base= recebe o resultado do cálculo da base de um cilindro (=raio^2 * pi=)
+*** 1. Listagem de Clientes
+
 #+begin_src C
-int calcula_base(cilindro c, formula *p)
+int lista_cliente()
 {
-    (*p).area_base = c.raio * c.raio * 3.14;
+    FILE *csvfile = fopen("clientes.csv", "r+");
+    int numero_linhas = 1;
+    int posicao_linha = 0;
+    ssize_t line_size;
+    ssize_t line_buf_size = 0;
+    char *line_buf = NULL;
+    while (line_size >= 0)
+    {
+        line_size = getline(&line_buf, &line_buf_size, csvfile);
+        printf("linha[%02d]: %s", numero_linhas, line_buf);
+        numero_linhas++;
+    }
+
+    fclose(csvfile);
 }
 #+end_src C
 
