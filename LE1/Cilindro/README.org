@@ -7,19 +7,13 @@ Explicando o funcionamento do projeto.
 ** Arquivo Cilindro.h
 No começo do arquivo, defino a interface pública:
 
-#+begin_src haskell
-module LE1.Cilindro
-  ( fromTuple
-  , getAltura
-  , getRaio
-  , calcArea
-  , calcVolume
-  , vazio
-  , isVazio
-  , valido
-  , toTuple
-  ) where
-#+end_src
+#+C
+typedef struct
+{
+    float raio;
+    float altura;
+} cilindro;
+#+C
 
 Exporto apenas as funções que serão acessíveis aos outros módulos e
 mantenho privado, em especial, a estrututra do =TAD=.
