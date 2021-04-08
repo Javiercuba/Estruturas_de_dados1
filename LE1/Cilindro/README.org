@@ -121,8 +121,7 @@ void ImprimeResultado(formula resultado)
 #+begin_src C
 #include "cilindro.h"
 #+end_src C
-
- ** Usando todas as funções na main
+** Usando todas as funções na main
    
 #+begin_src C
 int main()
