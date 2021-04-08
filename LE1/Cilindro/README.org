@@ -16,7 +16,7 @@ typedef struct
 #+end_src c
 
 
-Crio também struct para os resultados das equações (Depois que eu fiz percebi que não fazia muito sentido):
+Crio também struct para os resultados das equações (Depois que eu fiz percebi que não fazia muito sentido)
 
 #+begin_src c
 typedef struct
@@ -33,11 +33,24 @@ typedef struct
    Dentro desse arquivo tenho as seguintes funções 
 
 - Calcular a Base do cilindro
-Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=
+Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
+Aqui =formula.base= vai receber o resultado desse cálculo(+raio^2 * pi+)
 #+begin_src C
 int calcula_base(cilindro c, formula *p)
 {
     (*p).area_base = c.raio * c.raio * 3.14;
+}
+#+end_src C
+
+
+
+- Calcular a área lateral do cilindro
+Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
+Aqui =formula.base= vai receber o resultado desse cálculo
+#+begin_src C
+int calcula_lateral(cilindro c, formula *p)
+{
+    (*p).area_lateral = c.raio * 3.14 * c.altura;
 }
 #+end_src C
 
