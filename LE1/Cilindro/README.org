@@ -78,7 +78,7 @@ int calcula_area_total(formula *p)
 #+end_src C
 
 
-*** 4. Atribuindo valores ao cilindro
+*** 5. Atribuindo valores ao cilindro
 Essa função recebe três parâmetros, um struct do tipo =cilindro=,duas variáveis do tipo =int=, uma representando o =raio= e a outra a =altura=
 Aqui =cilindro.raio= e =cilindro.altura= recebem valores ao cilindro
 
@@ -89,6 +89,19 @@ void atribui_valores(cilindro *c, int raio, int altura)
     (*c).altura = altura;
 }
 
+#+end_src C
+
+
+
+*** 5. Imprimindo os valores da area e volume do cilindro
+Essa função recebe um parâmetros, um struct do tipo =formula=, onde eu printo a =formula.area_total= e o =formula.volume=
+
+#+begin_src C
+void ImprimeResultado(formula resultado)
+{
+    printf("Area do Cilindro = %.2f\n", resultado.area_total);
+    printf("Volume do Cilindro = %.2f\n", resultado.volume);
+}
 #+end_src C
 
 
