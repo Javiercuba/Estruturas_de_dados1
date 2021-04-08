@@ -75,7 +75,7 @@ int calcula_volume(cilindro c, formula *p)
 *** 4. Calcula área total do cilindro
 Essa função recebe um parâmetro:
 1. Struct do tipo =formula=
-=formula.area_total= vai receber o resultado do cálculo da area de um cilindro =(2 * Area da base) +(2 * Area Lateral)=
+=formula.area_total= recebe o resultado do cálculo da área de um cilindro =(2 * Area da base) + (2 * Area Lateral)=
 #+begin_src C
 int calcula_area_total(formula *p)
 {
@@ -85,9 +85,11 @@ int calcula_area_total(formula *p)
 
 
 *** 5. Atribuindo valores ao cilindro
-Essa função recebe três parâmetros, um struct do tipo =cilindro=,duas variáveis do tipo =int=, uma representando o =raio= e a outra a =altura=
-Aqui =cilindro.raio= e =cilindro.altura= recebem valores ao cilindro
-
+Essa função recebe três parâmetros:
+1. Struct do tipo =cilindro=
+2. int que representa o =raio=
+3. int que representa a =altura=
+=cilindro.raio= e =cilindro.altura= recebem valores
 #+begin_src C
 void atribui_valores(cilindro *c, int raio, int altura)
 {
@@ -100,7 +102,9 @@ void atribui_valores(cilindro *c, int raio, int altura)
 
 
 *** 5. Imprimindo os valores da area e volume do cilindro
-Essa função recebe um parâmetros, um struct do tipo =formula=, onde eu printo a =formula.area_total= e o =formula.volume=
+Essa função recebe um parâmetros:
+1. Struct do tipo =formula=
+ Imprimindo a =formula.area_total= e o =formula.volume=
 
 #+begin_src C
 void ImprimeResultado(formula resultado)
