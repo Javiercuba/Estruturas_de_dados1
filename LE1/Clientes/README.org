@@ -61,8 +61,12 @@ typedef struct
 16      fclose(csvfile);
 17 }
 #+end_src C
-**** 1. ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv
-**** 2. ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv
+**** 1. Ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv.
+**** line_size recebe uma representação do tamanho de dados.
+**** Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido.
+**** A função retornará cada linha presente no arquivo .csv 
+
+
 
 
 *** 2. Calcula área lateral do cilindro
