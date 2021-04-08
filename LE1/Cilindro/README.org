@@ -32,7 +32,7 @@ typedef struct
 ** Funções Presentes 
    Dentro desse arquivo tenho as seguintes funções 
 
-***- Calcular a Base do cilindro
+*** - Calcular a Base do cilindro
 Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
 Aqui =formula.base= vai receber o resultado desse cálculo(=raio^2 * pi=)
 #+begin_src C
