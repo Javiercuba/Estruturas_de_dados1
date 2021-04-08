@@ -79,9 +79,9 @@ int calcula_area_total(formula *p)
 
 
 *** 4. Atribuindo valores ao cilindro
-Essa função recebe três parâmetros,um struct do tipo =cilindro=,duas variáveis do tipo +int+, uma representando o +raio+ e a outra a +altura+
-Aqui =formula.area_total= vai receber o 
-resultado o seguinte cálculo - =(2 * Area da base) +(2 * Area Lateral)=
+Essa função recebe três parâmetros, um struct do tipo =cilindro=,duas variáveis do tipo =int=, uma representando o =raio= e a outra a =altura=
+Aqui =cilindro.raio= e =cilindro.altura= recebem valores ao cilindro
+
 #+begin_src C
 void atribui_valores(cilindro *c, int raio, int altura)
 {
