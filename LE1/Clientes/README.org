@@ -4,8 +4,8 @@
 
 Explicando o funcionamento do projeto. 
 
-**
-Existe uma tabela CSV com alguns dados já:
+
+* Existe uma tabela CSV com alguns dados já:
 
 #+begin_src csv
 12323234,maria,ingstone,28/6/2020,9/11/2016,25.13
