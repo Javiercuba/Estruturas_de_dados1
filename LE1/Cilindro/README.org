@@ -5,15 +5,29 @@
 Explicando o funcionamento do projeto. 
 
 ** Arquivo Cilindro.h
-No começo do arquivo, defino a interface pública:
+No começo do arquivo, defino a struct Cilindro:
 
-#+C
+#+begin_src C
+typedef struct
+{   
+  float raio;
+  float altura;
+} cilindro;
+#+end_src C
+
+Crio também struct para os resultados das equações (Depois que eu fiz percebi que não fazia sentido):
+
+#+begin_src C
 typedef struct
 {
-    float raio;
-    float altura;
-} cilindro;
-#+C
+    float area_base;
+    float area_lateral;
+    float area_total;
+    float volume;
+
+} formula;
+#+end_src C
+
 
 Exporto apenas as funções que serão acessíveis aos outros módulos e
 mantenho privado, em especial, a estrututra do =TAD=.
