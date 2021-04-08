@@ -32,7 +32,7 @@ typedef struct
 ** Funções Presentes 
    Dentro desse arquivo tenho as seguintes funções 
 
-- Calcular a Base do cilindro
+***- Calcular a Base do cilindro
 Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
 Aqui =formula.base= vai receber o resultado desse cálculo(=raio^2 * pi=)
 #+begin_src C
@@ -44,9 +44,9 @@ int calcula_base(cilindro c, formula *p)
 
 
 
-- Calcular a área lateral do cilindro
+*** - Calcular a área lateral do cilindro
 Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
-Aqui =formula.base= vai receber o resultado desse cálculo
+Aqui =formula.area_lateral= vai receber o resultado desse cálculo(=raio * pi * altura=)
 #+begin_src C
 int calcula_lateral(cilindro c, formula *p)
 {
