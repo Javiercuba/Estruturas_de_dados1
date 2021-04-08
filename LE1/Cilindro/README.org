@@ -33,7 +33,9 @@ typedef struct
    Dentro desse arquivo tenho as seguintes funções 
 
 *** 1. Calcula base do cilindro
-Essa função recebe dois parâmetros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
+Essa função recebe dois parâmetros.
+ 1. Struct do tipo =cilindro= 
+ 2. Struct do tipo =formula=
 Aqui =formula.base= vai receber o resultado desse cálculo(=raio^2 * pi=)
 #+begin_src C
 int calcula_base(cilindro c, formula *p)
