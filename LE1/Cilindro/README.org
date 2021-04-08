@@ -32,8 +32,8 @@ typedef struct
 ** Funções Presentes 
    Dentro desse arquivo tenho as seguintes funções 
 
-*** - Calcula Base do cilindro
-Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
+*** - Calcula base do cilindro
+Essa função recebe dois parâmetros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
 Aqui =formula.base= vai receber o resultado desse cálculo(=raio^2 * pi=)
 #+begin_src C
 int calcula_base(cilindro c, formula *p)
@@ -44,8 +44,8 @@ int calcula_base(cilindro c, formula *p)
 
 
 
-*** - Calcula Área lateral do cilindro
-Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
+*** - Calcula área lateral do cilindro
+Essa função recebe dois parâmetros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
 Aqui =formula.area_lateral= vai receber o resultado desse cálculo(=raio * pi * altura=)
 #+begin_src c++
 int calcula_lateral(cilindro c, formula *p)
@@ -55,13 +55,24 @@ int calcula_lateral(cilindro c, formula *p)
 #+end_src c++
 
 
-*** - Calcula Volume do cilindro
-Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
+*** - Calcula volume do cilindro
+Essa função recebe dois parâmetros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
 Aqui =formula.volume= vai receber o resultado desse cálculo(=raio^2 * pi * altura=)
 #+begin_src C
 int calcula_volume(cilindro c, formula *p)
 {
     (*p).volume = c.raio * c.raio * 3.14 * c.altura;
+}
+#+end_src C
+
+
+*** - Calcula área total do cilindro
+Essa função recebe um parâmetro, struct do tipo =formula=,
+Aqui =formula.area_total= vai receber o resultado o seguinte cálculo - =(2 * Area da base) +(2 * Area Lateral))=
+#+begin_src C
+int calcula_area_total(formula *p)
+{
+    (*p).area_total = (2 * (*p).area_base) + (2 * (*p).area_lateral);
 }
 #+end_src C
 
