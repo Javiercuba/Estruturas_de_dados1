@@ -116,30 +116,15 @@ void ImprimeResultado(formula resultado)
 
 
 ** Arquivo cilindro.c
-   Primeiro, chamo o cilindro.h criado.
+  *** 1.Chamando o cilindro.h criado.
    
 #+begin_src C
 #include "cilindro.h"
 #+end_src C
 
-   #+begin_src haskell
-     type Altura = Double
-     type Raio = Double
-     type Area = Double
-     type Volume = Double
-
-     data Cilindro = Vazio | Cilindro { raio :: Raio
-				      , altura :: Altura
-				      } deriving (Show, Eq)
-  #+end_src
-
-   Nas primeiras linhas, defino apelidos para o tipo =Double= para deixar mais legível as implementações.
-   Após isso, defino de fato o =TAD=, que possui 2 construtores de tipo:
-   1. =Vazio= -> representa um =Cilindro= não definido ou "inválido" matematicamente
-   2. =Cilindro= -> o =Cilindro= de fato, que possui um raio e uma altura
-
-   Digo que esse TAD deriva das classes de tipo, =Show=, =Eq= e =Ord=. Em outras palavras,
-   isso me permite, respectivamente:
-   - Imprimir na tela um =TAD Cilindro=
-   - Verificar se um =Cilindro= é igual ou diferente de outro
-
+ *** 1.Chamando o cilindro.h criado.
+   
+#+begin_src C
+#include "cilindro.h"
+#+end_src C
+    
