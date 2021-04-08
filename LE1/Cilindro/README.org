@@ -47,12 +47,12 @@ int calcula_base(cilindro c, formula *p)
 *** - Calcula Área lateral do cilindro
 Essa função recebe dois paramtros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
 Aqui =formula.area_lateral= vai receber o resultado desse cálculo(=raio * pi * altura=)
-#+begin_src C
+#+begin_src c++
 int calcula_lateral(cilindro c, formula *p)
 {
     (*p).area_lateral = c.raio * 3.14 * c.altura;
 }
-#+end_src C
+#+end_src c++
 
 
 *** - Calcula Volume do cilindro
