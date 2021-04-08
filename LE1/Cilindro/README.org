@@ -116,7 +116,7 @@ void ImprimeResultado(formula resultado)
 
 
 ** Arquivo cilindro.c
-*** 1.Chamando o cilindro.h criado.
+** 1.Chamando o cilindro.h criado.
    
 #+begin_src C
 #include "cilindro.h"
