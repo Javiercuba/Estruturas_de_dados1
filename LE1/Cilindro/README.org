@@ -33,10 +33,10 @@ typedef struct
    Dentro desse arquivo tenho as seguintes funções 
 
 *** 1. Calcula base do cilindro
-Essa função recebe dois parâmetros.
+Essa função recebe dois parâmetros:
  1. Struct do tipo =cilindro= 
  2. Struct do tipo =formula=
- =formula.base= recebe o resultado do cálculo da base de um cilindro (=raio^2 * pi=)
+ =formula.area_base= recebe o resultado do cálculo da base de um cilindro (=raio^2 * pi=)
 #+begin_src C
 int calcula_base(cilindro c, formula *p)
 {
@@ -47,8 +47,10 @@ int calcula_base(cilindro c, formula *p)
 
 
 *** 2. Calcula área lateral do cilindro
-Essa função recebe dois parâmetros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
-Aqui =formula.area_lateral= vai receber o resultado desse cálculo(=raio * pi * altura=)
+Essa função recebe dois parâmetros:
+1. Struct do tipo =cilindro= 
+2. Struct do tipo =formula=
+=formula.area_lateral= recebe o resultado do cálculo da arela lateral de um cilindro (=raio * pi * altura=)
 #+begin_src c++
 int calcula_lateral(cilindro c, formula *p)
 {
@@ -58,8 +60,10 @@ int calcula_lateral(cilindro c, formula *p)
 
 
 *** 3. Calcula volume do cilindro
-Essa função recebe dois parâmetros, um é o struct do tipo =cilindro= e o outro é struct do tipo =formula=,
-Aqui =formula.volume= vai receber o resultado desse cálculo(=raio^2 * pi * altura=)
+Essa função recebe dois parâmetros:
+1. Struct do tipo =cilindro= 
+2. Struct do tipo =formula=
+=formula.volume= recebe o resultado do cálculo do volume de um cilindro (=raio^2 * pi * altura=)
 #+begin_src C
 int calcula_volume(cilindro c, formula *p)
 {
@@ -69,9 +73,9 @@ int calcula_volume(cilindro c, formula *p)
 
 
 *** 4. Calcula área total do cilindro
-Essa função recebe um parâmetro, struct do tipo =formula=,
-Aqui =formula.area_total= vai receber o 
-resultado o seguinte cálculo - =(2 * Area da base) +(2 * Area Lateral)=
+Essa função recebe um parâmetro:
+1. Struct do tipo =formula=
+=formula.area_total= vai receber o resultado do cálculo da area de um cilindro =(2 * Area da base) +(2 * Area Lateral)=
 #+begin_src C
 int calcula_area_total(formula *p)
 {
