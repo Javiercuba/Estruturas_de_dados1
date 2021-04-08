@@ -84,7 +84,7 @@ int calcula_area_total(formula *p)
 #+end_src C
 
 
-*** 5. Atribuindo valores ao cilindro
+*** 5. Atribui valores de raio e altura ao cilindro
 Essa função recebe três parâmetros:
 1. Struct do tipo =cilindro=
 2. int que representa o =raio=
@@ -101,7 +101,7 @@ void atribui_valores(cilindro *c, int raio, int altura)
 
 
 
-*** 5. Imprimindo os valores da area e volume do cilindro
+*** 5. Imprime resultados da area e volume do cilindro
 Essa função recebe um parâmetros:
 1. Struct do tipo =formula=
  Imprimindo a =formula.area_total= e o =formula.volume=
@@ -121,7 +121,7 @@ void ImprimeResultado(formula resultado)
 
 
 
-** Implementação
+** Arquivo cilindro.c
    Primeiro, defino o =TAD= e seus construtores de tipos:
 
    #+begin_src haskell
@@ -145,78 +145,3 @@ void ImprimeResultado(formula resultado)
    - Imprimir na tela um =TAD Cilindro=
    - Verificar se um =Cilindro= é igual ou diferente de outro
 
-*** Funções principais
-    Essas são as funções explicitamente pedididas no exercício:
-
-    Funções que lidam com um =Cilindro= vazio
-    #+begin_src haskell
-vazio :: Cilindro
-vazio = Vazio
-
-isVazio :: Cilindro -> Bool
-isVazio Vazio = True
-isVazio _     = False
-    #+end_src
-
-    Funções para recuperar apenas a =Altura= ou apenas o =Raio= de um =Cilindro=. Utilizo a Mônada =Maybe=
-
-    Na Filosofia uma Mônada, do grego =monas "unit"=, é uma substância individualmente elementar que reflete
-    uma dada ordem do mundo da qual propriedades materiais são derivados.
-
-    Já na Programação Funcional, uma Mônada é uma abstração que permite estruturar programas de forma genérica.
-    Essa abstração é utilizada para evitar código clichê necessário para a lógica do programa.
-
-    Neste caso, a Mônada =Maybe= possui dois construtores: =Nothing= e =Just <value>=.
-
-    O =Nothing= representa o vazio, ou que algum processamento falhou, porém não há necessidade de lançar uma exeção
-    ou parar o programa por inteiro.
-
-    Já o =Just <value>= envolve um valor que foi corretamente computado e significa que houve êxito.
-    #+begin_src haskell
-getAltura :: Cilindro -> Maybe Altura
-getAltura Vazio          = Nothing
-getAltura (Cilindro _ a) = Just a
-
-getRaio :: Cilindro -> Maybe Raio
-getRaio Vazio          = Nothing
-getRaio (Cilindro r _) = Just r
-    #+end_src
-
-    O cálculo da área de um =Cilindro= é definido por: ~A = 2πr^2 + h(2πr)~. Isolando o termo em comum,
-    a fórmula pode ser simplificada, resultando em: ~A = 2πr(r + h)~
-    #+begin_src haskell
-calcArea :: Cilindro -> Maybe Area
-calcArea Vazio          = Nothing
-calcArea (Cilindro r a) = Just area
-  where area = (*) (r + a) . twice $ (*) pi r
-    #+end_src
-
-    Já o cálculo do volume de um =Cilindro= é definido por: ~V = πr^2h~
-    #+begin_src haskell
-calcVolume :: Cilindro -> Maybe Volume
-calcVolume Vazio          = Nothing
-calcVolume (Cilindro r a) = Just volume
-  where volume = pi * (r * r) * a
-    #+end_src
-
-*** Funções de ajuda
-    Funções para se adequar aos padrões da linguagem, oferecer uma compatibilidade
-    entre outras estruturas de dados ou que tornam a implementação das funções principais
-    mais legível.
-
-    Funções que convertem de um =2d-Tupla=, ou =Par= de =Double= para um =Cilindro= ou
-    vice-versa
-    #+begin_src haskell
-fromTuple :: (Double, Double) -> Cilindro
-fromTuple (r, a) = Cilindro r a
-
-toTuple :: Cilindro -> Maybe (Double, Double)
-toTuple Vazio          = Nothing
-toTuple (Cilindro r a) = Just (r, a)
-    #+end_src
-
-    Apenas uma função que dobra o parâmetro
-    #+begin_src haskell
-twice :: Floating a => a -> a
-twice x = 2 * x
-    #+end_src
