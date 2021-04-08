@@ -32,8 +32,13 @@ typedef struct
 ** Funções Presentes 
    Dentro desse arquivo tenho as seguintes funções 
 
-
-
+- Calcular a Base do cilindro
+#+begin_src C
+int calcula_base(cilindro c, formula *p)
+{
+    (*p).area_base = c.raio * c.raio * 3.14;
+}
+#+end_src C
 
 
 
