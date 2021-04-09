@@ -1,0 +1,50 @@
+#+title: Combinação
+#+author: Javier Ernesto Lopez del real
+#+email: javierernesto2000@gmail.com
+
+Explicando o funcionamento do projeto. 
+
+** Arquivo Cilindro.h
+- Função recursiva =C=
+#+begin_src c
+#ifndef combinacao_h
+#define combinacao_h
+#include <stdio.h>
+#include <stdlib.h>
+
+int C(int n, int k)
+{
+    int x;
+    if (k == 0 || n == k)
+    {
+        return 1;
+    }
+    
+    if (n > k > 0)
+    {
+        x = C(n - 1, k) + C(n - 1, k - 1);
+        return (x);
+    }
+}
+
+#endif
+#+end_src c
+
+
+** Arquivo cilindro.c
+#+begin_src C
+#include <stdio.h>
+#include <stdlib.h>
+#include "combinacao.h"
+
+int main()
+{
+    printf("%d", C(49, 6));
+}
+#+end_src C
+- Saída =13983816=
+
+
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/cilindro][Clique aqui]].
+
+    
