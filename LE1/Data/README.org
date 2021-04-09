@@ -44,7 +44,7 @@ int formata_data(Data *data)
 
 
 *** 1. Validando o ano da data
-Essa função tem como objetivo validar se o ano da data é valido entre =2021< data >1000=. 
+Essa função tem como objetivo validar se o ano da data é valido entre =2021 > ano >1000=. 
 Se o ano for valido, ele vai verificar se ele é bissexto ou não =tem que ser divisível por 4, mas não por 100= ou =divisível por 4, por 100 e por 400=.
 - Se ele não for um ano valido, retorna 3
 - Se ele for valido e não bissexto, retorna 2 
@@ -73,13 +73,50 @@ int validacao_ano(Data *data)
 
 
 
+*** 2. Validando o mês da data
+Essa função tem como objetivo validar se o mês da data é valido entre =13 >= mês > 0=. 
+Se o ano for valido, ele vai verificar se ele é bissexto ou não =tem que ser divisível por 4, mas não por 100= ou =divisível por 4, por 100 e por 400=.
+- Se ele não for um ano valido, retorna 3
+- Se ele for valido e não bissexto, retorna 2 
+- Se ele for valido e bissexto, retorna 1 
+
+#+begin_src C
+int validacao_mes(Data *data)
+{
+    if ((*data).mes > 0 && (*data).mes <= 12)
+    {
+        return (*data).mes; //RETORNANDO O NUMERO DO MÊS PARA SABER A QUANTIDADE DE DIAS QUE ESSE MÊS TERÁ
+    }
+    else
+    {
+        return 0;
+    }
+}
+#+end_src C
 
 
 
-**** 1. Ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv.
- line_size recebe uma representação do tamanho de dados.
- Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido
- a função retornará cada linha presente no arquivo .csv 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ** Funções Presentes em clientes.c
 
