@@ -1,0 +1,55 @@
+#+title: Raiz
+#+author: Javier Ernesto Lopez del real
+#+email: javierernesto2000@gmail.com
+
+Explicando o funcionamento do projeto. 
+
+** Arquivo Cilindro.h
+- Função recursiva =calcula_raiz=
+#+begin_src c
+#ifndef raiz_h
+#define raiz_h
+#include <stdio.h>
+#include <stdlib.h>
+
+int calcula_raiz(float raiz, float approx, float tolerancia)
+{
+    if (abs((approx * approx) - raiz) >= tolerancia)
+    {
+        calcula_raiz(raiz, ((approx*approx) + raiz)/(2*approx), tolerancia);
+    }
+    printf("%.3f\n", approx);
+}
+#endif
+#+end_src c
+
+
+** Arquivo cilindro.c
+#+begin_src C
+#include <stdio.h>
+#include <stdlib.h>
+#include "raiz.h"
+
+int main()
+{
+    printf("Primeira raiz a ser calculada (5)\n");
+    calcula_raiz(5, 2, 0.01);
+
+    printf("Segunda raiz a ser calculada (4)\n");
+    calcula_raiz(4, 2, 0.01);
+}
+#+end_src C
+- Saída:
+#+begin_src C
+Primeira raiz a ser calculada (5)
+2.250
+2.000
+Segunda raiz a ser calculada (4)
+2.000
+#+end_src C
+
+
+
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
+
+    

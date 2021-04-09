@@ -5,7 +5,6 @@
 
 int calcula_raiz(float raiz, float approx, float tolerancia)
 {
-
     if (abs((approx * approx) - raiz) >= tolerancia)
     {
         calcula_raiz(raiz, ((approx*approx) + raiz)/(2*approx), tolerancia);
