@@ -66,6 +66,52 @@ typedef struct
  Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido
  a função retornará cada linha presente no arquivo .csv 
 
+** Funções Presentes em clientes.c
+
+*** Chamando o arquivo.h 
+#+begin_src C
+#include "clientes.h"
+#+end_src C
+
+*** Função main
+#+begin_src C
+int main()
+{
+    Cliente cliente;
+
+    printf("Qual é o codigo do cliente?\n");
+    scanf("%d", &cliente.codigo);
+   
+    printf("Qual é o nome do cliente?\n");
+    scanf("%s", cliente.nome);
+
+    printf("Qual é o numero do cliente?\n");
+    scanf("%d", &cliente.numero);
+
+    printf("Qual é a data da primeira compra do cliente?\n");
+    scanf("%s", cliente.data_primeira_compra);
+
+    printf("Qual é a data da ultima compra do cliente?\n");
+    scanf("%s", cliente.data_ultima_compra);
+
+    printf("Qual é o valor da ultima compra do cliente?\n");
+    scanf("%d", &cliente.valor_ultima_compra);
+
+    printf("Qual é o endereço do cliente?\n");
+    scanf("%s", cliente.endereco);
+    printf("\n");
+    printf("nome : %s\n", cliente.nome);
+    printf("codigo: %d\n", cliente.codigo);
+    printf("numero: %d\n", cliente.numero);
+    printf("Endereço: %s\n", cliente.endereco);
+    printf("Data da primeira compra: %s\n", cliente.data_primeira_compra);
+
+    printf("\n");
+    cria_cliente(&cliente);
+}
+#+end_src C
+Na função main eu estou atribuindo valores a um variável do tipo cliente
+e passando pela função =cria_cliente=
 
 
 

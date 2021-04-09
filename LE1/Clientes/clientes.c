@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "clientes.h"
+
 int main()
 {
     Cliente cliente;
-
 
     printf("Qual é o codigo do cliente?\n");
     scanf("%d", &cliente.codigo);
@@ -36,6 +36,4 @@ int main()
 
     printf("\n");
     cria_cliente(&cliente);
-
-    exclui_cliente();
 }
