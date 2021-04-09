@@ -94,7 +94,7 @@ int validacao_mes(Data *data)
 
 
 *** 3. Validando o dia da data
-Essa função tem como objetivo validar se o dia da data é valido entre =ultimo dia desse mes = > mês > 0=. 
+Essa função tem como objetivo validar se o dia da data é valido entre =ultimo dia desse mes= > mês > =0=. 
 - Se ele for um mês valido, retorna o =numero do mês=
 - Se ele não um mês valido retorna =0=
 
