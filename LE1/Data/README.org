@@ -122,7 +122,7 @@ Essa função tem como objetivo validar a da data toda, usando todas as funçõe
 - Se a função retornar outros valores que não sejam 2,4,6,9,11 a variável =Data.ultimo_dia_mes= recebe 31.
 
 E caso algumas dessas funções retornem algo inválido, a função para e mostra um erro.
-
+Caso contrário ela retorna 1.
 
 
 #+begin_src C
@@ -162,6 +162,63 @@ int validacao_data(Data *data)
 #+end_src C
 
 
+*** 5. Somatorio de dias
+Essa função tem como objetivo somar uma quantidades de dias na data.
+Como essa é uma função recursiva, ele sempre vai passar primeiro pessa função =validacao_data= para poder permitir dar seguimento.  
+
+1. O primeiro passo é verificar se a data é valida usando a função =validacao_data=.
+2. Verificar se o =numero de dias atual= mais os =dias a acrescentar= é maior que o numero de dias desse mês. Caso esse somatório não seja maior é só adicionar o numero de dias e pronto.
+
+
+#+begin_src C
+int somatorio_dias(Data *data, int num_dias_acrescentar)
+{
+
+    if (validacao_data(data) == 1) //VALIDAÇÃO DA DATA PARA PODER FAZER O SOMATORIO
+    {
+
+        if (num_dias_acrescentar + data->dia > data->ultimo_dia_mes) //VERIFICANDO SE O NUMERO DE DIAS MAIS O VALOR A SE ACRESCENTAR É MAIOR QUE O NUMERO DE DIAS NO MES
+        {
+            if ((num_dias_acrescentar) / data->ultimo_dia_mes >= 1)
+            /*SE A DIVISAO DA SOMA DOS DIAS COM O NUMERO
+            DE DIAS NO MES FOR MAIOR QUE 1 CONSEQUENTEMENTE
+            TEMOS UM MÊS EMBUTIDO DENTRO DESSES DIAS, LOGO SE
+            ACRESCENTA MAIS 1 NO MÊS, E O NUMERO DE DIAS RECEBE
+            A SUBTRAÇÃO DELE COM O NUMERO DE DIAS DESSE MES,
+            SENDO ASSIM A FUNÇÃO É CHAMADA DE NOVO.
+            */
+            {
+                data->mes += 1; //MÊS RECEBE MAIS 1 E CHAMA A FUNÇÃO DE NOVO
+                if (data->mes > 12)
+                { //CASO O MÊS ULTRAPASSE O NUMERO 12, ELE SERÁ REINICIADO E O ANO SERA ACRESCENTADO MAIS UM
+                    data->mes = 1;
+                    data->ano = data->ano + 1;
+                }
+                num_dias_acrescentar -= data->ultimo_dia_mes;
+                /*O VALOR INICIAL DE DIAS A SER ACRESCENTADO DE 
+                 DIAS SERÁ SUBTRAIDO PELO NUMERO DE DIAS NESSE MÊS,
+                 POIS JA ACRESCENTAMOS UM MÊS
+                */
+
+                somatorio_dias(data, num_dias_acrescentar);
+                /*A FUNÇÃO ESTÁ SENDO CHAMADA INCIANDO UM NOVO LOOP COM SEUS NOVOS VALORES.
+                ELE SÓ VAI PARAR DE SE CHAMAR QUANDO O NUMERO DE DIAS PARA ACRESCENTAR 
+                FOR MENOR QUE O NUMERO DE DIAS DESSE MÊS.  
+                */
+            }
+        }
+        else
+        {
+            data->dia += num_dias_acrescentar;
+            validacao_data(data);
+            formata_data(data);
+            /*AQUI O LOOP SE FINALIZOU, E SERÁ FEITA A VALIDAÇÃO DA DATA PARA VERIFICAR E TERMINAR O PROCESSO  
+                */
+        }
+    }
+}
+
+#+end_src C
 
 
 
