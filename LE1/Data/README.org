@@ -46,9 +46,9 @@ int formata_data(Data *data)
 *** 1. Validando o ano da data
 Essa função tem como objetivo validar se o ano da data é valido entre =2021 > ano >1000=. 
 Se o ano for valido, ele vai verificar se ele é bissexto ou não =tem que ser divisível por 4, mas não por 100= ou =divisível por 4, por 100 e por 400=.
-- Se ele não for um ano valido, retorna 3
-- Se ele for valido e não bissexto, retorna 2 
-- Se ele for valido e bissexto, retorna 1 
+- Se ele não for um ano valido, retorna =3=
+- Se ele for valido e não bissexto, retorna =2= 
+- Se ele for valido e bissexto, retorna =1= 
 
 #+begin_src C
 int validacao_ano(Data *data)
@@ -74,11 +74,9 @@ int validacao_ano(Data *data)
 
 
 *** 2. Validando o mês da data
-Essa função tem como objetivo validar se o mês da data é valido entre =13 >= mês > 0=. 
-Se o ano for valido, ele vai verificar se ele é bissexto ou não =tem que ser divisível por 4, mas não por 100= ou =divisível por 4, por 100 e por 400=.
-- Se ele não for um ano valido, retorna 3
-- Se ele for valido e não bissexto, retorna 2 
-- Se ele for valido e bissexto, retorna 1 
+Essa função tem como objetivo validar se o mês da data é valido entre =13 > mês > 0=. 
+- Se ele for um mês valido, retorna o =numero do mês=
+- Se ele não um mês valido retorna =0=
 
 #+begin_src C
 int validacao_mes(Data *data)
