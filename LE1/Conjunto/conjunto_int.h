@@ -34,7 +34,7 @@ int Cria_Conjunto_Vazio(Conjunto *A)
 }
 
 /*INSERE OS VALORES DE FORMA RANDOMICA NO CONJUNTO*/
-int insere(/*int valor, int posi,*/ Conjunto *A)
+int insere(Conjunto *A)
 {
     for (int i = 0; i < TAMANHO; i++)
     {

@@ -30,7 +30,10 @@ Essa função recebe três parâmetros:
 2. uma variável do tipo int para receber essa união. 
 - Queria deixa bem claro meu preconceito em relação a alocação de memoria,
   além de não saber usar corretamente, tenho noção do seu potencial para facilitar
-  este exercicios e outros.
+  este exercício e outros.
+
+Nessa função eu percorro =2x= o tamanho de um conjunto para poder guardar no int.
+O =if= vai ser para guardar o primeiro conjunto =A=, logo quando ele for falso eu continuo guardando o outro conjunto =B=.      
  
 #+begin_src C
 int uniao(Conjunto *A, Conjunto *B, int *C)
@@ -51,28 +54,27 @@ int uniao(Conjunto *A, Conjunto *B, int *C)
 
 
 
-*** 2. Calcula área lateral do cilindro
-Essa função recebe dois parâmetros:
-1. Struct do tipo =cilindro= 
-2. Struct do tipo =formula=
-=formula.area_lateral= recebe o resultado do cálculo da arela lateral de um cilindro (=raio * pi * altura=)
+*** 2. Cria Conjunto vazio
+Nessa função o conjunto todo recebe =0=.
 #+begin_src c++
-int calcula_lateral(cilindro c, formula *p)
 {
-    (*p).area_lateral = c.raio * 3.14 * c.altura;
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        (*A).lista[i] = 0;
+    }
 }
 #+end_src c++
 
 
-*** 3. Calcula volume do cilindro
-Essa função recebe dois parâmetros:
-1. Struct do tipo =cilindro= 
-2. Struct do tipo =formula=
-=formula.volume= recebe o resultado do cálculo do volume de um cilindro (=raio^2 * pi * altura=)
+*** 3. Insere valores ao conjunto
+Essa função insere valores randômicos no conjunto. 
 #+begin_src C
-int calcula_volume(cilindro c, formula *p)
+int insere(Conjunto *A)
 {
-    (*p).volume = c.raio * c.raio * 3.14 * c.altura;
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        (*A).lista[i] = rand() % 10;
+    }
 }
 #+end_src C
 
