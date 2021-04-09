@@ -28,29 +28,25 @@ typedef struct
 O parâmetros =ultimo_dia_mes= é importante para saber exatamente qual é o ultimo dia desse mês,
 que vai servir para calcular o numero de dias.
 
-** Funções Presentes em clientes.h
+** Funções Presentes em data.h
 
-*** 1. Listagem de Clientes
+*** 1. Formata a data
+Essa função tem como objetivo transforma a data para string formatada com os =/=
+Possuindo como parâmetro um struct do tipo data
 
 #+begin_src C
-1  int lista_cliente()
-2  {
-3      FILE *csvfile = fopen("clientes.csv", "r+");
-4      int numero_linhas = 1;
-5      int posicao_linha = 0;
-6      ssize_t line_size;
-7      ssize_t line_buf_size = 0;
-8      char *line_buf = NULL;
-9      while (line_size >= 0)
-10      {
-11            line_size = getline(&line_buf, &line_buf_size, csvfile);
-12            printf("linha[%02d]: %s", numero_linhas, line_buf);
-13            numero_linhas++;
-14      }
-15
-16      fclose(csvfile);
-17 }
+int formata_data(Data *data)
+{
+    sprintf(data->data_formatada, "%d/%d/%d\n", data->dia, data->mes, data->ano);
+    printf("%s", data->data_formatada);
+}
 #+end_src C
+
+
+
+
+
+
 **** 1. Ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv.
  line_size recebe uma representação do tamanho de dados.
  Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido
