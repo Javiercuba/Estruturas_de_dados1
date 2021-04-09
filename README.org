@@ -8,8 +8,8 @@ para acessar cada exercicio é so clicar nos links abaixo, ou ir navegando pelas
 
 - LE1:
 
-***** Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Cilindro#cilindro][Cilindro]]
-***** Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Clientes#clientes][Clientes]]
-***** Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Data#data][Data]]
+***** 1. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Cilindro#cilindro][Cilindro]]
+*****- Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Clientes#clientes][Clientes]]
+*****3. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Data#data][Data]]
 ***** Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1/Conjunto#conjunto][Conjunto]]
 
