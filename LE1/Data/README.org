@@ -12,22 +12,21 @@ Explicando o funcionamento do projeto.
 
 ** 
 
-** Arquivo Cilindro.h
-No começo do arquivo, defino a struct Cliente:
-
+** Arquivo Data.h
+No começo do arquivo, defino a struct Data:
 #+begin_src c
 typedef struct
 {
-    int codigo;
-    int numero;
-    char endereco[15];
-    char nome[10];
-    char data_primeira_compra[10];
-    char data_ultima_compra[10];
-    int valor_ultima_compra;
+    int dia;
+    int mes;
+    int ano;
+    char data_formatada[9];
+    int ultimo_dia_mes;
 
-} Cliente;
+} Data;
 #+end_src c
+O parâmetros =ultimo_dia_mes= é importante para saber exatamente qual é o ultimo dia desse mês,
+que vai servir para calcular o numero de dias.
 
 ** Funções Presentes em clientes.h
 
