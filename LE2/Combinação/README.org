@@ -45,6 +45,6 @@ int main()
 - Saída =13983816=
 
 
-** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/cilindro][Clique aqui]].
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
 
     
