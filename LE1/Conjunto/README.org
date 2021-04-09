@@ -95,33 +95,74 @@ int testa_pertence(int posi, Conjunto *A)
 #+end_src C
 
 
-*** 5. Atribui valores de raio e altura ao cilindro
-Essa função recebe três parâmetros:
-1. Struct do tipo =cilindro=
-2. int que representa o =raio=
-3. int que representa a =altura=
-=cilindro.raio= e =cilindro.altura= recebem valores
+*** 5. Remove elemento do conjunto
+Remove o elemento escolhido na posição.
 #+begin_src C
-void atribui_valores(cilindro *c, int raio, int altura)
+int remover(int posi, Conjunto *A)
 {
-    (*c).raio = raio;
-    (*c).altura = altura;
+    if (posi >= TAMANHO || posi < 0 || ((*A).lista[posi] == 0))
+    {
+        return 0;
+    }
+    (*A).lista[posi] = 0;
 }
-
 #+end_src C
 
 
 
-*** 6. Imprime resultados da area e volume do cilindro
-Essa função recebe um parâmetros:
-1. Struct do tipo =formula=
- Imprimindo a =formula.area_total= e o =formula.volume=
-
+*** 6. Menor valor
+Retorna o menor valor do conjunto.
 #+begin_src C
-void ImprimeResultado(formula resultado)
+int menor_valor(Conjunto *A)
 {
-    printf("Area do Cilindro = %.2f\n", resultado.area_total);
-    printf("Volume do Cilindro = %.2f\n", resultado.volume);
+    int menor = (*A).lista[0];
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if (A->lista[i] < menor)
+        {
+            menor = A->lista[i];
+        }
+    }
+    printf("O menor valor do conjunto é %d \n", menor);
+}
+#+end_src C
+
+
+*** 7. Maior valor
+Retorna o maior valor do conjunto.
+#+begin_src C
+int maior_valor(Conjunto *A)
+{
+    int maior = (*A).lista[0];
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if (A->lista[i] > maior)
+        {
+            maior = A->lista[i];
+        }
+    }
+    printf("O maior valor do conjunto é %d \n", maior);
+}
+#+end_src C
+
+
+*** 8. Verifica vazio
+A função percorre o conjunto todo e verifica se algum valor é zero.
+#+begin_src C
+int testa_vazio(Conjunto *A)
+{
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if (A->lista[i] != 0)
+        {
+            printf("Este conjunto não é vazio");
+            break;
+        }
+        else
+        {
+            printf("Este é vazio");
+        }
+    }
 }
 #+end_src C
 
