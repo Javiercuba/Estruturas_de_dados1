@@ -167,7 +167,7 @@ Essa função tem como objetivo somar uma quantidades de dias na data.
 Como essa é uma função recursiva, ele sempre vai passar primeiro pessa função =validacao_data= para poder permitir dar seguimento.  
 
 1. O primeiro passo é verificar se a data é valida usando a função =validacao_data=.
-2. Verificar se o =numero de dias atual= mais os =dias a acrescentar= é maior que o numero de dias desse mês. Caso esse somatório não seja maior é só adicionar o numero de dias e pronto.
+2. Verificar se o =numero de dias atual= mais os =dias a acrescentar= é maior que o numero de dias desse mês. Caso esse somatório não seja maior é só adicionar os =dias a acrescentar= ao dia atual.
 
 
 #+begin_src C
