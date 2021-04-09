@@ -172,8 +172,7 @@ Como essa é uma função recursiva, ele sempre vai passar primeiro pessa funç�
    1 no mês, e o =dias a acrescentar= recebe a subtração dele mesmo com o numero de dias desse mês, sendo assim a função =somatorio_dias= é chamada de novo.
 4. Se esse função depois de ser chamada varias vezes somar um mês maior que =12=, o =ano= receberá mais =1=, e o =mês= vai ser reiniciados
    para =1=.
-5. O ponto de parada é quando o passo =1= é falso, que ai será só somar os dias e em seguida eu choamp a função =formata_data=.       
-            
+5. O ponto de parada é quando o passo =1= é falso, que ai será só somar os dias e em seguida eu choamp a função =formata_data=.                   
 
 
 #+begin_src C
@@ -248,48 +247,41 @@ int somatorio_dias(Data *data, int num_dias_acrescentar)
 
 
 
-** Funções Presentes em clientes.c
+** Data.c
 
 *** Chamando o arquivo.h 
 #+begin_src C
-#include "clientes.h"
+#include "data.h"
 #+end_src C
 
 *** Função main
+- No inicio da função eu declaro uma variável do tipo Data, e faço o usuario escolher uma data qualquer.
+- Em seguida eu verifico se essa data é valida usando a função =validacao_data=.
+- E depois permito o usuario adicionar um numero qualquer de dias.  
 #+begin_src C
 int main()
 {
-    Cliente cliente;
-
-    printf("Qual é o codigo do cliente?\n");
-    scanf("%d", &cliente.codigo);
-   
-    printf("Qual é o nome do cliente?\n");
-    scanf("%s", cliente.nome);
-
-    printf("Qual é o numero do cliente?\n");
-    scanf("%d", &cliente.numero);
-
-    printf("Qual é a data da primeira compra do cliente?\n");
-    scanf("%s", cliente.data_primeira_compra);
-
-    printf("Qual é a data da ultima compra do cliente?\n");
-    scanf("%s", cliente.data_ultima_compra);
-
-    printf("Qual é o valor da ultima compra do cliente?\n");
-    scanf("%d", &cliente.valor_ultima_compra);
-
-    printf("Qual é o endereço do cliente?\n");
-    scanf("%s", cliente.endereco);
-    printf("\n");
-    printf("nome : %s\n", cliente.nome);
-    printf("codigo: %d\n", cliente.codigo);
-    printf("numero: %d\n", cliente.numero);
-    printf("Endereço: %s\n", cliente.endereco);
-    printf("Data da primeira compra: %s\n", cliente.data_primeira_compra);
-
-    printf("\n");
-    cria_cliente(&cliente);
+    Data d;
+    int dias=0;
+    printf("Digite o numero de dias\n");
+    scanf("%d", &d.dia);
+    printf("Digite o mes\n");
+    scanf("%d", &d.mes);
+    printf("Digite o ano\n");
+    scanf("%d", &d.ano);
+    
+    if (validacao_data(&d) == 1)
+    {
+        printf("\n");
+        formata_data(&d);
+        printf("\n");
+        printf("Quantos dias voce quer somar a data?\n");
+        printf("\n");
+        scanf("%d", &dias);
+        printf("Resultado final\n");
+        somatorio_dias(&d,dias);
+    }
+    
 }
 #+end_src C
 Na função main eu estou atribuindo valores a um variável do tipo cliente
