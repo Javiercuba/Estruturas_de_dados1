@@ -44,7 +44,7 @@ int formata_data(Data *data)
 
 
 *** 1. Validando o ano da data
-Essa função tem como objetivo validar se o ano da data é valido entre = 2021< data > 1000 =. 
+Essa função tem como objetivo validar se o ano da data é valido entre =2021< data > 1000=. 
 Se o ano for valido, ele vai verificar se ele é bissexto ou não =tem que ser divisível por 4, mas não por 100= ou = divisível por 4, por 100 e por 400=.
 - Se ele não for um ano valido, retorna 3
 - Se ele for valido e não bissexto, retorna 2 
