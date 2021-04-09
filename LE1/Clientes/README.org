@@ -63,110 +63,12 @@ typedef struct
 #+end_src C
 **** 1. Ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv.
  line_size recebe uma representação do tamanho de dados.
- Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido.
- A função retornará cada linha presente no arquivo .csv 
+ Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido
+ a função retornará cada linha presente no arquivo .csv 
 
 
 
 
-*** 2. Calcula área lateral do cilindro
-Essa função recebe dois parâmetros:
-1. Struct do tipo =cilindro= 
-2. Struct do tipo =formula=
-=formula.area_lateral= recebe o resultado do cálculo da arela lateral de um cilindro (=raio * pi * altura=)
-#+begin_src c++
-int calcula_lateral(cilindro c, formula *p)
-{
-    (*p).area_lateral = c.raio * 3.14 * c.altura;
-}
-#+end_src c++
-
-
-*** 3. Calcula volume do cilindro
-Essa função recebe dois parâmetros:
-1. Struct do tipo =cilindro= 
-2. Struct do tipo =formula=
-=formula.volume= recebe o resultado do cálculo do volume de um cilindro (=raio^2 * pi * altura=)
-#+begin_src C
-int calcula_volume(cilindro c, formula *p)
-{
-    (*p).volume = c.raio * c.raio * 3.14 * c.altura;
-}
-#+end_src C
-
-
-*** 4. Calcula área total do cilindro
-Essa função recebe um parâmetro:
-1. Struct do tipo =formula=
-=formula.area_total= recebe o resultado do cálculo da área de um cilindro =(2 * Area da base) + (2 * Area Lateral)=
-#+begin_src C
-int calcula_area_total(formula *p)
-{
-    (*p).area_total = (2 * (*p).area_base) + (2 * (*p).area_lateral);
-}
-#+end_src C
-
-
-*** 5. Atribui valores de raio e altura ao cilindro
-Essa função recebe três parâmetros:
-1. Struct do tipo =cilindro=
-2. int que representa o =raio=
-3. int que representa a =altura=
-=cilindro.raio= e =cilindro.altura= recebem valores
-#+begin_src C
-void atribui_valores(cilindro *c, int raio, int altura)
-{
-    (*c).raio = raio;
-    (*c).altura = altura;
-}
-
-#+end_src C
-
-
-
-*** 6. Imprime resultados da area e volume do cilindro
-Essa função recebe um parâmetros:
-1. Struct do tipo =formula=
- Imprimindo a =formula.area_total= e o =formula.volume=
-
-#+begin_src C
-void ImprimeResultado(formula resultado)
-{
-    printf("Area do Cilindro = %.2f\n", resultado.area_total);
-    printf("Volume do Cilindro = %.2f\n", resultado.volume);
-}
-#+end_src C
-
-
-** Arquivo cilindro.c
-** Chamando o cilindro.h criado.
-   
-#+begin_src C
-#include "cilindro.h"
-#+end_src C
-** Usando todas as funções na main
-   
-#+begin_src C
-int main()
-{
-
-    cilindro c;   //VARIAVEL DO TIPO "cilindro"
-    formula area; //VARIAVEL DO TIPO "formula"
-    
-    printf("Atribuir valores de raio e altura manualmente\n");
-    atribui_valores(&c, rand() % 100 /* raio*/, rand() % 100 /* altura*/); //ATRIBUINDO OS VALORES ALEATORIAMENTE
-    printf("O valor do raio é %.1f, e a altura é %.1f\n", c.raio, c.altura);
-    calcula_base(c, &area);    //CALCULO DA BASE POR PASSAGEM DE REFERENCIA
-    calcula_lateral(c, &area); //CALCULO DA LATERAL POR PASSAGEM DE REFERENCIA
-    calcula_volume(c, &area);  //CALCULO DO VOLUME
-    calcula_area_total(&area); //CALCULO DA AREA TOTAL
-
-    ImprimeResultado(area);
-}
-
-#+end_src C
-
-
-** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/cilindro][Clique aqui]].
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/clientes][Clique aqui]].
 
     

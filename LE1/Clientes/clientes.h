@@ -62,8 +62,6 @@ int exclui_cliente(){
     while (line_size >= 0)
     {
         line_size = getline(&line_buf, &line_buf_size, csvfile);
-       // int init_size = strlen(line_buf);
-        //char *ptr = strtok(line_buf, delim);
         printf("%s\n",line_buf);
         numero_linhas++;
     }
