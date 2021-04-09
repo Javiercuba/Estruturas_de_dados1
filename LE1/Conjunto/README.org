@@ -79,14 +79,18 @@ int insere(Conjunto *A)
 #+end_src C
 
 
-*** 4. Calcula área total do cilindro
-Essa função recebe um parâmetro:
-1. Struct do tipo =formula=
-=formula.area_total= recebe o resultado do cálculo da área de um cilindro =(2 * Area da base) + (2 * Area Lateral)=
+*** 4. Verifica se o elemento pertence ao conjunto
+Função percorre o conjunto todo e verifica se o valor escolhido pelo usuario pertence ou não.
 #+begin_src C
-int calcula_area_total(formula *p)
+int testa_pertence(int posi, Conjunto *A)
 {
-    (*p).area_total = (2 * (*p).area_base) + (2 * (*p).area_lateral);
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if ((*A).lista[i] == posi)
+        {
+            printf("O numero %d pertence ao conjunto\n", posi);
+        }
+    }
 }
 #+end_src C
 
