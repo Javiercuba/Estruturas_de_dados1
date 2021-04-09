@@ -5,17 +5,8 @@
 Explicando o funcionamento do projeto. 
 
 
-* Existe uma tabela CSV com alguns dados já:
-Servindo para poder facilitar.
-#+begin_src csv
-12323234,maria,ingstone,28/6/2020,9/11/2016,25.13
-345812323496638,Max,69224640681,Funafuti,2/8/2014,11/10/2013,859.14
-345812323496639,Evaleen,86433170873,Sofia,13/11/2014,7/4/2004,489.2
-345812323496643,Celisse,83712902115,City of Halifax,30/6/2012,7/1/2012,311.34
-345812323496644,Claresta,95046641085,Mérida,18/10/2010,5/5/2019,218.14
-345812323496645,Dari,82213446120,Siem Reap,4/5/2000,25/11/2004,457.87
-345812323496646,Kittie,38183713229,Pune,7/5/2012,29/7/2019,560.68
-#+end_src csv
+* Esse foi o mais legal de fazer
+
 
 
 
