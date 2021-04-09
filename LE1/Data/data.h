@@ -83,7 +83,6 @@ int validacao_data(Data *data)
 
     if (validacao_ano(data) != 3 && validacao_mes(data) != 0 && validacao_dia(data) != 0) //VERIFICANDO SE O ANO E O SÃO VALIDOS PARA FORMATAR
     {
-        // formata_data(data);
         return 1;
     }
     else

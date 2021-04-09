@@ -95,6 +95,7 @@ int validacao_mes(Data *data)
 
 *** 3. Validando o dia da data
 Essa função tem como objetivo validar se o dia da data é valido entre =ultimo dia desse mes= > ou = mês > =0=. 
+Aqui acontece uma coisa muito importante, o dia só sera valido se ele estiver dentro de um mês que aceite esse dia. 
 - Se ele for um mês valido, retorna o =numero do mês=
 - Se ele não um mês valido retorna =0=
 
@@ -110,6 +111,50 @@ int validacao_mes(Data *data)
         return 0;
     }
 }
+#+end_src C
+
+
+*** 4. Validando a data toda
+Essa função tem como objetivo validar a da data toda, usando todas as funções acima. 
+- A primeira coisa que eu fiz foi verificar o retorno da função =validacao_mes=, 
+assim ela retornará o mês para poder atribuir a variável =Data.ultimo_dia_mes=.
+
+- Se ele não um mês valido retorna =0=
+
+#+begin_src C
+int validacao_data(Data *data)
+{
+
+    switch (validacao_mes(data))
+    {
+    case 2:
+        if (validacao_ano(data) == 1)
+        {
+            (*data).ultimo_dia_mes = 29;
+        }
+        (*data).ultimo_dia_mes = 28;
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        (*data).ultimo_dia_mes = 30;
+        break;
+    default:
+        (*data).ultimo_dia_mes = 31;
+    }
+
+    if (validacao_ano(data) != 3 && validacao_mes(data) != 0 && validacao_dia(data) != 0) //VERIFICANDO SE O ANO E O SÃO VALIDOS PARA FORMATAR
+    {
+        return 1;
+    }
+    else
+    {
+        printf("Data indisponivel para formatar\n");
+        return 0;
+    }
+}
+
 #+end_src C
 
 
