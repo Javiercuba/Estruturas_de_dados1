@@ -168,6 +168,11 @@ Como essa é uma função recursiva, ele sempre vai passar primeiro pessa funç�
 
 1. O primeiro passo é verificar se a data é valida usando a função =validacao_data=.
 2. Verificar se o =numero de dias atual= mais os =dias a acrescentar= é maior que o numero de dias desse mês. Caso esse somatório não seja maior é só adicionar os =dias a acrescentar= ao dia atual.
+Supondo que o =somatorio= da 2 deu superior..
+3.Se a divisão dos =dias a acrescentar= com o numero maximo desse mês for maior que 1, consequentemente temos um mês imbutido
+dentro desses =dias a acrescentar=, logo se acrescenta mais 1 no mês, e o =dias a acrescentar= recebe a subtração
+dele mesmo com o numero de dias desse mês, sendo assim a função =somatorio_dias= é chamada de novo.
+            
 
 
 #+begin_src C
