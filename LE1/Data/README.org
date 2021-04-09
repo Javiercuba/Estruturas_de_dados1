@@ -1,0 +1,290 @@
+#+title: Data
+#+author: Javier Ernesto Lopez del real
+#+email: javierernesto2000@gmail.com
+
+Explicando o funcionamento do projeto. 
+
+
+* Esse foi o mais legal de fazer
+
+
+
+
+** 
+
+** Arquivo Data.h
+No começo do arquivo, defino a struct Data:
+#+begin_src c
+typedef struct
+{
+    int dia;
+    int mes;
+    int ano;
+    char data_formatada[9];
+    int ultimo_dia_mes;
+
+} Data;
+#+end_src c
+O parâmetros =ultimo_dia_mes= é importante para saber exatamente qual é o ultimo dia desse mês,
+que vai servir para calcular o numero de dias.
+
+** Funções Presentes em data.h
+
+*** 1. Formata a data
+Essa função tem como objetivo transforma a data para string formatada com os =/=.
+Possuindo como parâmetro um struct do tipo data
+
+#+begin_src C
+int formata_data(Data *data)
+{
+    sprintf(data->data_formatada, "%d/%d/%d\n", data->dia, data->mes, data->ano);
+    printf("%s", data->data_formatada);
+}
+#+end_src C
+
+
+*** 1. Validando o ano da data
+Essa função tem como objetivo validar se o ano da data é valido entre =2021 > ano >1000=. 
+Se o ano for valido, ele vai verificar se ele é bissexto ou não =tem que ser divisível por 4, mas não por 100= ou =divisível por 4, por 100 e por 400=.
+- Se ele não for um ano valido, retorna =3=
+- Se ele for valido e não bissexto, retorna =2= 
+- Se ele for valido e bissexto, retorna =1= 
+
+#+begin_src C
+int validacao_ano(Data *data)
+{
+    if ((*data).ano <= 2021 && (*data).ano > 1000) //VERIFICAR SE O ANO É VALIDO, ENTRE 2020 E 1000
+    {
+        if (((*data).ano % 4 == 0 && (*data).ano % 100 == 0 && (*data).ano % 400 == 0) || ((*data).ano % 4 == 0 && (*data).ano % 100 != 0)) //VERIFICAR SE O ANO É BISSEXTO
+        {
+            return 1; //RETORNA QUE O ANO É VALIDO E BISSEXTO
+        }
+        else
+        {
+            return 2; //RETORNA QUE O ANO É VALIDO E NÃO BISSEXTO
+        }
+    }
+    else
+    {
+        return 3; //RETORNA QUE O ANO NÃO É VALIDO
+    }
+}
+#+end_src C
+
+
+
+*** 2. Validando o mês da data
+Essa função tem como objetivo validar se o mês da data é valido entre =13 > mês > 0=. 
+- Se ele for um mês valido, retorna o =numero do mês=
+- Se ele não um mês valido retorna =0=
+
+#+begin_src C
+int validacao_mes(Data *data)
+{
+    if ((*data).mes > 0 && (*data).mes <= 12)
+    {
+        return (*data).mes; //RETORNANDO O NUMERO DO MÊS PARA SABER A QUANTIDADE DE DIAS QUE ESSE MÊS TERÁ
+    }
+    else
+    {
+        return 0;
+    }
+}
+#+end_src C
+
+
+*** 3. Validando o dia da data
+Essa função tem como objetivo validar se o dia da data é valido entre =ultimo dia desse mes= > ou = mês > =0=. 
+Aqui acontece uma coisa muito importante, o dia só sera valido se ele estiver dentro de um mês que aceite esse dia. 
+- Se ele for um mês valido, retorna o =numero do mês=
+- Se ele não um mês valido retorna =0=
+
+#+begin_src C
+int validacao_mes(Data *data)
+{
+    if ((*data).mes > 0 && (*data).mes <= 12)
+    {
+        return (*data).mes; //RETORNANDO O NUMERO DO MÊS PARA SABER A QUANTIDADE DE DIAS QUE ESSE MÊS TERÁ
+    }
+    else
+    {
+        return 0;
+    }
+}
+#+end_src C
+
+
+*** 4. Validando a data toda
+Essa função tem como objetivo validar a da data toda, usando todas as funções acima. 
+**** 1. A primeira coisa que eu fiz foi verificar o retorno da função =validacao_mes=.
+- Se a função retornar 4,6,9,11 a variável =Data.ultimo_dia_mes= recebe o valor de 30, representando o ultima dia do mês desse mês.
+- Se a função retornar 2 variável, será necessário verificar o ano usando a função =validacao_ano=, caso o ano seja bissexto a variável =Data.ultimo_dia_mes= recebe =29=,caso contrario recebe =28=.
+- Se a função retornar outros valores que não sejam 2,4,6,9,11 a variável =Data.ultimo_dia_mes= recebe 31.
+
+E caso algumas dessas funções retornem algo inválido, a função para e mostra um erro.
+Caso contrário ela retorna 1.
+
+
+#+begin_src C
+int validacao_data(Data *data)
+{
+
+    switch (validacao_mes(data))
+    {
+    case 2:
+        if (validacao_ano(data) == 1)
+        {
+            (*data).ultimo_dia_mes = 29;
+        }
+        (*data).ultimo_dia_mes = 28;
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        (*data).ultimo_dia_mes = 30;
+        break;
+    default:
+        (*data).ultimo_dia_mes = 31;
+    }
+
+    if (validacao_ano(data) != 3 && validacao_mes(data) != 0 && validacao_dia(data) != 0) //VERIFICANDO SE O ANO E O SÃO VALIDOS PARA FORMATAR
+    {
+        return 1;
+    }
+    else
+    {
+        printf("Data indisponivel para formatar\n");
+        return 0;
+    }
+}
+
+#+end_src C
+
+
+*** 5. Somatorio de dias
+Essa função tem como objetivo somar uma quantidades de dias na data.
+Como essa é uma função recursiva, ele sempre vai passar primeiro pessa função =validacao_data= para poder permitir dar seguimento.  
+
+1. O primeiro passo é verificar se a data é valida usando a função =validacao_data=.
+2. Verificar se o =numero de dias atual= mais os =dias a acrescentar= é maior que o numero de dias desse mês. Caso esse somatório não seja maior é só adicionar os =dias a acrescentar= ao dia atual.
+3. Se a divisão dos =dias a acrescentar= com o numero maximo desse mês for maior que 1, consequentemente temos um mês imbutido dentro desses =dias a acrescentar=, logo se acrescenta mais
+   1 no mês, e o =dias a acrescentar= recebe a subtração dele mesmo com o numero de dias desse mês, sendo assim a função =somatorio_dias= é chamada de novo.
+4. Se esse função depois de ser chamada varias vezes somar um mês maior que =12=, o =ano= receberá mais =1=, e o =mês= vai ser reiniciados
+   para =1=.
+5. O ponto de parada é quando o passo =1= é falso, que ai será só somar os dias e em seguida eu choamp a função =formata_data=.                   
+
+
+#+begin_src C
+int somatorio_dias(Data *data, int num_dias_acrescentar)
+{
+
+    if (validacao_data(data) == 1) //VALIDAÇÃO DA DATA PARA PODER FAZER O SOMATORIO
+    {
+
+        if (num_dias_acrescentar + data->dia > data->ultimo_dia_mes) //VERIFICANDO SE O NUMERO DE DIAS MAIS O VALOR A SE ACRESCENTAR É MAIOR QUE O NUMERO DE DIAS NO MES
+        {
+            if ((num_dias_acrescentar) / data->ultimo_dia_mes >= 1)
+            /*SE A DIVISAO DA SOMA DOS DIAS COM O NUMERO
+            DE DIAS NO MES FOR MAIOR QUE 1 CONSEQUENTEMENTE
+            TEMOS UM MÊS EMBUTIDO DENTRO DESSES DIAS, LOGO SE
+            ACRESCENTA MAIS 1 NO MÊS, E O NUMERO DE DIAS RECEBE
+            A SUBTRAÇÃO DELE COM O NUMERO DE DIAS DESSE MES,
+            SENDO ASSIM A FUNÇÃO É CHAMADA DE NOVO.
+            */
+            {
+                data->mes += 1; //MÊS RECEBE MAIS 1 E CHAMA A FUNÇÃO DE NOVO
+                if (data->mes > 12)
+                { //CASO O MÊS ULTRAPASSE O NUMERO 12, ELE SERÁ REINICIADO E O ANO SERA ACRESCENTADO MAIS UM
+                    data->mes = 1;
+                    data->ano = data->ano + 1;
+                }
+                num_dias_acrescentar -= data->ultimo_dia_mes;
+                /*O VALOR INICIAL DE DIAS A SER ACRESCENTADO DE 
+                 DIAS SERÁ SUBTRAIDO PELO NUMERO DE DIAS NESSE MÊS,
+                 POIS JA ACRESCENTAMOS UM MÊS
+                */
+
+                somatorio_dias(data, num_dias_acrescentar);
+                /*A FUNÇÃO ESTÁ SENDO CHAMADA INCIANDO UM NOVO LOOP COM SEUS NOVOS VALORES.
+                ELE SÓ VAI PARAR DE SE CHAMAR QUANDO O NUMERO DE DIAS PARA ACRESCENTAR 
+                FOR MENOR QUE O NUMERO DE DIAS DESSE MÊS.  
+                */
+            }
+        }
+        else
+        {
+            data->dia += num_dias_acrescentar;
+            validacao_data(data);
+            formata_data(data);
+            /*AQUI O LOOP SE FINALIZOU, E SERÁ FEITA A VALIDAÇÃO DA DATA PARA VERIFICAR E TERMINAR O PROCESSO  
+                */
+        }
+    }
+}
+
+#+end_src C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** Data.c
+
+*** Chamando o arquivo.h 
+#+begin_src C
+#include "data.h"
+#+end_src C
+
+*** Função main
+- No inicio da função eu declaro uma variável do tipo Data, e faço o usuario escolher uma data qualquer.
+- Em seguida eu verifico se essa data é valida usando a função =validacao_data=.
+- E depois permito o usuario adicionar um numero qualquer de dias.  
+#+begin_src C
+int main()
+{
+    Data d;
+    int dias=0;
+    printf("Digite o numero de dias\n");
+    scanf("%d", &d.dia);
+    printf("Digite o mes\n");
+    scanf("%d", &d.mes);
+    printf("Digite o ano\n");
+    scanf("%d", &d.ano);
+    
+    if (validacao_data(&d) == 1)
+    {
+        printf("\n");
+        formata_data(&d);
+        printf("\n");
+        printf("Quantos dias voce quer somar a data?\n");
+        printf("\n");
+        scanf("%d", &dias);
+        printf("Resultado final\n");
+        somatorio_dias(&d,dias);
+    }
+    
+}
+#+end_src C
+
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/data][Clique aqui]].
+*** Para executá-lo basta abrir no terminal a pasta do arquivo e escrever =./data=
+    
