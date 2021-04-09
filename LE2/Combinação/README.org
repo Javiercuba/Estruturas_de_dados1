@@ -4,7 +4,7 @@
 
 Explicando o funcionamento do projeto. 
 
-** Arquivo Cilindro.h
+** Arquivo combinacao.h
 - Função recursiva =C=
 #+begin_src c
 #ifndef combinacao_h
@@ -31,7 +31,7 @@ int C(int n, int k)
 #+end_src c
 
 
-** Arquivo cilindro.c
+** Arquivo combinacao.c
 #+begin_src C
 #include <stdio.h>
 #include <stdlib.h>

@@ -4,7 +4,7 @@
 
 Explicando o funcionamento do projeto. 
 
-** Arquivo Cilindro.h
+** Arquivo raiz.h
 - Função recursiva =calcula_raiz=
 #+begin_src c
 #ifndef raiz_h
@@ -24,7 +24,7 @@ int calcula_raiz(float raiz, float approx, float tolerancia)
 #+end_src c
 
 
-** Arquivo cilindro.c
+** Arquivo raiz.c
 #+begin_src C
 #include <stdio.h>
 #include <stdlib.h>
