@@ -1,0 +1,120 @@
+#+title: Data
+#+author: Javier Ernesto Lopez del real
+#+email: javierernesto2000@gmail.com
+
+Explicando o funcionamento do projeto. 
+
+
+* Existe uma tabela CSV com alguns dados já:
+Servindo para poder facilitar.
+#+begin_src csv
+12323234,maria,ingstone,28/6/2020,9/11/2016,25.13
+345812323496638,Max,69224640681,Funafuti,2/8/2014,11/10/2013,859.14
+345812323496639,Evaleen,86433170873,Sofia,13/11/2014,7/4/2004,489.2
+345812323496643,Celisse,83712902115,City of Halifax,30/6/2012,7/1/2012,311.34
+345812323496644,Claresta,95046641085,Mérida,18/10/2010,5/5/2019,218.14
+345812323496645,Dari,82213446120,Siem Reap,4/5/2000,25/11/2004,457.87
+345812323496646,Kittie,38183713229,Pune,7/5/2012,29/7/2019,560.68
+#+end_src csv
+
+
+
+** 
+
+** Arquivo Cilindro.h
+No começo do arquivo, defino a struct Cliente:
+
+#+begin_src c
+typedef struct
+{
+    int codigo;
+    int numero;
+    char endereco[15];
+    char nome[10];
+    char data_primeira_compra[10];
+    char data_ultima_compra[10];
+    int valor_ultima_compra;
+
+} Cliente;
+#+end_src c
+
+** Funções Presentes em clientes.h
+
+*** 1. Listagem de Clientes
+
+#+begin_src C
+1  int lista_cliente()
+2  {
+3      FILE *csvfile = fopen("clientes.csv", "r+");
+4      int numero_linhas = 1;
+5      int posicao_linha = 0;
+6      ssize_t line_size;
+7      ssize_t line_buf_size = 0;
+8      char *line_buf = NULL;
+9      while (line_size >= 0)
+10      {
+11            line_size = getline(&line_buf, &line_buf_size, csvfile);
+12            printf("linha[%02d]: %s", numero_linhas, line_buf);
+13            numero_linhas++;
+14      }
+15
+16      fclose(csvfile);
+17 }
+#+end_src C
+**** 1. Ponteiro =*csvfile= recebe a função =fopen= que possibilita a abertura de um arquivo que no nosso caso é clientes.csv.
+ line_size recebe uma representação do tamanho de dados.
+ Nessa função enquanto o line_size for positivo, isso quer dizer que ainda existe algo para ser lido
+ a função retornará cada linha presente no arquivo .csv 
+
+** Funções Presentes em clientes.c
+
+*** Chamando o arquivo.h 
+#+begin_src C
+#include "clientes.h"
+#+end_src C
+
+*** Função main
+#+begin_src C
+int main()
+{
+    Cliente cliente;
+
+    printf("Qual é o codigo do cliente?\n");
+    scanf("%d", &cliente.codigo);
+   
+    printf("Qual é o nome do cliente?\n");
+    scanf("%s", cliente.nome);
+
+    printf("Qual é o numero do cliente?\n");
+    scanf("%d", &cliente.numero);
+
+    printf("Qual é a data da primeira compra do cliente?\n");
+    scanf("%s", cliente.data_primeira_compra);
+
+    printf("Qual é a data da ultima compra do cliente?\n");
+    scanf("%s", cliente.data_ultima_compra);
+
+    printf("Qual é o valor da ultima compra do cliente?\n");
+    scanf("%d", &cliente.valor_ultima_compra);
+
+    printf("Qual é o endereço do cliente?\n");
+    scanf("%s", cliente.endereco);
+    printf("\n");
+    printf("nome : %s\n", cliente.nome);
+    printf("codigo: %d\n", cliente.codigo);
+    printf("numero: %d\n", cliente.numero);
+    printf("Endereço: %s\n", cliente.endereco);
+    printf("Data da primeira compra: %s\n", cliente.data_primeira_compra);
+
+    printf("\n");
+    cria_cliente(&cliente);
+}
+#+end_src C
+Na função main eu estou atribuindo valores a um variável do tipo cliente
+e passando pela função =cria_cliente=
+
+
+
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/clientes][Clique aqui]].
+
+    
