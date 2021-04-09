@@ -116,10 +116,13 @@ int validacao_mes(Data *data)
 
 *** 4. Validando a data toda
 Essa função tem como objetivo validar a da data toda, usando todas as funções acima. 
-- A primeira coisa que eu fiz foi verificar o retorno da função =validacao_mes=, 
-assim ela retornará o mês para poder atribuir a variável =Data.ultimo_dia_mes=.
+1. A primeira coisa que eu fiz foi verificar o retorno da função =validacao_mes=.
+- Se a função retornar 4,6,9,11 a variável =Data.ultimo_dia_mes= recebe o valor de 30, representando o ultima dia do mês desse mês.
+- Se a função retornar 2 variável, será necessário verificar o ano usando a função =validacao_ano=, caso o ano seja bissexto a variável =Data.ultimo_dia_mes= recebe =29=,
+caso contrario recebe =28=.
+- Se a função retornar outros valores que não sejam 2,4,6,9,11 a variável =Data.ultimo_dia_mes= recebe 31.
 
-- Se ele não um mês valido retorna =0=
+
 
 #+begin_src C
 int validacao_data(Data *data)
