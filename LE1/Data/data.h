@@ -25,7 +25,6 @@ int validacao_ano(Data *data)
     {
         if (((*data).ano % 4 == 0 && (*data).ano % 100 == 0 && (*data).ano % 400 == 0) || ((*data).ano % 4 == 0 && (*data).ano % 100 != 0)) //VERIFICAR SE O ANO É BISSEXTO
         {
-
             return 1; //RETORNA QUE O ANO É VALIDO E BISSEXTO
         }
         else
@@ -84,7 +83,7 @@ int validacao_data(Data *data)
 
     if (validacao_ano(data) != 3 && validacao_mes(data) != 0 && validacao_dia(data) != 0) //VERIFICANDO SE O ANO E O SÃO VALIDOS PARA FORMATAR
     {
-       // formata_data(data);
+        // formata_data(data);
         return 1;
     }
     else
@@ -137,7 +136,6 @@ int somatorio_dias(Data *data, int num_dias_acrescentar)
             formata_data(data);
             /*AQUI O LOOP SE FINALIZOU, E SERÁ FEITA A VALIDAÇÃO DA DATA PARA VERIFICAR E TERMINAR O PROCESSO  
                 */
-           
         }
     }
 }

@@ -45,16 +45,29 @@ int formata_data(Data *data)
 
 *** 1. Validando o ano da data
 Essa função tem como objetivo validar se o ano da data é valido entre = 2021< data > 1000 =. 
-Se o ano for valido, ele vai verificar se ele é bissexto ou não.
+Se o ano for valido, ele vai verificar se ele é bissexto ou não = tem que ser divisível por 4, mas não por 100= ou = divisível por 4, por 100 e por 400=.
 - Se ele não for um ano valido, retorna 3
 - Se ele for valido e não bissexto, retorna 2 
 - Se ele for valido e bissexto, retorna 1 
 
 #+begin_src C
-int formata_data(Data *data)
+int validacao_ano(Data *data)
 {
-    sprintf(data->data_formatada, "%d/%d/%d\n", data->dia, data->mes, data->ano);
-    printf("%s", data->data_formatada);
+    if ((*data).ano <= 2021 && (*data).ano > 1000) //VERIFICAR SE O ANO É VALIDO, ENTRE 2020 E 1000
+    {
+        if (((*data).ano % 4 == 0 && (*data).ano % 100 == 0 && (*data).ano % 400 == 0) || ((*data).ano % 4 == 0 && (*data).ano % 100 != 0)) //VERIFICAR SE O ANO É BISSEXTO
+        {
+            return 1; //RETORNA QUE O ANO É VALIDO E BISSEXTO
+        }
+        else
+        {
+            return 2; //RETORNA QUE O ANO É VALIDO E NÃO BISSEXTO
+        }
+    }
+    else
+    {
+        return 3; //RETORNA QUE O ANO NÃO É VALIDO
+    }
 }
 #+end_src C
 
