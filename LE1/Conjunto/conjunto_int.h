@@ -10,7 +10,6 @@ typedef struct
 
 int uniao(Conjunto *A, Conjunto *B, int *C)
 {
-
     for (int i = 0; i <= TAMANHO * 2; i++)
     {
         if (i < TAMANHO)
