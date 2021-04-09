@@ -1,0 +1,223 @@
+#+title: Conjunto
+#+author: Javier Ernesto Lopez del real
+#+email: javierernesto2000@gmail.com
+
+Explicando o funcionamento do projeto. 
+
+** Arquivo Cilindro.h
+No começo do arquivo, defino uma variável =TAMANHO=.
+Desculpe por não alocar memoria.
+#+begin_src c
+#define TAMANHO 10
+#+end_src c
+
+Em seguida defino a struct Conjunto:
+
+#+begin_src c
+typedef struct
+{
+    int lista[TAMANHO];
+
+} Conjunto;
+#+end_src c
+
+** Funções Presentes 
+   Dentro desse arquivo tenho as seguintes funções 
+
+*** 1. Uniao de dois conjuntos
+Essa função recebe três parâmetros:
+1. Dois struct do tipo =Conjunto= 
+2. uma variável do tipo int para receber essa união. 
+- Queria deixa bem claro meu preconceito em relação a alocação de memoria,
+  além de não saber usar corretamente, tenho noção do seu potencial para facilitar
+  este exercício e outros.
+
+Nessa função eu percorro =2x= o tamanho de um conjunto para poder guardar no int.
+O =if= vai ser para guardar o primeiro conjunto =A=, logo quando ele for falso eu continuo guardando o outro conjunto =B=.      
+ 
+#+begin_src C
+int uniao(Conjunto *A, Conjunto *B, int *C)
+{
+    for (int i = 0; i <= TAMANHO * 2; i++)
+    {
+        if (i < TAMANHO)
+        {
+            C[i] = A->lista[i];
+        }
+        else
+        {
+            C[i] = B->lista[i - 10];
+        }
+    }
+}
+#+end_src C
+
+
+
+*** 2. Cria Conjunto vazio
+Nessa função o conjunto todo recebe =0=.
+#+begin_src c++
+{
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        (*A).lista[i] = 0;
+    }
+}
+#+end_src c++
+
+
+*** 3. Insere valores ao conjunto
+Essa função insere valores randômicos no conjunto. 
+#+begin_src C
+int insere(Conjunto *A)
+{
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        (*A).lista[i] = rand() % 10;
+    }
+}
+#+end_src C
+
+
+*** 4. Verifica se o elemento pertence ao conjunto
+Função percorre o conjunto todo e verifica se o valor escolhido pelo usuario pertence ou não.
+#+begin_src C
+int testa_pertence(int posi, Conjunto *A)
+{
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if ((*A).lista[i] == posi)
+        {
+            printf("O numero %d pertence ao conjunto\n", posi);
+        }
+    }
+}
+#+end_src C
+
+
+*** 5. Remove elemento do conjunto
+Remove o elemento escolhido na posição.
+#+begin_src C
+int remover(int posi, Conjunto *A)
+{
+    if (posi >= TAMANHO || posi < 0 || ((*A).lista[posi] == 0))
+    {
+        return 0;
+    }
+    (*A).lista[posi] = 0;
+}
+#+end_src C
+
+
+
+*** 6. Menor valor
+Retorna o menor valor do conjunto.
+#+begin_src C
+int menor_valor(Conjunto *A)
+{
+    int menor = (*A).lista[0];
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if (A->lista[i] < menor)
+        {
+            menor = A->lista[i];
+        }
+    }
+    printf("O menor valor do conjunto é %d \n", menor);
+}
+#+end_src C
+
+
+*** 7. Maior valor
+Retorna o maior valor do conjunto.
+#+begin_src C
+int maior_valor(Conjunto *A)
+{
+    int maior = (*A).lista[0];
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if (A->lista[i] > maior)
+        {
+            maior = A->lista[i];
+        }
+    }
+    printf("O maior valor do conjunto é %d \n", maior);
+}
+#+end_src C
+
+
+*** 8. Verifica vazio
+A função percorre o conjunto todo e verifica se algum valor é zero.
+#+begin_src C
+int testa_vazio(Conjunto *A)
+{
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        if (A->lista[i] != 0)
+        {
+            printf("Este conjunto não é vazio");
+            break;
+        }
+        else
+        {
+            printf("Este é vazio");
+        }
+    }
+}
+#+end_src C
+
+
+** Arquivo conjunto.c
+** Chamando o conjunto.h criado.
+   
+#+begin_src C
+#include "conjunto.h"
+#+end_src C
+** Usando todas as funções na main
+   
+#+begin_src C
+int main(int argc, char *argv[])
+{
+
+    int lista_uniao[20];
+    Conjunto M1, M2, M3,null;
+    printf("Criando um conjunto vazio\n");
+    Cria_Conjunto_Vazio(&M1);
+    printf("--Conjunto M1 vazio--\n");
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        printf("%d\t\n", M1.lista[i]);
+    }
+    printf("Inserindo valores randomicos em\nM1 e\tM2\n");
+    insere(&M1);
+    insere(&M2);
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        printf("%d\t%d\t\n", M1.lista[i], M2.lista[i]);
+    }
+    printf("\n");
+    printf("Resultados valores de M1: \n");
+    menor_valor(&M1);
+    maior_valor(&M1);
+
+    printf("\n");
+    printf("Resultados valores de M2: \n");
+    menor_valor(&M2);
+    maior_valor(&M2);
+    printf("\n");
+
+    uniao(&M1, &M2, lista_uniao);
+    printf("-----Uniao de M1 com M2---\n\n");
+    printf("--M1----M2----Uniao.M1----Uniao.M2\n");
+
+    for (int i = 0; i < TAMANHO; i++)
+    {
+        printf("%d\t%d\t%d\t %d\t\n", M1.lista[i], M2.lista[i], lista_uniao[i], lista_uniao[i + 10]);
+    }
+}
+#+end_src C
+
+
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/conjunto][Clique aqui]].
+
+    
