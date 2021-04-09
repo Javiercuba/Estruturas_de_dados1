@@ -93,6 +93,26 @@ int validacao_mes(Data *data)
 #+end_src C
 
 
+*** 3. Validando o dia da data
+Essa função tem como objetivo validar se o dia da data é valido entre =ultimo dia desse mes = > mês > 0=. 
+- Se ele for um mês valido, retorna o =numero do mês=
+- Se ele não um mês valido retorna =0=
+
+#+begin_src C
+int validacao_mes(Data *data)
+{
+    if ((*data).mes > 0 && (*data).mes <= 12)
+    {
+        return (*data).mes; //RETORNANDO O NUMERO DO MÊS PARA SABER A QUANTIDADE DE DIAS QUE ESSE MÊS TERÁ
+    }
+    else
+    {
+        return 0;
+    }
+}
+#+end_src C
+
+
 
 
 
