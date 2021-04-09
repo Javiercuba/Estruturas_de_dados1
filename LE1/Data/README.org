@@ -284,11 +284,7 @@ int main()
     
 }
 #+end_src C
-Na função main eu estou atribuindo valores a um variável do tipo cliente
-e passando pela função =cria_cliente=
 
-
-
-** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/clientes][Clique aqui]].
-
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/data][Clique aqui]].
+*** Para executá-lo basta abrir no terminal a pasta do arquivo e escrever =./data=
     
