@@ -133,8 +133,8 @@ int somatorio_dias(Data *data, int num_dias_acrescentar)
             data->dia += num_dias_acrescentar;
             validacao_data(data);
             formata_data(data);
-            /*AQUI O LOOP SE FINALIZOU, E SERÁ FEITA A VALIDAÇÃO DA DATA PARA VERIFICAR E TERMINAR O PROCESSO  
-                */
+            //AQUI O LOOP SE FINALIZOU, E SERÁ FEITA A VALIDAÇÃO DA DATA PARA VERIFICAR E TERMINAR O PROCESSO  
+                
         }
     }
 }

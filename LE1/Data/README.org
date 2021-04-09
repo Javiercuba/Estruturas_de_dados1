@@ -171,7 +171,8 @@ Como essa é uma função recursiva, ele sempre vai passar primeiro pessa funç�
 3. Se a divisão dos =dias a acrescentar= com o numero maximo desse mês for maior que 1, consequentemente temos um mês imbutido dentro desses =dias a acrescentar=, logo se acrescenta mais
    1 no mês, e o =dias a acrescentar= recebe a subtração dele mesmo com o numero de dias desse mês, sendo assim a função =somatorio_dias= é chamada de novo.
 4. Se esse função depois de ser chamada varias vezes somar um mês maior que =12=, o =ano= receberá mais =1=, e o =mês= vai ser reiniciados
-   para =1=   
+   para =1=.
+5. O ponto de parada é quando o passo =1= é falso, que ai será só somar os dias e em seguida eu choamp a função =formata_data=.       
             
 
 
