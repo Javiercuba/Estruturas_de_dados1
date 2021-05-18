@@ -183,13 +183,13 @@ void opcao(node *PILHA, node *invertida, int op)
 * Execução do código
 #+html: <p align="center"><img src="./captura.jpg " /></p>
 
-** Como nos ja predefinimos o valor da variavel na função "divide", essa função ira inserir o resto de cada divisão na pilha usando a função "push" 
+Como nos ja predefinimos o valor da variavel na função "divide" no =caso 3=, essa função ira inserir o resto de cada divisão na pilha usando a função "push" 
 #+begin_src c
 int divide(node *PILHA, int x) 
 {
     if ((float)x / 16 > 0.01)
     {
-        push(PILHA, x % 16); //INSERE O RESTO DA DIVISÃO NA PILHA ORIGINAL
+        push(PILHA, x % 16); 
         divide(PILHA, x / 16);
     }
 }
