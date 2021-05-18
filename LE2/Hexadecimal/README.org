@@ -136,7 +136,7 @@ void opcao(node *PILHA, node *invertida, int op)
 #+end_src c
 
 
-** Caso 2: Libera memoria na pilha original e na auxiliar e depois zera as duas.
+** Caso 2: Mostra ne tela a pilha original.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -145,6 +145,37 @@ void opcao(node *PILHA, node *invertida, int op)
     {
     case 2:
         exibe_int(PILHA);
+        break;
+}
+#+end_src c
+
+
+** Caso 3: A função "divide" insere na pilha original o resto das divisões.
+#+begin_src c
+void opcao(node *PILHA, node *invertida, int op)
+{
+    node *tmp;
+    switch (op)
+    {
+   case 3:
+        divide(PILHA, 44221);
+        exibe_int(PILHA);
+        break;
+}
+#+end_src c
+
+
+** Caso 4: A função "pop" retorna e remove o primeiro elemento da pilha.
+#+begin_src c
+void opcao(node *PILHA, node *invertida, int op)
+{
+    node *tmp;
+    switch (op)
+    {
+   case 4:
+        tmp = pop(PILHA, invertida);
+        if (tmp != NULL)
+            printf("Retirado/Adicionado: %3d\n\n", tmp->num);
         break;
 }
 #+end_src c
