@@ -12,7 +12,7 @@ int main(void)
     node *invertida = (node *)malloc(sizeof(node)); 
 #+end_src c
 - Alocando memoria na pilha original e na pilha que será
- invertida e transformada para hexadeciaml duas pilhas.
+ invertida e transformada para hexadecimal.
 
 #+begin_src c
 
@@ -21,6 +21,13 @@ int main(void)
         printf("Sem memoria disponivel!\n");
         exit(1);
     }
+}
+#+end_src c
+- Verifico se tem memoria disponivel.
+
+
+#+begin_src c
+
     else
     {
         inicia(PILHA);
@@ -38,6 +45,69 @@ int main(void)
     }
 }
 #+end_src c
+- Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
+
+** Função opcao e menu()
+
+#+begin_src c
+int menu(void)
+{
+    int opt;
+
+    printf("Escolha a opcao\n");
+    printf("0. Sair\n");
+    printf("1. Zerar PILHA\n");
+    printf("2. Exibir PILHA\n");
+    printf("3. PUSH\n");
+    printf("4. POP/DESEMPILHAR\n");
+    printf("Opcao: ");
+    scanf("%d", &opt);
+
+    return opt;
+}
+#+end_src c
+
+
+#+begin_src c
+
+void opcao(node *PILHA, node *invertida, int op)
+{
+    node *tmp;
+    switch (op)
+    {
+    case 0:
+        libera(PILHA);
+        break;
+        
+    case 1:
+        libera(PILHA);
+        libera(invertida);
+        inicia(PILHA);
+        inicia(invertida);
+        break;
+
+    case 2:
+        exibe_int(PILHA);
+        break;
+
+    case 3:
+        divide(PILHA, 44221);
+        exibe_int(PILHA);
+        break;
+
+    case 4:
+        tmp = pop(PILHA, invertida);
+        if (tmp != NULL)
+            printf("Retirado/Adicionado: %3d\n\n", tmp->num);
+        break;
+
+    default:
+        printf("Comando invalido\n\n");
+    }
+}
+#+end_src c
+** Menu
+
 
 ** Arquivo combinacao.c
 #+begin_src C
