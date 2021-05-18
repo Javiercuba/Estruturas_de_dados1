@@ -180,7 +180,10 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 
+** Execuçpão do codigo
 #+html: <p align="center"><img src="./captura.jpg " /></p>
+
+* Como nos ja predefinimos o valor da variavel na função "PUSH"
 
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
 
