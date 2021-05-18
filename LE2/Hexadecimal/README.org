@@ -180,7 +180,7 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 
-#+html: <p align="center"><img src="LE2/Hexadecimal/img/captura.jpg" /></p>
+#+html: <p align="center"><img src="LE2/Hexadecimal/captura.jpg" /></p>
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
 
     
