@@ -110,7 +110,7 @@ void opcao(node *PILHA, node *invertida, int op)
 #+end_src c
 
 
-** Caso 1 - A função "divide" insere na pilha original o resto das divisões, importante saber que o valor inserido está estatico.
+** Caso 1 - A função =divide= insere na pilha original o resto das divisões, importante saber que o valor inserido está estatico.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -125,7 +125,7 @@ void opcao(node *PILHA, node *invertida, int op)
 #+end_src c
 
 
-** Caso 2 - A função "pop" retorna e remove o ultimo elemento da pilha.
+** Caso 2 - A função =pop= retorna e remove o ultimo elemento da pilha.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -203,6 +203,9 @@ int hexa(int x)
     }
 }
 #+end_src c
+
+Para executar o desempilhamento chamei a função =pop= que vai removendo o ultimo valor da pilha
+e em seguida chamo a função =desempilha= que vai inserir esse valor removido na nova pilha.
 #+html: <p align="center"><img align="center" src="./Rodando.gif"  width="50%" height="60%" /> </p>
 
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
