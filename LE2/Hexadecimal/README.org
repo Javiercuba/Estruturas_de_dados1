@@ -180,11 +180,20 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 
-** Execuçpão do codigo
+* Execução do código
 #+html: <p align="center"><img src="./captura.jpg " /></p>
 
-* Como nos ja predefinimos o valor da variavel na função "PUSH"
-
+** Como nos ja predefinimos o valor da variavel na função "divide", essa função ira inserir o resto de cada divisão na pilha usando a função "push" 
+#+begin_src c
+int divide(node *PILHA, int x) 
+{
+    if ((float)x / 16 > 0.01)
+    {
+        push(PILHA, x % 16); //INSERE O RESTO DA DIVISÃO NA PILHA ORIGINAL
+        divide(PILHA, x / 16);
+    }
+}
+#+end_src c
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
 
     
