@@ -4,7 +4,7 @@
 
 Explicando o funcionamento do projeto. 
 
-** Função main()
+* Função main()
 #+begin_src c
 int main(void)
 {
@@ -47,7 +47,7 @@ int main(void)
 #+end_src c
 - Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
 
-** Função "opcao" e "menu"
+* Funções "opcao" e "menu"
 
 #+begin_src c
 int menu(void)
@@ -106,8 +106,8 @@ void opcao(node *PILHA, node *invertida, int op)
     }
 }
 #+end_src c
-** Explicação de cada caso
-1. Caso 0: Libera memoria na pilha original e termina a execução 
+* Explicação de cada caso
+** Caso 0 - Libera memoria na pilha original e termina a execução 
 do algoritmo.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
@@ -121,7 +121,7 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 
-2. Caso 1: Libera memoria na pilha original
+** Caso 1: Libera memoria na pilha original
 e na auxiliar e depois zera as duas.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
@@ -149,7 +149,6 @@ int main()
     printf("%d", C(49, 6));
 }
 #+end_src C
-- Saída =13983816=
 
 
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
