@@ -48,7 +48,6 @@ int main(void)
 - Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
 
 * Funções "opcao" e "menu"
-
 #+begin_src c
 int menu(void)
 {
@@ -107,8 +106,7 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 * Explicação de cada caso
-** Caso 0 - Libera memoria na pilha original e termina a execução 
-do algoritmo.
+** Caso 0 - Libera memoria na pilha original e termina a execução do algoritmo.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -121,8 +119,7 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 
-** Caso 1: Libera memoria na pilha original
-e na auxiliar e depois zera as duas.
+** Caso 1: Libera memoria na pilha original e na auxiliar e depois zera as duas.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -134,6 +131,20 @@ void opcao(node *PILHA, node *invertida, int op)
         libera(invertida);
         inicia(PILHA);
         inicia(invertida);
+        break;
+}
+#+end_src c
+
+
+** Caso 2: Libera memoria na pilha original e na auxiliar e depois zera as duas.
+#+begin_src c
+void opcao(node *PILHA, node *invertida, int op)
+{
+    node *tmp;
+    switch (op)
+    {
+    case 2:
+        exibe_int(PILHA);
         break;
 }
 #+end_src c
