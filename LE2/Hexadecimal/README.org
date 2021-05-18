@@ -182,13 +182,10 @@ void opcao(node *PILHA, node *invertida, int op)
 
 * Execução do código
 #+html: <p align="center"><img src="./captura.jpg " /></p>
-
-Como nos ja predefinimos o valor da variavel na função "divide" no =caso 3=, essa função ira inserir o resto de cada divisão desse valor na pilha na pilha usando a função "push" 
+#+html: <img align="center" src="LE2/Hexadecimal/images/Rodando.gif"  width="100%" height="120%" /> 
+Como nos ja predefinimos o valor da variavel na função "divide" no =caso 3=, essa função ira inserir o resto de cada divisão por 16 desse valor na pilha usando a função "push" 
 #+begin_src c
-case 3:
         divide(PILHA, 44221);
-        exibe_int(PILHA);
-        break;
 #+end_src c
 
 #+begin_src c

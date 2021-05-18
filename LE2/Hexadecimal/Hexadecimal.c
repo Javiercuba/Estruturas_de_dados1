@@ -59,7 +59,7 @@ int divide(node *PILHA, int x)
 
 int hexa(int x)
 {
-    char c = x ;
+    
     switch (x)
     {
     case 10:
@@ -81,7 +81,7 @@ int hexa(int x)
         return 'F';
         break;
     default:
-        return c;
+        return x;
     }
 }
 
@@ -101,12 +101,10 @@ int menu(void)
 {
     int opt;
 
-    printf("Escolha a opcao\n");
-    printf("0. Sair\n");
-    printf("1. Zerar PILHA\n");
-    printf("2. Exibir PILHA\n");
-    printf("3. PUSH - Resto da divisao\n");
-    printf("4. POP/DESEMPILHAR\n");
+    printf("\nEscolha a opcao\n");
+    printf("0. Exibir PILHA\n");
+    printf("1. PUSH - Resto da divisao (Valor definido)\n");
+    printf("2. POP/DESEMPILHAR\n");
     printf("Opcao: ");
     scanf("%d", &opt);
 
@@ -119,26 +117,15 @@ void opcao(node *PILHA, node *invertida, int op)
     switch (op)
     {
     case 0:
-        libera(PILHA);
+        exibe(PILHA);
         break;
 
     case 1:
-        libera(PILHA);
-        libera(invertida);
-        inicia(PILHA);
-        inicia(invertida);
+        divide(PILHA, 12444556);
+        exibe(PILHA);
         break;
 
     case 2:
-        exibe_int(PILHA);
-        break;
-
-    case 3:
-        divide(PILHA, 44221);
-        exibe_int(PILHA);
-        break;
-
-    case 4:
         tmp = pop(PILHA, invertida);
         if (tmp != NULL)
             printf("Retirado/Adicionado: %3d\n\n", tmp->num);
@@ -187,48 +174,16 @@ void exibe(node *PILHA)
 
     while (tmp != NULL)
     {
-        printf("%5c", tmp->num);
-        tmp = tmp->prox;
-    }
-    
-    int count;
-}
+        if(tmp->num >= 'A'){
 
-void exibe_int(node *PILHA)
-{
-    if (vazia(PILHA))
-    {
-        printf("PILHA vazia!\n\n");
-        return;
-    }
-
-    node *tmp;
-    tmp = PILHA->prox;
-
-    while (tmp != NULL)
-    {
-        printf("%5d", tmp->num);
-        tmp = tmp->prox;
-    }
-    printf("\n\n");
-    int count;
-}
-
-void libera(node *PILHA)
-{
-    if (!vazia(PILHA))
-    {
-        node *proxNode,
-            *atual;
-
-        atual = PILHA->prox;
-        while (atual != NULL)
-        {
-            proxNode = atual->prox;
-            free(atual);
-            atual = proxNode;
+            printf("%5c", tmp->num);
+        }else{
+            printf("%5d", tmp->num);
         }
+        
+        tmp = tmp->prox;
     }
+    int count;
 }
 
 void push(node *PILHA, char x)
@@ -258,7 +213,7 @@ node *pop(node *PILHA, node *invertida)
     if (PILHA->prox == NULL)
     {
         printf("Pilha Original vazia\n\n");
-        printf("Auxiliar: ");
+        printf("Pilha Hexadecimal: ");
         exibe(invertida);
         return NULL;
     }
@@ -277,10 +232,10 @@ node *pop(node *PILHA, node *invertida)
         penultimo->prox = NULL;
 
         tam--;
-        printf("Original");
-        exibe_int(PILHA);
+        printf("Pilha Decimal");
+        exibe(PILHA);
         printf("\n");
-        printf("Auxiliar");
+        printf("Pilha Hexadecimal");
         exibe(invertida);
         printf("\n");
         return ultimo;
