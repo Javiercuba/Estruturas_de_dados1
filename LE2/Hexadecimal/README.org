@@ -153,7 +153,7 @@ void opcao(node *PILHA, node *invertida, int op)
 
 
 * Execução do código
-#+html: <p align="center"><img src="./capturar.jpg " /></p>
+#+html: <p align="center"><img src="Capturar.jpg " /></p>
 Como nos ja predefinimos o valor da variavel na função "divide" no =caso 3=, essa função ira inserir o resto de cada divisão por 16 desse valor na pilha usando a função "push" 
 #+begin_src c
         divide(PILHA, 12444556);
