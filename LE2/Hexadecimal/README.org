@@ -154,7 +154,7 @@ void opcao(node *PILHA, node *invertida, int op)
 
 * Execução do código
 #+html: <p align="center"><img src="Capturar.jpg " /></p>
-Como nos ja predefinimos o valor da variavel na função "divide" no =caso 3=, essa função ira inserir o resto de cada divisão por 16 desse valor na pilha usando a função "push" 
+Como nos já predefinimos o valor da variável na função =divide= no =caso 3=, essa função ira inserir o resto de cada divisão por 16 desse valor na pilha usando a função "push". 
 #+begin_src c
         divide(PILHA, 12444556);
 #+end_src c
@@ -214,7 +214,7 @@ int hexa(int x)
 }
 #+end_src c
 
-Para executar o desempilhamento chamei o =caso 2= que é a função =pop= que vai removendo o ultimo valor da pilha
+Para executar o desempilhamento chamei o =caso 2= que é a função =pop= que remove o ultimo valor da pilha original
 e em seguida chamo a função =desempilha= que vai inserir esse valor removido na nova pilha.
 
 
@@ -254,7 +254,7 @@ node *pop(node *PILHA, node *invertida)
 }
 #+end_src c
 
-#+html: <p align="center"><img align="center" src="./Rodando.gif"  width="50%" height="60%" /> </p>
+#+html: <p align="center"><img align="center" src="./gif.gif"  width="50%" height="60%" /> </p>
 
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
 
