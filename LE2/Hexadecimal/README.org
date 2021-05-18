@@ -256,6 +256,6 @@ node *pop(node *PILHA, node *invertida)
 
 #+html: <p align="center"><img align="center" src="./gif.gif"  width="50%" height="60%" /> </p>
 
-** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal][Clique aqui]].
 
     
