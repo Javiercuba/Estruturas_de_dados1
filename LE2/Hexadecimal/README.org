@@ -10,9 +10,8 @@ int main(void)
 {
     node *PILHA = (node *)malloc(sizeof(node));  
     node *invertida = (node *)malloc(sizeof(node)); 
-
-   
 #+end_src c
+- Alocando memoria nas duas pilhas.
 
 #+begin_src c
 int main(void)
