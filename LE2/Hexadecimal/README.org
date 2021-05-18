@@ -4,6 +4,16 @@
 
 Explicando o funcionamento do projeto. 
 
+* Struct
+#+begin_src c
+struct Node
+{
+    char num;
+    struct Node *prox;
+};
+typedef struct Node node;
+#+end_src c
+
 * Função main()
 #+begin_src c
 int main(void)
@@ -204,8 +214,46 @@ int hexa(int x)
 }
 #+end_src c
 
-Para executar o desempilhamento chamei a função =pop= que vai removendo o ultimo valor da pilha
+Para executar o desempilhamento chamei o =caso 2= que é a função =pop= que vai removendo o ultimo valor da pilha
 e em seguida chamo a função =desempilha= que vai inserir esse valor removido na nova pilha.
+
+
+#+begin_src c
+node *pop(node *PILHA, node *invertida)
+{
+    if (PILHA->prox == NULL)
+    {
+        printf("Pilha Original vazia\n\n");
+        printf("Pilha Hexadecimal: ");
+        exibe(invertida);
+        return NULL;
+    }
+    else
+    {
+        node *ultimo = PILHA->prox,
+             *penultimo = PILHA;
+
+        while (ultimo->prox != NULL)
+        {
+            penultimo = ultimo;
+            ultimo = ultimo->prox;
+        }
+        desempilha(invertida, ultimo->num);
+
+        penultimo->prox = NULL;
+
+        tam--;
+        printf("Pilha Decimal");
+        exibe(PILHA);
+        printf("\n");
+        printf("Pilha Hexadecimal");
+        exibe(invertida);
+        printf("\n");
+        return ultimo;
+    }
+}
+#+end_src c
+
 #+html: <p align="center"><img align="center" src="./Rodando.gif"  width="50%" height="60%" /> </p>
 
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
