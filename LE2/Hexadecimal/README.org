@@ -119,7 +119,7 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 
-** Caso 1: Libera memoria na pilha original e na auxiliar e depois zera as duas.
+** Caso 1 - Libera memoria na pilha original e na auxiliar e depois zera as duas.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -136,7 +136,7 @@ void opcao(node *PILHA, node *invertida, int op)
 #+end_src c
 
 
-** Caso 2: Mostra ne tela a pilha original.
+** Caso 2 - Mostra na tela a pilha original.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -150,7 +150,7 @@ void opcao(node *PILHA, node *invertida, int op)
 #+end_src c
 
 
-** Caso 3: A função "divide" insere na pilha original o resto das divisões.
+** Caso 3 - A função "divide" insere na pilha original o resto das divisões.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -165,7 +165,7 @@ void opcao(node *PILHA, node *invertida, int op)
 #+end_src c
 
 
-** Caso 4: A função "pop" retorna e remove o primeiro elemento da pilha.
+** Caso 4 - A função "pop" retorna e remove o primeiro elemento da pilha.
 #+begin_src c
 void opcao(node *PILHA, node *invertida, int op)
 {
@@ -179,19 +179,7 @@ void opcao(node *PILHA, node *invertida, int op)
         break;
 }
 #+end_src c
-
-** Arquivo combinacao.c
-#+begin_src C
-#include <stdio.h>
-#include <stdlib.h>
-#include "combinacao.h"
-
-int main()
-{
-    printf("%d", C(49, 6));
-}
-#+end_src C
-
+<img align="center" src="./img/menu.png"  width="100%" height="120%" /> 
 
 ** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
 
