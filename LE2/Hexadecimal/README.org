@@ -8,7 +8,16 @@ Explicando o funcionamento do projeto.
 #+begin_src c
 int main(void)
 {
-    node *PILHA = (node *)malloc(sizeof(node));
+    node *PILHA = (node *)malloc(sizeof(node));  
+    node *invertida = (node *)malloc(sizeof(node)); 
+
+   
+#+end_src c
+
+#+begin_src c
+int main(void)
+{
+    node *PILHA = (node *)malloc(sizeof(node));  
     node *invertida = (node *)malloc(sizeof(node)); 
 
     if (!PILHA)
@@ -32,9 +41,7 @@ int main(void)
         return 0;
     }
 }
-#endif
 #+end_src c
-
 
 ** Arquivo combinacao.c
 #+begin_src C
