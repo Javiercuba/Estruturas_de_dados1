@@ -105,7 +105,7 @@ int menu(void)
     printf("0. Sair\n");
     printf("1. Zerar PILHA\n");
     printf("2. Exibir PILHA\n");
-    printf("3. PUSH\n");
+    printf("3. PUSH - Resto da divisao\n");
     printf("4. POP/DESEMPILHAR\n");
     printf("Opcao: ");
     scanf("%d", &opt);

@@ -47,7 +47,7 @@ int main(void)
 #+end_src c
 - Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
 
-** Função opcao e menu()
+** Função "opcao" e "menu"
 
 #+begin_src c
 int menu(void)
@@ -78,7 +78,7 @@ void opcao(node *PILHA, node *invertida, int op)
     case 0:
         libera(PILHA);
         break;
-        
+
     case 1:
         libera(PILHA);
         libera(invertida);
@@ -106,7 +106,7 @@ void opcao(node *PILHA, node *invertida, int op)
     }
 }
 #+end_src c
-** Menu
+** Explicação de cada caso
 
 
 ** Arquivo combinacao.c
