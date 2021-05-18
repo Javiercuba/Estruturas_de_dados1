@@ -107,7 +107,36 @@ void opcao(node *PILHA, node *invertida, int op)
 }
 #+end_src c
 ** Explicação de cada caso
+1. Caso 0: Libera memoria na pilha original e termina a execução 
+do algoritmo.
+#+begin_src c
+void opcao(node *PILHA, node *invertida, int op)
+{
+    node *tmp;
+    switch (op)
+    {
+    case 0:
+        libera(PILHA);
+        break;
+}
+#+end_src c
 
+2. Caso 1: Libera memoria na pilha original
+e na auxiliar e depois zera as duas.
+#+begin_src c
+void opcao(node *PILHA, node *invertida, int op)
+{
+    node *tmp;
+    switch (op)
+    {
+     case 1:
+        libera(PILHA);
+        libera(invertida);
+        inicia(PILHA);
+        inicia(invertida);
+        break;
+}
+#+end_src c
 
 ** Arquivo combinacao.c
 #+begin_src C
