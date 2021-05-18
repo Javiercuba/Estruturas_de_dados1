@@ -59,7 +59,6 @@ int divide(node *PILHA, int x)
 
 int hexa(int x)
 {
-    
     switch (x)
     {
     case 10:
