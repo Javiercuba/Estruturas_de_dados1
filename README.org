@@ -22,6 +22,6 @@ para acessar cada exercicio é so clicar nos links abaixo, ou ir navegando pelas
 
 - LE2:
 
-***** 1. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE1-Part2/Combina%C3%A7%C3%A3o#combina%C3%A7%C3%A3o][Hexadeciaml]]
+***** 1. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Hexadecimal#hexadecimal][Hexadeciaml]]
 
 
