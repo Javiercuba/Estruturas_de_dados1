@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 struct Node
 {
-    int num;
+    char num;
     struct Node *prox;
 };
 typedef struct Node node;
@@ -13,17 +13,18 @@ int tam;
 int menu(void);
 int divide(node *PILHA, int x);
 void inicia(node *PILHA);
-void opcao(node *PILHA, int op);
+void opcao(node *PILHA, node *invertida, int op);
 void exibe(node *PILHA);
+void exibe_int(node *PILHA);
 void libera(node *PILHA);
-int desempilha(node *PILHA);
-void push(node *PILHA, int x);
-node *pop(node *PILHA);
+char desempilha(node *PILHA, int x);
+void push(node *PILHA, char x);
+node *pop(node *PILHA, node *invertida);
 
 int main(void)
 {
     node *PILHA = (node *)malloc(sizeof(node));
-    
+    node *invertida = (node *)malloc(sizeof(node)); 
 
     if (!PILHA)
     {
@@ -33,13 +34,13 @@ int main(void)
     else
     {
         inicia(PILHA);
-        
+        inicia(invertida);
         int opt;
 
         do
         {
             opt = menu();
-            opcao(PILHA, opt);
+            opcao(PILHA, invertida, opt);
         } while (opt);
 
         free(PILHA);
@@ -47,61 +48,49 @@ int main(void)
     }
 }
 
-int divide(node *PILHA, int x)
+int divide(node *PILHA, int x) 
 {
     if ((float)x / 16 > 0.01)
     {
-        push(PILHA, x % 16);
+        push(PILHA, x % 16); //INSERE O RESTO DA DIVISÃO NA PILHA ORIGINAL
         divide(PILHA, x / 16);
     }
-    
 }
-int desempilha(node *PILHA)
-{
-    node *PILHA2 = (node *)malloc(sizeof(node));
-    inicia(PILHA2);
-    node *tmp, *tmp2;
 
-    tmp2 = PILHA2->prox;
-    tmp = PILHA->prox;
-    printf("PILHA:");
-    while (tmp != NULL)
-    {
-        tmp2->num = tmp->num;
-
-        printf("%5d", tmp2->num);
-        tmp = tmp->prox;
-    }
-
-}
-/*
 int hexa(int x)
 {
+    char c = x ;
     switch (x)
     {
     case 10:
-        return "A";
+        return 'A';
         break;
     case 11:
-        return "B";
+        return 'B';
         break;
     case 12:
-        return "C";
+        return 'C';
         break;
     case 13:
-        return "D";
+        return 'D';
         break;
     case 14:
-        return "E";
+        return 'E';
         break;
     case 15:
-        return "F";
+        return 'F';
         break;
     default:
-        return x;
+        return c;
     }
 }
-*/
+
+char desempilha(node *PILHA, int x)
+{
+    char c = hexa(x);
+    push(PILHA, c);
+}
+
 void inicia(node *PILHA)
 {
     PILHA->prox = NULL;
@@ -117,15 +106,14 @@ int menu(void)
     printf("1. Zerar PILHA\n");
     printf("2. Exibir PILHA\n");
     printf("3. PUSH\n");
-    printf("4. POP\n");
-    printf("5. DESEMPILHAR\n");
+    printf("4. POP/DESEMPILHAR\n");
     printf("Opcao: ");
     scanf("%d", &opt);
 
     return opt;
 }
 
-void opcao(node *PILHA, int op)
+void opcao(node *PILHA, node *invertida, int op)
 {
     node *tmp;
     switch (op)
@@ -136,24 +124,24 @@ void opcao(node *PILHA, int op)
 
     case 1:
         libera(PILHA);
+        libera(invertida);
         inicia(PILHA);
+        inicia(invertida);
         break;
 
     case 2:
-        exibe(PILHA);
+        exibe_int(PILHA);
         break;
 
     case 3:
-        divide(PILHA, 392);
+        divide(PILHA, 44221);
+        exibe_int(PILHA);
         break;
 
     case 4:
-        tmp = pop(PILHA);
+        tmp = pop(PILHA, invertida);
         if (tmp != NULL)
-            printf("Retirado: %3d\n\n", tmp->num);
-        break;
-    case 5:
-        desempilha(PILHA);
+            printf("Retirado/Adicionado: %3d\n\n", tmp->num);
         break;
 
     default:
@@ -180,7 +168,7 @@ node *aloca()
     else
     {
         printf("Novo elemento: ");
-        scanf("%d", &novo->num);
+        scanf("%c", &novo->num);
 
         return novo;
     }
@@ -196,21 +184,34 @@ void exibe(node *PILHA)
 
     node *tmp;
     tmp = PILHA->prox;
-    printf("PILHA:");
+
+    while (tmp != NULL)
+    {
+        printf("%5c", tmp->num);
+        tmp = tmp->prox;
+    }
+    
+    int count;
+}
+
+void exibe_int(node *PILHA)
+{
+    if (vazia(PILHA))
+    {
+        printf("PILHA vazia!\n\n");
+        return;
+    }
+
+    node *tmp;
+    tmp = PILHA->prox;
+
     while (tmp != NULL)
     {
         printf("%5d", tmp->num);
         tmp = tmp->prox;
     }
-    printf("\n        ");
-    int count;
-    for (count = 0; count < tam; count++)
-        printf("  ^  ");
-    printf("\nOrdem:");
-    for (count = 0; count < tam; count++)
-        printf("%5d", count + 1);
-
     printf("\n\n");
+    int count;
 }
 
 void libera(node *PILHA)
@@ -230,7 +231,7 @@ void libera(node *PILHA)
     }
 }
 
-void push(node *PILHA, int x)
+void push(node *PILHA, char x)
 {
 
     node *novo = (node *)malloc(sizeof(node)); //alocando espaco em memoria
@@ -252,11 +253,13 @@ void push(node *PILHA, int x)
     tam++;
 }
 
-node *pop(node *PILHA)
+node *pop(node *PILHA, node *invertida)
 {
     if (PILHA->prox == NULL)
     {
-        printf("PILHA ja vazia\n\n");
+        printf("Pilha Original vazia\n\n");
+        printf("Auxiliar: ");
+        exibe(invertida);
         return NULL;
     }
     else
@@ -269,9 +272,17 @@ node *pop(node *PILHA)
             penultimo = ultimo;
             ultimo = ultimo->prox;
         }
+        desempilha(invertida, ultimo->num);
 
         penultimo->prox = NULL;
+
         tam--;
+        printf("Original");
+        exibe_int(PILHA);
+        printf("\n");
+        printf("Auxiliar");
+        exibe(invertida);
+        printf("\n");
         return ultimo;
     }
 }

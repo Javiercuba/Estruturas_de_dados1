@@ -1,0 +1,55 @@
+#+title: Hexadecimal
+#+author: Javier Ernesto Lopez del real
+#+email: javierernesto2000@gmail.com
+
+Explicando o funcionamento do projeto. 
+
+** Função main()
+#+begin_src c
+int main(void)
+{
+    node *PILHA = (node *)malloc(sizeof(node));
+    node *invertida = (node *)malloc(sizeof(node)); 
+
+    if (!PILHA)
+    {
+        printf("Sem memoria disponivel!\n");
+        exit(1);
+    }
+    else
+    {
+        inicia(PILHA);
+        inicia(invertida);
+        int opt;
+
+        do
+        {
+            opt = menu();
+            opcao(PILHA, invertida, opt);
+        } while (opt);
+
+        free(PILHA);
+        return 0;
+    }
+}
+#endif
+#+end_src c
+
+
+** Arquivo combinacao.c
+#+begin_src C
+#include <stdio.h>
+#include <stdlib.h>
+#include "combinacao.h"
+
+int main()
+{
+    printf("%d", C(49, 6));
+}
+#+end_src C
+- Saída =13983816=
+
+
+** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/combinacao][Clique aqui]].
+
+    
