@@ -14,7 +14,7 @@ struct Node
 typedef struct Node node;
 #+end_src c
 
-* Função main()
+* Função main
 #+begin_src c
 int main(void)
 {
@@ -57,7 +57,7 @@ int main(void)
 #+end_src c
 - Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
 
-* Funções "opcao" e "menu"
+* Funções =opcao= e =menu=
 #+begin_src c
 int menu(void)
 {
