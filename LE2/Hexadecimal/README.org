@@ -11,13 +11,10 @@ int main(void)
     node *PILHA = (node *)malloc(sizeof(node));  
     node *invertida = (node *)malloc(sizeof(node)); 
 #+end_src c
-- Alocando memoria nas duas pilhas.
+- Alocando memoria na pilha original e na pilha que será
+ invertida e transformada para hexadeciaml duas pilhas.
 
 #+begin_src c
-int main(void)
-{
-    node *PILHA = (node *)malloc(sizeof(node));  
-    node *invertida = (node *)malloc(sizeof(node)); 
 
     if (!PILHA)
     {
