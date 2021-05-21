@@ -1,8 +1,6 @@
 #include "../pilha.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
+
+
 int menu(void);
 void opcao(node *PILHA, node *invertido, int op);
 void exibe(node *PILHA);
@@ -44,10 +42,8 @@ int menu(void)
     int opt;
 
     printf("\nEscolha a opcao\n");
-    printf("1. PUSH \n");
-    printf("2. POP/DESEMPILHAR\n");
-    printf("3. Exibir PILHA\n");
-    printf("4. Desempilhar\n");
+    printf("1. Push \n");
+    printf("2. Desempilhar\n");
     printf("Opcao: ");
     scanf("%d", &opt);
 
@@ -56,20 +52,17 @@ int menu(void)
 
 void opcao(node *PILHA, node *invertido, int op)
 {
-    node *tmp;
+    //node *tmp;
     switch (op)
     {
     case 1:
         push(PILHA);
         break;
     case 2:
-        tmp = pop(PILHA);
-        break;
-    case 3:
-        exibe(PILHA);
-        break;
-    case 4:
         desempilha(PILHA, invertido);
+    //case 3:
+    //    tmp = pop(PILHA);
+    //    break;
     default:
         printf("\n");
     }
@@ -165,7 +158,7 @@ int verifica(node *PILHA1, node *PILHA2)
             break;
         }
     }
-    result > 0 ? printf("Não é palindromo"): printf("É palindromo");
+    result > 0 ? printf("\nNão é palindromo"): printf("\nÉ palindromo");
 }
 
 node *pop(node *PILHA)
