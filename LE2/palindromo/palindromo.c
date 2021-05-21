@@ -8,23 +8,19 @@ struct Node
 };
 typedef struct Node node;
 
-int tam;
 
 int menu(void);
-int divide(node *PILHA, int x);
 void inicia(node *PILHA);
-void opcao(node *PILHA, node *invertida, int op);
+void opcao(node *PILHA, int op);
 void exibe(node *PILHA);
 void libera(node *PILHA);
-char desempilha(node *PILHA, int x);
 void push(node *PILHA);
-node *pop(node *PILHA, node *invertida);
+node *pop(node *PILHA);
 
 int main(void)
 {
     node *PILHA = (node *)malloc(sizeof(node));
-    node *invertida = (node *)malloc(sizeof(node));
-
+    
     if (!PILHA)
     {
         printf("Sem memoria disponivel!\n");
@@ -33,13 +29,13 @@ int main(void)
     else
     {
         inicia(PILHA);
-        inicia(invertida);
+        
         int opt;
 
         do
         {
             opt = menu();
-            opcao(PILHA, invertida, opt);
+            opcao(PILHA, opt);
         } while (opt);
 
         free(PILHA);
@@ -47,12 +43,9 @@ int main(void)
     }
 }
 
-
-
 void inicia(node *PILHA)
 {
     PILHA->prox = NULL;
-    tam = 0;
 }
 
 int menu(void)
@@ -60,21 +53,21 @@ int menu(void)
     int opt;
 
     printf("\nEscolha a opcao\n");
-    printf("0. Exibir PILHA\n");
-    printf("1. PUSH - Resto da divisao (Valor definido)\n");
+    printf("1. PUSH \n");
     printf("2. POP/DESEMPILHAR\n");
+    printf("3. Exibir PILHA\n");
     printf("Opcao: ");
     scanf("%d", &opt);
 
     return opt;
 }
 
-void opcao(node *PILHA, node *invertida, int op)
+void opcao(node *PILHA, int op)
 {
     node *tmp;
     switch (op)
     {
-    case 0:
+    case 3:
         exibe(PILHA);
         break;
 
@@ -83,9 +76,9 @@ void opcao(node *PILHA, node *invertida, int op)
         break;
 
     case 2:
-        tmp = pop(PILHA, invertida);
+        tmp = pop(PILHA);
         if (tmp != NULL)
-            printf("Retirado/Adicionado: %3d\n\n", tmp->num);
+            printf("Retirado/Adicionado: %3c\n\n", tmp->num);
         break;
 
     default:
@@ -111,8 +104,8 @@ node *aloca()
     }
     else
     {
-        printf("Novo elemento: ");
-        scanf("%c", &novo->num);
+        printf("\nNovo elemento: ");
+        scanf(" %c" , &novo->num);
 
         return novo;
     }
@@ -135,17 +128,15 @@ void exibe(node *PILHA)
 
         tmp = tmp->prox;
     }
-    int count;
+    
+    printf("\n\n");
 }
 
 void push(node *PILHA)
 {
-    node *novo = (node *)malloc(sizeof(node)); //alocando espaco em memoria
-    printf("Novo elemento: ");
-    scanf(" %c ", &novo->num);
-    
+    node *novo = aloca();
     novo->prox = NULL;
-
+    printf("%c", novo->num);
     if (vazia(PILHA))
         PILHA->prox = novo;
     else
@@ -157,16 +148,18 @@ void push(node *PILHA)
 
         tmp->prox = novo;
     }
-    tam++;
+   
 }
 
-node *pop(node *PILHA, node *invertida)
+node *pop(node *PILHA)
 {
+    printf("Pilha Original");
+    exibe(PILHA);
+
     if (PILHA->prox == NULL)
     {
         printf("Pilha Original vazia\n\n");
-        printf("Pilha Hexadecimal: ");
-        exibe(invertida);
+       
         return NULL;
     }
     else
@@ -183,13 +176,7 @@ node *pop(node *PILHA, node *invertida)
 
         penultimo->prox = NULL;
 
-        tam--;
-        printf("Pilha Decimal");
-        exibe(PILHA);
-        printf("\n");
-        printf("Pilha Hexadecimal");
-        exibe(invertida);
-        printf("\n");
+        
         return ultimo;
     }
 }
