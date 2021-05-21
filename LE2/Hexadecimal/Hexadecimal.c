@@ -15,7 +15,6 @@ int divide(node *PILHA, int x);
 void inicia(node *PILHA);
 void opcao(node *PILHA, node *invertida, int op);
 void exibe(node *PILHA);
-void exibe_int(node *PILHA);
 void libera(node *PILHA);
 char desempilha(node *PILHA, int x);
 void push(node *PILHA, char x);
