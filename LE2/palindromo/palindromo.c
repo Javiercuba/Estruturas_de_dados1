@@ -8,18 +8,19 @@ struct Node
 };
 typedef struct Node node;
 
-
 int menu(void);
 void inicia(node *PILHA);
-void opcao(node *PILHA, int op);
+void opcao(node *PILHA, node *invertido, node *aux, int op);
 void exibe(node *PILHA);
 void push(node *PILHA);
-node *pop(node *PILHA);
-
+void push2(node *PILHA, char x);
+node *pop(node *PILHA, node *aux,node *invertido);
+void desempilha(node *PILHA, char c, char tipo[]);
 int main(void)
 {
     node *PILHA = (node *)malloc(sizeof(node));
-    
+    node *invertido = (node *)malloc(sizeof(node));
+    node *aux = (node *)malloc(sizeof(node));
     if (!PILHA)
     {
         printf("Sem memoria disponivel!\n");
@@ -28,13 +29,14 @@ int main(void)
     else
     {
         inicia(PILHA);
-        
+        inicia(invertido);
+
         int opt;
 
         do
         {
             opt = menu();
-            opcao(PILHA, opt);
+            opcao(PILHA, invertido,aux, opt);
         } while (opt);
 
         free(PILHA);
@@ -61,25 +63,21 @@ int menu(void)
     return opt;
 }
 
-void opcao(node *PILHA, int op)
+void opcao(node *PILHA, node *invertido,node *aux, int op)
 {
     node *tmp;
     switch (op)
     {
-    case 3:
-        exibe(PILHA);
-        break;
-
     case 1:
         push(PILHA);
         break;
 
     case 2:
-        tmp = pop(PILHA);
-        if (tmp != NULL)
-            printf("Retirado/Adicionado: %3c\n\n", tmp->num);
+        tmp = pop(PILHA,aux,invertido);
+          break;
+    case 3:
+        exibe(PILHA);
         break;
-
     default:
         printf("Comando invalido\n\n");
     }
@@ -104,7 +102,7 @@ node *aloca()
     else
     {
         printf("\nNovo elemento: ");
-        scanf(" %c" , &novo->num);
+        scanf(" %c", &novo->num);
 
         return novo;
     }
@@ -123,19 +121,50 @@ void exibe(node *PILHA)
 
     while (tmp != NULL)
     {
-        printf("%5c", tmp->num);
-
+        printf("%4c", tmp->num);
         tmp = tmp->prox;
     }
-    
+
     printf("\n\n");
 }
 
 void push(node *PILHA)
 {
+
     node *novo = aloca();
     novo->prox = NULL;
     printf("%c", novo->num);
+    if (vazia(PILHA))
+    {
+        PILHA->prox = novo;
+    }
+    else
+    {
+        node *tmp = PILHA->prox;
+
+        while (tmp->prox != NULL)
+            tmp = tmp->prox;
+
+        tmp->prox = novo;
+    }
+}
+
+void desempilha(node *PILHA, char c, char tipo[])
+{
+    
+    push2(PILHA, c);
+    printf("Pilha %s", tipo);
+    exibe(PILHA);
+}
+
+void push2(node *PILHA, char x)
+{
+
+    node *novo = (node *)malloc(sizeof(node)); //alocando espaco em memoria
+
+    novo->num = x;
+    novo->prox = NULL;
+
     if (vazia(PILHA))
         PILHA->prox = novo;
     else
@@ -147,18 +176,17 @@ void push(node *PILHA)
 
         tmp->prox = novo;
     }
-   
 }
-
-node *pop(node *PILHA)
+node *pop(node *PILHA, node *aux, node *invertido)
 {
+    
     printf("Pilha Original");
     exibe(PILHA);
 
     if (PILHA->prox == NULL)
     {
         printf("Pilha Original vazia\n\n");
-       
+
         return NULL;
     }
     else
@@ -171,11 +199,10 @@ node *pop(node *PILHA)
             penultimo = ultimo;
             ultimo = ultimo->prox;
         }
-        
-
+        desempilha(aux, ultimo->num,"Auxiliar");
+        desempilha(invertido, ultimo->num,"invertida");
         penultimo->prox = NULL;
 
-        
         return ultimo;
     }
 }
