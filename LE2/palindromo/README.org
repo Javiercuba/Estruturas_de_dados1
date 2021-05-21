@@ -19,7 +19,7 @@ typedef struct Node node;
 int main(void)
 {
     node *PILHA = (node *)malloc(sizeof(node));  
-    node *invertida = (node *)malloc(sizeof(node)); 
+    node *invertido = (node *)malloc(sizeof(node)); 
 #+end_src c
 - Alocando memoria na pilha original e na pilha que será
  invertida e transformada para hexadecimal.
@@ -55,7 +55,6 @@ int main(void)
     }
 }
 #+end_src c
-- Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
 
 * Funções =opcao= e =menu=
 #+begin_src c
@@ -63,8 +62,10 @@ int menu(void)
 {
     int opt;
 
-    printf("\nEscolha a opcao\n");
-    printf("1. Push \n");
+     printf("\nEscolha a opcao\n");
+    printf("1. PUSH \n");
+    printf("2. POP \n");
+    printf("3. Exibir PILHA\n");
     printf("4. Desempilhar\n");
     printf("Opcao: ");
     scanf("%d", &opt);
@@ -78,26 +79,29 @@ int menu(void)
 
 void opcao(node *PILHA, node *invertida, int op)
 {
-     //node *tmp;
+      node *tmp;
     switch (op)
     {
     case 1:
         push(PILHA);
         break;
     case 2:
+        tmp = pop(PILHA);
+        break;
+    case 3:
+        exibe(PILHA);
+        break;
+    case 4:
         desempilha(PILHA, invertido);
-    //case 3:
-    //    tmp = pop(PILHA);
-    //    break;
     default:
         printf("\n");
     }
 }
 #+end_src c
-* Explicação de cada caso
+* Explicação dos casos importantes
 
 ** Caso 1 - Insere a string na pilha original.
-Na primeira linha ele chama a função =aloca()= que retorna uma 
+Na primeira linha eu chamo a função =aloca()= que retorna uma 
 pilha com um valor lido pelo usuario e neste caso está sendo armazenada na variavel do tipo
 node que é nosso struct, em seguida ele verifica se a pilha original está
 vazia caso esteja vazia o ponteiro da pilha principal recebe essa pilha nova, caso contrario
@@ -132,7 +136,7 @@ e tem a função de ler um valor digitado.
 #+begin_src c
 node *aloca()
 {
-    node *novo = (node *)malloc(sizeof(node)); //alocando espaco em memoria
+    node *novo = (node *)malloc(sizeof(node)); 
     if (!novo)
     {
         printf("Sem memoria disponivel!\n");
@@ -148,24 +152,58 @@ node *aloca()
 }
 #+end_src c
 
-** Caso 2 - A função =divide= insere na pilha original o resto das divisões, importante saber que o valor inserido está estatico.
+** Caso 4 - A função =desempilha= tem a função de desempilhar uma pilha.
+Essa função recebe duas pilhas como parametro uma que é a original e outra vazia que será o inverso da
+original. Para fazer essa inversão alem dessa pilha vazia eu utilizei uma pilha auxiliar onde as duas pilhas
+recebem a original invertida e a pilha auxiliar "devolve" seus valors pra pilha original.  
+
+a questão é ter 
 #+begin_src c
-void opcao(node *PILHA, node *invertida, int op)
+
+void desempilha(node *PILHA1, node *PILHA2)
 {
-    node *tmp;
-    switch (op)
+    node *aux = (node *)malloc(sizeof(node)); //PILHA AUXILIAR
+
+    node *tmp, *ultimo;
+    tmp = PILHA1;
+
+    while (tmp->prox != NULL) //PERCORRENDO ENQUANTO NÃO CHEGA NO FINAL DA PILHA ORIGINAL
     {
-   case 3:
-        divide(PILHA, 12444556);
-        exibe_int(PILHA);
-        break;
+        ultimo = pop(PILHA1); //REMOVENDO OS VALORES DA PILHA ORIGINAL
+        push2(PILHA2, ultimo->num); //INSERINDO NA PILHA INVERTIDA
+        push2(aux, ultimo->num);    //INSERINDO NA PILHA AUXILIAR
+    }
+#+end_src c
+
+
+
+#+begin_src c
+    while (aux->prox != NULL) //PERCORRENDO ENQUANTO NÃO CHEGA NO FINAL DA PILHA AUXILIAR
+    {
+        ultimo = pop(aux); //REMOVENDO OS VALORES DA PILHA AUXILIAR
+        push2(PILHA1, ultimo->num);  //INSERINDO NA PILHA ORIGINAL DEVOLTA
+    }
+    printf("\n");
+    printf("Auxiliar:");
+    exibe(aux);
+    printf("\n");
+
+    printf("Pilha Original:");
+    exibe(PILHA1);
+    printf("\n");
+    printf("Pilha Invertida:");
+    exibe(PILHA2);
+#+end_src c
+A função =verifica= se a =Pilha original= e a =Pilha invertida= são iguais(Se são palindromos).
+#+begin_src c
+    verifica(PILHA1, PILHA2);
 }
 #+end_src c
 
 
 
 * Execução do código
-Primeiro escolhe o =caso 1=
+Primeiro se escolhe o =caso 1= onde o usuario vai pode escrever a frase.
 
 #+begin_src c
         divide(PILHA, 12444556);
