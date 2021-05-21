@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+int tam=0;
 
 struct Node
 {
@@ -62,6 +62,43 @@ void push2(node *PILHA, char x)
             tmp = tmp->prox;
 
         tmp->prox = novo;
+    }
+    tam++;
+}
+/*
+void exibe(node *PILHA)
+{
+    if (vazia(PILHA))
+    {
+        printf("PILHA vazia!\n\n");
+        return;
+    }
+
+    node *tmp;
+    tmp = PILHA->prox;
+    printf("PILHA:");
+    while (tmp != NULL)
+    {
+        printf("%5d", tmp->num);
+        tmp = tmp->prox;
+    }
+    printf("\n");
+}
+*/
+void libera(node *PILHA)
+{
+    if (!vazia(PILHA))
+    {
+        node *proxNode,
+            *atual;
+
+        atual = PILHA->prox;
+        while (atual != NULL)
+        {
+            proxNode = atual->prox;
+            free(atual);
+            atual = proxNode;
+        }
     }
 }
 

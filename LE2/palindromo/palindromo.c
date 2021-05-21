@@ -2,20 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <stdbool.h>
 int menu(void);
-
-void opcao(node *PILHA, node *invertido, node *aux, int op);
+void opcao(node *PILHA, node *invertido, int op);
 void exibe(node *PILHA);
 void push(node *PILHA);
+node *pop(node *PILHA);
+int verifica(node *PILHA1, node *PILHA2);
+void desempilha(node *PILHA1, node *PILHA2);
 
-node *pop(node *PILHA, node *aux,node *invertido);
-void desempilha(node *PILHA, char c, char tipo[]);
 int main(void)
 {
     node *PILHA = (node *)malloc(sizeof(node));
     node *invertido = (node *)malloc(sizeof(node));
-    node *aux = (node *)malloc(sizeof(node));
+
     if (!PILHA)
     {
         printf("Sem memoria disponivel!\n");
@@ -31,15 +31,13 @@ int main(void)
         do
         {
             opt = menu();
-            opcao(PILHA, invertido,aux, opt);
+            opcao(PILHA, invertido, opt);
         } while (opt);
 
         free(PILHA);
         return 0;
     }
 }
-
-
 
 int menu(void)
 {
@@ -49,13 +47,14 @@ int menu(void)
     printf("1. PUSH \n");
     printf("2. POP/DESEMPILHAR\n");
     printf("3. Exibir PILHA\n");
+    printf("4. Desempilhar\n");
     printf("Opcao: ");
     scanf("%d", &opt);
 
     return opt;
 }
 
-void opcao(node *PILHA, node *invertido,node *aux, int op)
+void opcao(node *PILHA, node *invertido, int op)
 {
     node *tmp;
     switch (op)
@@ -63,15 +62,16 @@ void opcao(node *PILHA, node *invertido,node *aux, int op)
     case 1:
         push(PILHA);
         break;
-
     case 2:
-        tmp = pop(PILHA,aux,invertido);
-          break;
+        tmp = pop(PILHA);
+        break;
     case 3:
         exibe(PILHA);
         break;
+    case 4:
+        desempilha(PILHA, invertido);
     default:
-        printf("Comando invalido\n\n");
+        printf("\n");
     }
 }
 
@@ -116,24 +116,63 @@ void push(node *PILHA)
     }
 }
 
-void desempilha(node *PILHA, char c, char tipo[])
+void desempilha(node *PILHA1, node *PILHA2)
 {
-    
-    push2(PILHA, c);
-    printf("Pilha %s", tipo);
-    exibe(PILHA);
+    node *aux = (node *)malloc(sizeof(node));
+
+    node *tmp, *ultimo;
+    tmp = PILHA1;
+
+    while (tmp->prox != NULL) //INSERINDO O INVERSO
+    {
+        ultimo = pop(PILHA1);
+        push2(PILHA2, ultimo->num);
+        push2(aux, ultimo->num);
+    }
+
+    while (aux->prox != NULL) //INSERINDO O AUXILIAR DE VOLTA NA PILHA ORIGINAL
+    {
+        ultimo = pop(aux);
+        push2(PILHA1, ultimo->num);
+    }
+    printf("\n");
+    printf("Auxiliar:");
+    exibe(aux);
+    printf("\n");
+
+    printf("Pilha Original:");
+    exibe(PILHA1);
+    printf("\n");
+    printf("Pilha Invertida:");
+    exibe(PILHA2);
+
+    verifica(PILHA1, PILHA2);
 }
 
-node *pop(node *PILHA, node *aux, node *invertido)
+int verifica(node *PILHA1, node *PILHA2)
 {
-    
-    printf("Pilha Original");
-    exibe(PILHA);
+    node *tmp, *ultimo, *ultimoP1, *ultimoP2;
+    tmp = PILHA1;
+    int result = 0;
+    while (tmp->prox != NULL) //INSERINDO O INVERSO
+    {
+        ultimoP1 = pop(PILHA1);
+        ultimoP2 = pop(PILHA2);
 
+        if (ultimoP1->num != ultimoP2->num)
+        {
+            result++;
+            break;
+        }
+    }
+    result > 0 ? printf("Não é palindromo"): printf("É palindromo");
+}
+
+node *pop(node *PILHA)
+{
     if (PILHA->prox == NULL)
     {
         printf("Pilha Original vazia\n\n");
-
         return NULL;
     }
     else
@@ -146,8 +185,6 @@ node *pop(node *PILHA, node *aux, node *invertido)
             penultimo = ultimo;
             ultimo = ultimo->prox;
         }
-        desempilha(aux, ultimo->num,"Auxiliar");
-        desempilha(invertido, ultimo->num,"invertida");
         penultimo->prox = NULL;
 
         return ultimo;
