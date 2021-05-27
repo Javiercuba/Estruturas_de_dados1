@@ -8,12 +8,12 @@ int divide(node *PILHA, int x);
 void opcao(node *PILHA, node *invertida, int op);
 void exibe(node *PILHA);
 char desempilha(node *PILHA, int x);
-node *pop(node *PILHA, node *invertida);
+node *popHEX(node *PILHA, node *invertida);
 
 int main(void)
 {
-    node *PILHA = (node *)malloc(sizeof(node));
-    node *invertida = (node *)malloc(sizeof(node)); 
+    node *PILHA = cria_pilha();
+    node *invertida = cria_pilha(); 
 
     if (!PILHA)
     {
@@ -104,7 +104,7 @@ void opcao(node *PILHA, node *invertida, int op)
         break;
 
     case 2:
-        tmp = pop(PILHA, invertida);
+        tmp = popHEX(PILHA, invertida);
         if (tmp != NULL)
             printf("Retirado/Adicionado: %3d\n\n", tmp->num);
         break;
@@ -141,7 +141,7 @@ void exibe(node *PILHA)
     }
 }
 
-node *pop(node *PILHA, node *invertida)
+node *popHEX(node *PILHA, node *invertida)
 {
     if (PILHA->prox == NULL)
     {

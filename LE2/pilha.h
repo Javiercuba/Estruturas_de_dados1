@@ -67,8 +67,8 @@ void push2(node *PILHA, char x)
         tmp->prox = novo;
     }
 }
-
-void push2(node *PILHA,POSITION *position)
+/*
+void push22(node *PILHA,POSITION *position)
 {
 
     node *novo = (node *)malloc(sizeof(node)); //alocando espaco em memoria
@@ -86,6 +86,29 @@ void push2(node *PILHA,POSITION *position)
             tmp = tmp->prox;
 
         tmp->prox = novo;
+    }
+}
+*/
+node *pop(node *PILHA)
+{
+    if (PILHA->prox == NULL)
+    {
+        printf("Pilha Original vazia\n\n");
+        return NULL;
+    }
+    else
+    {
+        node *ultimo = PILHA->prox,
+             *penultimo = PILHA;
+
+        while (ultimo->prox != NULL)
+        {
+            penultimo = ultimo;
+            ultimo = ultimo->prox;
+        }
+        penultimo->prox = NULL;
+
+        return ultimo;
     }
 }
 
@@ -106,7 +129,7 @@ void libera(node *PILHA)
     }
 }
 
-int cria_pilha()
+node *cria_pilha()
 {
     node *PILHA = (node *)malloc(sizeof(node));
     return PILHA;

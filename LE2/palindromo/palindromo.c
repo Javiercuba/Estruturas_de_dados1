@@ -11,8 +11,8 @@ void desempilha(node *PILHA1, node *PILHA2);
 
 int main(void)
 {
-    node *PILHA = (node *)malloc(sizeof(node));
-    node *invertido = (node *)malloc(sizeof(node));
+    node *PILHA = cria_pilha();
+    node *invertido = cria_pilha();
 
     if (!PILHA)
     {
@@ -116,7 +116,7 @@ void push(node *PILHA)
 
 void desempilha(node *PILHA1, node *PILHA2)
 {
-    node *aux = (node *)malloc(sizeof(node));
+    node *aux = cria_pilha();
 
     node *tmp, *ultimo;
     tmp = PILHA1;
@@ -164,27 +164,4 @@ int verifica(node *PILHA1, node *PILHA2)
         }
     }
     result > 0 ? printf("\nNão é palindromo"): printf("\nÉ palindromo");
-}
-
-node *pop(node *PILHA)
-{
-    if (PILHA->prox == NULL)
-    {
-        printf("Pilha Original vazia\n\n");
-        return NULL;
-    }
-    else
-    {
-        node *ultimo = PILHA->prox,
-             *penultimo = PILHA;
-
-        while (ultimo->prox != NULL)
-        {
-            penultimo = ultimo;
-            ultimo = ultimo->prox;
-        }
-        penultimo->prox = NULL;
-
-        return ultimo;
-    }
 }

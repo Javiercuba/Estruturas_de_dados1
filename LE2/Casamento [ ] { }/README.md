@@ -1,21 +1,45 @@
-#include "../pilha.h"
+# Casamento de parenteses
 
-int menu(void);
-void opcao(node *PILHA, int op);
-void exibe(node *PILHA);
-void push(node *PILHA);
-node *pop(node *PILHA);
-void casamento(node *PILHA);
-int casa(char x);
+## Explicando o funcionamento do projeto.
 
-int main(void)
-{
-    node *PILHA = cria_pilha();
+- Struct
+
+```c
+    struct Node
+    {
+        char num;
+        struct Node *prox;
+    };
+    typedef struct Node node;
+
+```
+
+- Função main
+
+##
+
+```c
+    int main(void)
+    {
+        node *PILHA = cria_pilha();
+```
+
+- Alocando memoria na pilha original.
+
+#
+
+```c
     if (!PILHA)
     {
         printf("Sem memoria disponivel!\n");
         exit(1);
     }
+}
+```
+
+- Verifico se tem memoria disponivel.
+
+```c
     else
     {
         inicia(PILHA);
@@ -30,7 +54,15 @@ int main(void)
         return 0;
     }
 }
+```
 
+- Se tiver memoria eu inicio a pilhas e abro o menu com a função `opcao`.
+
+#
+
+- Funções **opcao( )** e **menu( )** :
+
+```c
 int menu(void)
 {
     int opt;
@@ -44,7 +76,11 @@ int menu(void)
 
     return opt;
 }
+```
 
+#
+
+```c
 void opcao(node *PILHA, int op)
 {
     node *tmp;
@@ -62,27 +98,15 @@ void opcao(node *PILHA, int op)
         printf("\n");
     }
 }
+```
 
-void exibe(node *PILHA)
-{
-    if (vazia(PILHA))
-    {
-        printf("PILHA vazia!\n\n");
-        return;
-    }
+#
 
-    node *tmp;
-    tmp = PILHA->prox;
+# Explicação dos casos importantes
 
-    while (tmp != NULL)
-    {
-        printf("%4c", tmp->num);
-        tmp = tmp->prox;
-    }
+- Caso 1 - A função **push** insere na pilha com ajuda da função **aloca** que serve para dar o `scanf`.
 
-    printf("\n");
-}
-
+```c
 void push(node *PILHA)
 {
 
@@ -104,6 +128,14 @@ void push(node *PILHA)
     }
 }
 
+```
+
+#
+
+- Caso 4 - A função **casamento** compara o ultimo valor da pilha com o penultimo, a função não reconhece caso um parenteses seja fechado dentro de outro, como `( { } )`.
+  É uma função recursiva que vai removendo o ultimo e penultimo da pilha e compara ate chegar no final.
+
+```c
 void casamento(node *PILHA)
 {
     exibe(PILHA);
@@ -128,7 +160,11 @@ void casamento(node *PILHA)
     }
     printf("Casamento Ok");
 }
+```
 
+### Na função acima eu passo o penultimo valor pela função `casa`, que me retorna o valor invertido da chave.
+
+````c
 int casa(char x)
 {
     switch (x)
@@ -146,3 +182,6 @@ int casa(char x)
         return 0;
     }
 }
+````
+
+- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal).
