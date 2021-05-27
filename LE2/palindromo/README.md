@@ -1,12 +1,8 @@
-## Palindromo
-
-#
+# Palindromo
 
 ## Explicando o funcionamento do projeto.
 
 - Struct
-
-##
 
 ```c
     struct Node

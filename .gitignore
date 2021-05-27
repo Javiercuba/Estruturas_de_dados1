@@ -3,6 +3,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=c
 
 ### C ###
+# images
+*.jpg
+
 # Prerequisites
 *.d
 
