@@ -16,7 +16,6 @@
     typedef struct Node node;
 
 ```
-
 * Função main
 
 ##
