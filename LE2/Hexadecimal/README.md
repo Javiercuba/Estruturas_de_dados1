@@ -22,8 +22,8 @@
 ```c
     int main(void)
     {
-        node *PILHA = (node *)malloc(sizeof(node));  
-        node *invertida = (node *)malloc(sizeof(node)); 
+        node *PILHA = cria_pilha();
+        node *invertida = cria_pilha(); 
 ```
 
 - Alocando memoria na pilha original e na pilha que será
@@ -96,19 +96,18 @@ void opcao(node *PILHA, node *invertida, int op)
     node *tmp;
     switch (op)
     {
-    case 0:
-        exibe_int(PILHA);
-        break;
-
     case 1:
-        divide(PILHA, 44221);
-        exibe_int(PILHA);
+        divide(PILHA, 12444556);
+        exibe(PILHA);
         break;
 
     case 2:
-        tmp = pop(PILHA, invertida);
+        tmp = popHEX(PILHA, invertida);
         if (tmp != NULL)
             printf("Retirado/Adicionado: %3d\n\n", tmp->num);
+        break;
+    case 3:
+        exibe(PILHA);
         break;
 
     default:
@@ -120,50 +119,55 @@ void opcao(node *PILHA, node *invertida, int op)
 ## Explicação de cada caso
 
 #
-* Caso 0 - Mostra na tela a pilha original com a função __exibe_int__.
-```c
-void opcao(node *PILHA, node *invertida, int op)
-{
-    node *tmp;
-    switch (op)
-    {
-    case 2:
-        exibe_int(PILHA);
-        break;
-}
-
-```
-#
-
 * Caso 1 - A função __divide__ insere na pilha original o resto das divisões, importante saber que o valor inserido está ___estático___.
 
 ```c
-void opcao(node *PILHA, node *invertida, int op)
+int divide(node *PILHA, int x) 
 {
-    node *tmp;
-    switch (op)
+    if ((float)x / 16 > 0.01)
     {
-   case 3:
-        divide(PILHA, 12444556);
-        exibe_int(PILHA);
-        break;
+        push2(PILHA, x % 16); //INSERE O RESTO DA DIVISÃO NA PILHA ORIGINAL
+        divide(PILHA, x / 16);
+    }
 }
-
 ```
 #
 
-* Caso 2 - A função __pop__ retorna e remove o ultimo elemento da pilha.
+* Caso 2 - A função __popHEX__ retorna e remove o ultimo elemento da pilha.
 ```c
-void opcao(node *PILHA, node *invertida, int op)
+
+node *popHEX(node *PILHA, node *invertida)
 {
-    node *tmp;
-    switch (op)
+    if (PILHA->prox == NULL)
     {
-   case 4:
-        tmp = pop(PILHA, invertida);
-        if (tmp != NULL)
-            printf("Retirado/Adicionado: %3d\n\n", tmp->num);
-        break;
+        printf("Pilha Original vazia\n\n");
+        printf("Pilha Hexadecimal: ");
+        exibe(invertida);
+        return NULL;
+    }
+    else
+    {
+        node *ultimo = PILHA->prox,
+             *penultimo = PILHA;
+
+        while (ultimo->prox != NULL)
+        {
+            penultimo = ultimo;
+            ultimo = ultimo->prox;
+        }
+        desempilha(invertida, ultimo->num);
+
+        penultimo->prox = NULL;
+
+       
+        printf("Pilha Decimal");
+        exibe(PILHA);
+        printf("\n");
+        printf("Pilha Hexadecimal");
+        exibe(invertida);
+        printf("\n");
+        return ultimo;
+    }
 }
 ```
 #
@@ -174,7 +178,7 @@ void opcao(node *PILHA, node *invertida, int op)
 
  <p align="center"><img src="Capturar.jpg " /></p>
 
-Como nos já predefinimos o valor da variável na função __divide__ no `caso 3`, essa função ira inserir o resto de cada divisão por 16 desse valor na pilha usando a função __push__. 
+Como nos já predefinimos o valor da variável na função __divide__ no `caso 1`, essa função ira inserir o resto de cada divisão por 16 desse valor na pilha usando a função __push__. 
 ```c
         divide(PILHA, 12444556);
 ```
