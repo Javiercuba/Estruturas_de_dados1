@@ -1,30 +1,40 @@
-#+title: Hexadecimal
-#+author: Javier Ernesto Lopez del real
-#+email: javierernesto2000@gmail.com
+## Palindromo
 
-Explicando o funcionamento do projeto. 
+#
 
-* Struct
-#+begin_src c
-struct Node
-{
-    char num;
-    struct Node *prox;
-};
-typedef struct Node node;
-#+end_src c
+## Explicando o funcionamento do projeto.
 
-* Função main
-#+begin_src c
-int main(void)
-{
-    node *PILHA = (node *)malloc(sizeof(node));  
-    node *invertido = (node *)malloc(sizeof(node)); 
-#+end_src c
+- Struct
+
+##
+
+```c
+    struct Node
+    {
+        char num;
+        struct Node *prox;
+    };
+    typedef struct Node node;
+
+```
+
+- Função main
+
+##
+
+```c
+    int main(void)
+    {
+        node *PILHA = (node *)malloc(sizeof(node));
+        node *invertida = (node *)malloc(sizeof(node));
+```
+
 - Alocando memoria na pilha original e na pilha que será
- invertida e transformada para hexadecimal.
+  invertida e transformada para hexadecimal.
 
-#+begin_src c
+#
+
+```c
 
     if (!PILHA)
     {
@@ -32,12 +42,11 @@ int main(void)
         exit(1);
     }
 }
-#+end_src c
+```
+
 - Verifico se tem memoria disponivel.
 
-
-#+begin_src c
-
+```c
     else
     {
         inicia(PILHA);
@@ -54,15 +63,20 @@ int main(void)
         return 0;
     }
 }
-#+end_src c
+```
 
-* Funções =opcao= e =menu=
-#+begin_src c
+- Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
+
+#
+
+- Funções **opcao( )** e **menu( )** :
+
+```c
 int menu(void)
 {
     int opt;
 
-     printf("\nEscolha a opcao\n");
+    printf("\nEscolha a opcao\n");
     printf("1. PUSH \n");
     printf("2. POP \n");
     printf("3. Exibir PILHA\n");
@@ -72,14 +86,14 @@ int menu(void)
 
     return opt;
 }
-#+end_src c
+```
 
+#
 
-#+begin_src c
-
-void opcao(node *PILHA, node *invertida, int op)
+```c
+void opcao(node *PILHA, node *invertido, int op)
 {
-      node *tmp;
+    node *tmp;
     switch (op)
     {
     case 1:
@@ -97,18 +111,15 @@ void opcao(node *PILHA, node *invertida, int op)
         printf("\n");
     }
 }
-#+end_src c
-* Explicação dos casos importantes
+```
 
-** Caso 1 - Insere a string na pilha original.
-Na primeira linha eu chamo a função =aloca()= que retorna uma 
-pilha com um valor lido pelo usuario e neste caso está sendo armazenada na variavel do tipo
-node que é nosso struct, em seguida ele verifica se a pilha original está
-vazia caso esteja vazia o ponteiro da pilha principal recebe essa pilha nova, caso contrario
-o ponteiro se desloca até o proximo apontador apontar para =NULL=, encontrando o ultimo 
-apontador ele recebe essa nova pilha.
+#
 
-#+begin_src c
+# Explicação dos casos importantes
+
+- Caso 1 - A função **push** insere na pilha com ajuda da função **aloca** que serve para dar o `scanf`.
+
+```c
 void push(node *PILHA)
 {
 
@@ -130,182 +141,88 @@ void push(node *PILHA)
     }
 }
 
-#+end_src c
-A função =aloca()= está presente no arquivo =pilha.h= por ser uma função mais genérica,
-e tem a função de ler um valor digitado.
-#+begin_src c
-node *aloca()
-{
-    node *novo = (node *)malloc(sizeof(node)); 
-    if (!novo)
-    {
-        printf("Sem memoria disponivel!\n");
-        exit(1);
-    }
-    else
-    {
-        printf("Novo elemento: ");
-        scanf(" %c", &novo->num);
+```
 
-        return novo;
-    }
-}
-#+end_src c
+#
 
-** Caso 4 - A função =desempilha= tem a função de desempilhar uma pilha.
-Essa função recebe duas pilhas como parametro uma que é a original e outra vazia que será o inverso da
-original. Para fazer essa inversão alem dessa pilha vazia eu utilizei uma pilha auxiliar onde as duas pilhas
-recebem a original invertida e a pilha auxiliar "devolve" seus valores pra pilha original.  
+- Caso 4 - A função **desempilha** tem a função de inserir na pilha `auxiliar` e na `PILHA 2` a `PILHA 1` invertida.
 
-a questão é ter 
-#+begin_src c
+A ideia é fazer a `PILHA 2` receber a `PILHA 1` invertida usando uma pilha auxiliar para em seguida comparar uma pilha com a outra e verificar se elas são iguais ou não.
+
+```c
 
 void desempilha(node *PILHA1, node *PILHA2)
 {
-    node *aux = (node *)malloc(sizeof(node)); //PILHA AUXILIAR
+    node *aux = (node *)malloc(sizeof(node));
 
     node *tmp, *ultimo;
     tmp = PILHA1;
 
-    while (tmp->prox != NULL) //PERCORRENDO ENQUANTO NÃO CHEGA NO FINAL DA PILHA ORIGINAL
+    while (tmp->prox != NULL) //Inserindo o inverso
     {
-        ultimo = pop(PILHA1); //REMOVENDO OS VALORES DA PILHA ORIGINAL
-        push2(PILHA2, ultimo->num); //INSERINDO NA PILHA INVERTIDA
-        push2(aux, ultimo->num);    //INSERINDO NA PILHA AUXILIAR
+        ultimo = pop(PILHA1); //removendo da pilha principal
+        push2(PILHA2, ultimo->num); //inserindo esse valor na pilha 2
+        push2(aux, ultimo->num); //inserindo esse valor na pilha 2
     }
-#+end_src c
 
-
-
-#+begin_src c
-    while (aux->prox != NULL) //PERCORRENDO ENQUANTO NÃO CHEGA NO FINAL DA PILHA AUXILIAR
+    while (aux->prox != NULL) //Inserindo a pilha auxiliar na pilha original de volta
     {
-        ultimo = pop(aux); //REMOVENDO OS VALORES DA PILHA AUXILIAR
-        push2(PILHA1, ultimo->num);  //INSERINDO NA PILHA ORIGINAL DEVOLTA
+        ultimo = pop(aux);
+        push2(PILHA1, ultimo->num);
     }
-    printf("\n");
-    printf("Auxiliar:");
-    exibe(aux);
+    
+    printf("\nAuxiliar:");
+    exibe(aux); //exibe a pilha auxiliar vazia
     printf("\n");
 
     printf("Pilha Original:");
-    exibe(PILHA1);
-    printf("\n");
-    printf("Pilha Invertida:");
-    exibe(PILHA2);
-#+end_src c
-A função =verifica= se a =Pilha original= e a =Pilha invertida= são iguais(Se são palindromos).
-#+begin_src c
-    verifica(PILHA1, PILHA2);
+    exibe(PILHA1); //exibe a pilha original completa
+
+    printf("\n Pilha Invertida:");
+    exibe(PILHA2);//exibe a pilha 2 invertida
+
+    verifica(PILHA1, PILHA2);//função para verificar as duas pilhas
 }
-#+end_src c
+```
 
+#
 
+### A função __verifica__ recebe duas pilhas como parametros e vai removendo cada valor da pilha e vai comparando.
+```c
 
-* Execução do código
-Primeiro se escolhe o =caso 1= onde o usuario vai pode escrever a frase.
-
-#+begin_src c
-        divide(PILHA, 12444556);
-#+end_src c
-
-#+begin_src c
-int divide(node *PILHA, int x) 
+int verifica(node *PILHA1, node *PILHA2)
 {
-    if ((float)x / 16 > 0.01)
+    node *tmp, *ultimo, *ultimoP1, *ultimoP2;
+    tmp = PILHA1;
+    int result = 0;
+    while (tmp->prox != NULL) //INSERINDO O INVERSO
     {
-        push(PILHA, x % 16); 
-        divide(PILHA, x / 16);
-    }
-}
-#+end_src c
+        ultimoP1 = pop(PILHA1);
+        ultimoP2 = pop(PILHA2);
 
-Em seguida temos a função "desempilha" que tem a função de filtrar os elementos transformando para hexadecimal e 
-inseri-los em uma nova pilha. 
-
-
-#+begin_src c
-char desempilha(node *PILHA, int x)
-{
-    char c = hexa(x);
-    push(PILHA, c);
-}
-#+end_src c
-
-A filtragem para hexa é feita pela função =hexa=, que retorna a variavel em =char=.
-
-#+begin_src c
-
-int hexa(int x)
-{
-    switch (x)
-    {
-    case 10:
-        return 'A';
-        break;
-    case 11:
-        return 'B';
-        break;
-    case 12:
-        return 'C';
-        break;
-    case 13:
-        return 'D';
-        break;
-    case 14:
-        return 'E';
-        break;
-    case 15:
-        return 'F';
-        break;
-    default:
-        return x;
-    }
-}
-#+end_src c
-
-Para executar o desempilhamento chamei o =caso 2= que é a função =pop= que remove o ultimo valor da pilha original
-e em seguida chamo a função =desempilha= que vai inserir esse valor removido na nova pilha.
-
-
-#+begin_src c
-node *pop(node *PILHA, node *invertida)
-{
-    if (PILHA->prox == NULL)
-    {
-        printf("Pilha Original vazia\n\n");
-        printf("Pilha Hexadecimal: ");
-        exibe(invertida);
-        return NULL;
-    }
-    else
-    {
-        node *ultimo = PILHA->prox,
-             *penultimo = PILHA;
-
-        while (ultimo->prox != NULL)
+        if (ultimoP1->num != ultimoP2->num)
         {
-            penultimo = ultimo;
-            ultimo = ultimo->prox;
+            result++;
+            break;
         }
-        desempilha(invertida, ultimo->num);
-
-        penultimo->prox = NULL;
-
-        tam--;
-        printf("Pilha Decimal");
-        exibe(PILHA);
-        printf("\n");
-        printf("Pilha Hexadecimal");
-        exibe(invertida);
-        printf("\n");
-        return ultimo;
     }
+    result > 0 ? printf("\nNão é palindromo"): printf("\nÉ palindromo");
 }
-#+end_src c
+```
 
-#+html: <p align="center"><img align="center" src="./gif.gif"  width="50%" height="60%" /> </p>
 
-** Caso queira baixar o executável [[https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal][Clique aqui]].
+##  Execução do código
 
-    
+#### Escolhi o **Push** e digitei a frase `"testando o codigo"`.
+#
+ <p align="center"><img src="Capturar1.jpg " /></p>
+
+#
+
+
+#### Em seguida escolhi a opcao 4 **Desempilhar** que chama a função __desempilha__.
+
+<p align="center"><img src="Capturar2.jpg " /></p>
+
+
+- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal).
