@@ -155,7 +155,7 @@ node *aloca()
 ** Caso 4 - A função =desempilha= tem a função de desempilhar uma pilha.
 Essa função recebe duas pilhas como parametro uma que é a original e outra vazia que será o inverso da
 original. Para fazer essa inversão alem dessa pilha vazia eu utilizei uma pilha auxiliar onde as duas pilhas
-recebem a original invertida e a pilha auxiliar "devolve" seus valors pra pilha original.  
+recebem a original invertida e a pilha auxiliar "devolve" seus valores pra pilha original.  
 
 a questão é ter 
 #+begin_src c

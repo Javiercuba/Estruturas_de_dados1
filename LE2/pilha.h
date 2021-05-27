@@ -3,14 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-int tam=0;
-
+#include <stdbool.h>
 struct Node
 {
     char num;
     struct Node *prox;
 };
+typedef struct
+{
+    char row;
+    char col;
+} POSITION;
 typedef struct Node node;
 
 void inicia(node *PILHA)
@@ -63,28 +66,29 @@ void push2(node *PILHA, char x)
 
         tmp->prox = novo;
     }
-    tam++;
 }
-/*
-void exibe(node *PILHA)
-{
-    if (vazia(PILHA))
-    {
-        printf("PILHA vazia!\n\n");
-        return;
-    }
 
-    node *tmp;
-    tmp = PILHA->prox;
-    printf("PILHA:");
-    while (tmp != NULL)
+void push2(node *PILHA,POSITION *position)
+{
+
+    node *novo = (node *)malloc(sizeof(node)); //alocando espaco em memoria
+
+    novo->num = position;
+    novo->prox = NULL;
+
+    if (vazia(PILHA))
+        PILHA->prox = novo;
+    else
     {
-        printf("%5d", tmp->num);
-        tmp = tmp->prox;
+        node *tmp = PILHA->prox;
+
+        while (tmp->prox != NULL)
+            tmp = tmp->prox;
+
+        tmp->prox = novo;
     }
-    printf("\n");
 }
-*/
+
 void libera(node *PILHA)
 {
     if (!vazia(PILHA))
@@ -100,6 +104,12 @@ void libera(node *PILHA)
             atual = proxNode;
         }
     }
+}
+
+int cria_pilha()
+{
+    node *PILHA = (node *)malloc(sizeof(node));
+    return PILHA;
 }
 
 #endif
