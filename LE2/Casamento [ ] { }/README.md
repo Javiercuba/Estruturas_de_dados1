@@ -184,4 +184,4 @@ int casa(char x)
 }
 ````
 
-- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal).
+- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/casamento).

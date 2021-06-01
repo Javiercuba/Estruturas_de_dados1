@@ -111,4 +111,4 @@ bool isSafe(struct Board *board, int linha, int col)
 <p align="center"><img src="rainha.jpg " /></p>
 
 #
-- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal).
+- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/rainha).

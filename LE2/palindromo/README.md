@@ -221,4 +221,4 @@ int verifica(node *PILHA1, node *PILHA2)
 <p align="center"><img src="Capturar2.jpg " /></p>
 
 
-- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/hexadecimal).
+- Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/palindromo).
