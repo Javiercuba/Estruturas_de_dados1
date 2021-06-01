@@ -1,96 +1,83 @@
 #include "../pilha.h"
 
-preenche_tabuleiro(node *pilha, int tamanho_matriz);
+bool isSafe(struct Board *board, int linha, int col);
+bool resolver_NRainha(struct Board *board, int col);
+void print(struct Board *board);
 
-
+Pilha *pi;
+struct Board dado = {0};
 
 
 int main(void)
 {
-    int tamanho_matriz = 4;
+    pi = criar_Pilha();
 
-    node *pilha = cria_pilha();
+    resolver_NRainha(&dado, 0);
+    printf("Tamanho da pilha %d\n", tamanho_Pilha(pi));
+    print(&dado);
+
+    return 0;
 }
 
-
-preenche_tabuleiro(node *pilha, int tamanho_matriz)
+bool isSafe(struct Board *board, int linha, int col)
 {
-    int row = 1;
-    int col = 0;
-    int board[9][9] = {0};
+    int i, j;
+    /* Verifica a linha do lado esquerdo */
+    for (i = 0; i < col; i++)
+        if (board->b[linha][i])
+            return false;
 
-    POSITION *pPOS;
+    /* Verifica a diagonal superior do lado esquerdo */
+    for (i = linha, j = col; i >= 0 && j >= 0; i--, j--)
+        if (board->b[i][j])
+            return false;
 
-    while (row <= tamanho_matriz && col <= tamanho_matriz)
-    {
-        col++;
-        if( !verifica(board, row, col, tamanho_matriz)){
-            board[row][col] = 1;
-            pPOS = (POSITION *)malloc(sizeof(POSITION));
-            pPOS->row = row;
-            pPOS->col = col;
+    /* verifica a diagonal inferior do lado esquerdo */
+    for (i = linha, j = col; j >= 0 && i < N; i++, j--)
+        if (board->b[i][j])
+            return false;
 
-            push2(pilha, pPOS);
-
-            row++;
-            col = 0;
-        }
-
-        while(col >= tamanho_matriz){
-            pPOS = pop(pilha);
-            row = pPOS->row;
-            col = pPOS->col;
-            board[row][col] = 0;
-            free(pPOS);
-        }
-    }
-    return;
+    return true;
 }
 
-node *pop(node *PILHA)
+bool resolver_NRainha(struct Board *board, int col)
 {
-    if (PILHA->prox == NULL)
-    {
-        printf("Pilha Original vazia\n\n");
-        return NULL;
-    }
-    else
-    {
-        node *ultimo = PILHA->prox,
-             *penultimo = PILHA;
+    /*Se todas as rainhas forem colocadas então retorna verdadeiro*/
+    if (col >= N)
+        return true;
 
-        while (ultimo->prox != NULL)
+    /* Considere esta coluna e tente colocar a rainha em todas as linhas, uma por uma */
+    for (int i = 0; i < N; i++)
+    {
+
+        /* Verifica se a rainha pode ser colocada board[i][col] */
+        if (isSafe(board, i, col))
         {
-            penultimo = ultimo;
-            ultimo = ultimo->prox;
-        }
-        penultimo->prox = NULL;
 
-        return ultimo;
+            /* Coloque a rainha em board[i][col] */
+            board->b[i][col] = 1;
+            insere_Pilha(pi, dado); //add na pilha
+
+            /* Recursão para colocar o resto das rainhas */
+            if (resolver_NRainha(board, col + 1))
+                return true;
+
+            /* Se colocar a rainha no board[i][col] não levar a uma solução, remova a rainha de board[i][col] */
+            board->b[i][col] = 0; // BACKTRACK
+            remove_Pilha(pi);     // remove da pilha
+        }
     }
+
+    /* Se a rainha não poder ser colocada em nenhuma linha nesta coluna, retorne falso  */
+    return false;
 }
 
-verifica(int board[][9],int chkRow,int chkCol, int tamanho_matriz){
-    int row, col;
-
-    col = chkCol;
-
-    for (row = 1; row <= chkRow;row++){
-        if(board[row][col] == 1){
-            return true;
-        }
-    }
-    for (row = chkRow - 1, col = chkCol + 1; row > 0 && col <= tamanho_matriz; row--, col++){
-        if (board[row][col] == 1)
-        {
-            return true;
-        }
-    }
-    for (row = chkRow - 1, col = chkCol + 1; row > 0 && col <= tamanho_matriz; row--, col++)
+void print(struct Board *board)
+{
+    for (int i = 0; i < N; i++)
     {
-        if (board[row][col] == 1)
-        {
-            return true;
-        }
+        for (int j = 0; j < N; j++)
+            printf(" %d ", board->b[i][j]);
+        printf("\n");
     }
 }

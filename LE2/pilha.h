@@ -4,16 +4,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+
+// Tamanho máximo do vetor que representa a pilha
+#define MAX 100
+
+// Tamanho do tabuleiro
+#define N 10
+
+struct Board
+{
+    int b[N][N];
+};
+
+typedef struct pilha Pilha;
+
+struct pilha
+{
+    int qtd;
+    struct Board dados[MAX];
+};
+
 struct Node
 {
     char num;
     struct Node *prox;
 };
-typedef struct
-{
-    char row;
-    char col;
-} POSITION;
+
 typedef struct Node node;
 
 void inicia(node *PILHA)
@@ -67,6 +83,7 @@ void push2(node *PILHA, char x)
         tmp->prox = novo;
     }
 }
+
 /*
 void push22(node *PILHA,POSITION *position)
 {
@@ -133,6 +150,61 @@ node *cria_pilha()
 {
     node *PILHA = (node *)malloc(sizeof(node));
     return PILHA;
+}
+
+/* RAINHA */
+
+int tamanho_Pilha(Pilha *pi)
+{
+    if (pi == NULL)
+        return -1;
+    else
+        return pi->qtd;
+}
+
+int Pilha_cheia(Pilha *pi)
+{
+    if (pi == NULL)
+        return -1;
+    // cheia == 1,  != 0;
+    return (pi->qtd == MAX);
+}
+
+int insere_Pilha(Pilha *pi, struct Board al)
+{
+    if (pi == NULL)
+        return 0;
+
+    if (Pilha_cheia(pi))
+        return 0;
+
+    pi->dados[pi->qtd] = al; //Copio os dados
+    pi->qtd++;               // incremento os valor
+
+    return 1;
+}
+
+int remove_Pilha(Pilha *pi)
+{
+    if (pi == NULL || pi->qtd == 0)
+        return 0;
+
+    pi->qtd--;
+    return 1;
+
+    // o Dado continua na Pilha, mas pode ser sobrescrito.(não é mais possível acessalo)
+}
+
+Pilha *criar_Pilha()
+{
+    Pilha *pi;
+
+    pi = (Pilha *)malloc(sizeof(struct pilha));
+
+    if (pi != NULL)
+        pi->qtd = 0;
+
+    return pi;
 }
 
 #endif
