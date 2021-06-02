@@ -77,8 +77,7 @@ int prefixa(fila *f, node *PILHA)
             test4 = resolve_equacao(valor_pilha, ultimo_valor_pilha->num, penultimo_valor_pilha->num);
 
             push2(PILHA, test4 + '0');
-            printf("PILHA -> ");
-            exibePilha(PILHA);
+
             prefixa(f, PILHA);
         }
         else
