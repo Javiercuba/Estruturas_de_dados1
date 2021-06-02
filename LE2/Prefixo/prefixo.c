@@ -63,7 +63,7 @@ int prefixa(fila *f, node *PILHA)
 {
     no *temp = f->comeco;
     node *ultimo_valor_pilha, *penultimo_valor_pilha;
-    int test4;
+    int resultado_equacao;
 
     if (temp != NULL)
     {
@@ -74,9 +74,10 @@ int prefixa(fila *f, node *PILHA)
 
             ultimo_valor_pilha = pop(PILHA);
             penultimo_valor_pilha = pop(PILHA);
-            test4 = resolve_equacao(valor_pilha, ultimo_valor_pilha->num, penultimo_valor_pilha->num);
+            
+            resultado_equacao = resolve_equacao(valor_pilha, ultimo_valor_pilha->num, penultimo_valor_pilha->num);
 
-            push2(PILHA, test4 + '0');
+            push2(PILHA, resultado_equacao + '0');
 
             prefixa(f, PILHA);
         }
