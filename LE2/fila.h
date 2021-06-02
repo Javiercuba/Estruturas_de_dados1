@@ -1,93 +1,82 @@
-#ifndef fila_h
-#define fila_h
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
+#ifndef QUEUE_H
+#define QUEUE_H
+#define TRUE 1
+#define FALSE 0
 
-#define MAX 10
-#define ERRO -1
-
-typedef char TIPOCHAVE;
+typedef struct element
+{
+    struct element *prox;
+    int valor;
+} no;
 
 typedef struct
 {
-    TIPOCHAVE chave;
-} REGISTRO;
+    no *comeco;
+    no *fim;
+} fila;
 
-typedef struct
+fila *alocar_fila()
 {
-    REGISTRO A[MAX + 1];
-    int nroRegistros;
-} FILA;
-
-void inicializa(FILA *F)
-{
-    F->nroRegistros = 0;
+    fila *f = malloc(sizeof(fila));
+    f->comeco = NULL;
+    f->fim = NULL;
+    return f;
 }
 
-void mostraFila(FILA *F)
+void destruir_fila(fila *f)
 {
-    int i = 0;
-    printf("FILA:\n");
-    for (i; i < F->nroRegistros; i++)
+    //while (remover_fila(f) != -1){
+    //        free(f);
+    //}
+}
+
+void imprimir_fila(fila *f)
+{
+    no *temp = f->comeco;
+    while (temp != NULL)
     {
-        if (F->A[i].chave > '0'){
-            printf("[ %c ] ", F->A[i].chave);
-        }else{
-            printf("[ %d ] ", F->A[i].chave);
-        }
-            
+        printf("\n%c ", temp->valor );
+
+        temp = temp->prox;
     }
-    printf("\n\n");
+    printf("\n");
 }
 
-bool insereFila(TIPOCHAVE ch, FILA *F)
+void inserir_fila(fila *f)
 {
-    if (F->nroRegistros >= MAX)
-        return false;
-    F->A[F->nroRegistros].chave = ch;
-    F->nroRegistros++;
-    return true;
-}
+    char x;
+    scanf("%s", &x);
+    no *novo = malloc(sizeof(no));
+    novo->valor = x;
+    novo->prox = NULL;
 
-bool removeFila(FILA *F)
-{
-    if (F->nroRegistros <= 0)
-        return false;
-    int i = 1;
-    for (i; i < F->nroRegistros; i++)
+    if (f->comeco == NULL)
     {
-        F->A[i - 1].chave = F->A[i].chave;
+        f->comeco = novo;
+        f->fim = novo;
+        return;
     }
-    F->nroRegistros--;
-    return true;
+
+    f->fim->prox = novo;
+    f->fim = novo;
 }
 
-int buscaFila(TIPOCHAVE ch, FILA *F)
+char remover_fila(fila *f)
 {
-    F->A[F->nroRegistros].chave = ch; // Coloca a ch na ultima posição para fazer busca Sentinela
-    int i = 0;
-    while (F->A[i].chave != ch)
-        i++;
-    if (i >= F->nroRegistros)
-        return ERRO;
-    return i;
+
+    if (f->comeco == NULL)
+    {
+        printf("Fila vazia!");
+        return -1;
+    }
+
+    no *temp = f->comeco;
+    int valor = temp->valor;
+
+    f->comeco = f->comeco->prox;
+    free(temp);
+    printf("valor removido %c\n", valor);
+    return valor;
 }
-
-int menu(void)
-{
-    int opt;
-
-    printf("\nEscolha a opcao\n");
-    printf("1. Inserir no final da fila\n");
-    printf("2. remover\n");
-    printf("3. prefixa\n");
-    printf("Opcao: ");
-    scanf("%d", &opt);
-
-    return opt;
-}
-
 
 #endif
