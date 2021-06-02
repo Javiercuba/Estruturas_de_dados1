@@ -23,13 +23,6 @@ fila *alocar_fila()
     return f;
 }
 
-void destruir_fila(fila *f)
-{
-    //while (remover_fila(f) != -1){
-    //        free(f);
-    //}
-}
-
 void imprimir_fila(fila *f)
 {
     no *temp = f->comeco;

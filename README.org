@@ -30,4 +30,6 @@ para acessar cada exercicio é so clicar nos links abaixo, ou ir navegando pelas
 
 ***** 4. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Rainha#rainha][Rainha]]
 
+***** 4. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Prefixo#prefixa][Prefixo]]
+
 
