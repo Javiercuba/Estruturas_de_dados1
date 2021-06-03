@@ -47,44 +47,6 @@ typedef struct
     return 0;
 }
 ```
-
-### Criando uma pilha e uma fila.
-
-#
-
-```c
-
-    if (!PILHA)
-    {
-        printf("Sem memoria disponivel!\n");
-        exit(1);
-    }
-}
-```
-
-- Verifico se tem memoria disponivel.
-
-```c
-    else
-    {
-        inicia(PILHA);
-        inicia(invertida);
-        int opt;
-
-        do
-        {
-            opt = menu();
-            opcao(PILHA, invertida, opt);
-        } while (opt);
-
-        free(PILHA);
-        return 0;
-    }
-}
-```
-
-- Se tiver memoria eu inicio as duas pilhas e abro o menu com a função "opcao".
-
 #
 
 - Funções **opcao( )** e **menu( )** :
@@ -135,7 +97,7 @@ void opcao(fila *f, node *PILHA, int op)
 
 #
 
-# Explicação das funções importantes
+# Explicação das funções
 
 ## - Função **prefixa** recebe como parametro uma pilha e uma fila.
 
