@@ -22,14 +22,16 @@ para acessar cada exercicio é so clicar nos links abaixo, ou ir navegando pelas
 
 - LE2:
 
-***** 1. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Hexadecimal#hexadecimal][Hexadecimal]]
+***** 1. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Hexadecimal#hexadecimal][Hexadecimal ( Pilha )]]
 
-***** 2. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/palindromo#palindromo][Palindromo]]
+***** 2. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/palindromo#palindromo][Palindromo ( Pilha )]]
 
-***** 3. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Casamento%20%5B%20%5D%20%7B%20%7D#casamento-de-parenteses][Casamento de parenteses]]
+***** 3. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Casamento%20%5B%20%5D%20%7B%20%7D#casamento-de-parenteses][Casamento de parenteses ( Pilha )]]
 
-***** 4. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Rainha#rainha][Rainha]]
+***** 4. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Rainha#rainha][Rainha ( Pilha )]]
 
-***** 4. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Prefixo#prefixa][Prefixo]]
+***** 5. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Prefixo#prefixa][Prefixo ( Fila e Pilha )]]
+
+***** 6. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Concatena#concatenando-filas][Concatena ( Fila )]]
 
 
