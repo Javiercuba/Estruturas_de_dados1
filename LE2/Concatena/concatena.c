@@ -3,7 +3,7 @@
 #include "../fila.h"
 
 void opcao(fila *fila1, fila *fila2, int op);
-int concatena(fila *f);
+int concatena(fila *fila1, fila *fila2);
 
 int menu(void)
 {
@@ -52,14 +52,27 @@ void opcao(fila *fila1, fila *fila2, int op)
         break;
 
     case 3:
-        concatena(fila1);
+        concatena(fila1,fila2);
         break;
     default:
         printf("Comando invalido\n\n");
     }
 }
 
-int concatena(fila *f)
+int concatena(fila *fila1, fila *fila2)
 {
-    
+    no *temp = fila2->comeco;
+
+    while (temp != NULL)
+    {
+        
+        insere_fila_manual(fila1, temp->valor);
+        temp = temp->prox;
+    }
+    printf("\nFila 1:\n");
+    imprimir_fila(fila1);
+
+    printf("\nFila 2:\n");
+    imprimir_fila(fila2);
+
 }
