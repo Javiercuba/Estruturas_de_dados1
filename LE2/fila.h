@@ -54,6 +54,24 @@ void inserir_fila(fila *f)
     f->fim = novo;
 }
 
+void insere_fila_manual(fila *f, char valor)
+{
+    
+    no *novo = malloc(sizeof(no));
+    novo->valor = valor;
+    novo->prox = NULL;
+
+    if (f->comeco == NULL)
+    {
+        f->comeco = novo;
+        f->fim = novo;
+        return;
+    }
+
+    f->fim->prox = novo;
+    f->fim = novo;
+}
+
 char remover_fila(fila *f)
 {
 

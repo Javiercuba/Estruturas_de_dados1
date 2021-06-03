@@ -112,11 +112,13 @@ int prefixa(fila *f, node *PILHA)
     if (temp != NULL) //Verifico se a fila ainda não terminou
     {
         char valor_pilha = remover_fila(f); //Uma variavel recebe o primeiro valor da fila
+
             /* Se for um operador */
         if (valor_pilha == '+' || valor_pilha == '*' || valor_pilha == '-' || valor_pilha == '/') //Verifico se é um operador
         {
             /* Recebendo o ultimo valor da pilha*/
             ultimo_valor_pilha = pop(PILHA); 
+            
             /* Recebendo o penultimo valor da pilha*/
             penultimo_valor_pilha = pop(PILHA); 
 
@@ -181,7 +183,7 @@ char resolve_equacao(char operador, char primeiro, char segundo)
 #### Inserindo os valores manualmente.
 
 
-<p align="center"><img src="inserindo.jpg " /></p>
+<p align="center"><img src="inserindo.png " /></p>
 
 #
 
