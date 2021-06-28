@@ -21,7 +21,7 @@ int formata_data(Data *data)
 //VALIDANO O ANO
 int validacao_ano(Data *data)
 {
-    if ((*data).ano <= 2021 && (*data).ano > 1000) //VERIFICAR SE O ANO É VALIDO, ENTRE 2020 E 1000
+    if ((*data).ano <= 2022 && (*data).ano > 1000) //VERIFICAR SE O ANO É VALIDO, ENTRE 2020 E 1000
     {
         if (((*data).ano % 4 == 0 && (*data).ano % 100 == 0 && (*data).ano % 400 == 0) || ((*data).ano % 4 == 0 && (*data).ano % 100 != 0)) //VERIFICAR SE O ANO É BISSEXTO
         {
@@ -131,11 +131,12 @@ int somatorio_dias(Data *data, int num_dias_acrescentar)
         else
         {
             data->dia += num_dias_acrescentar;
-            validacao_data(data);
             formata_data(data);
+            
             //AQUI O LOOP SE FINALIZOU, E SERÁ FEITA A VALIDAÇÃO DA DATA PARA VERIFICAR E TERMINAR O PROCESSO  
                 
         }
     }
+    
 }
 #endif

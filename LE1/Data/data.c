@@ -24,6 +24,7 @@ int main()
         scanf("%d", &dias);
         printf("Resultado final\n");
         somatorio_dias(&d,dias);
+        formata_data(&d);
     }
     
 }
