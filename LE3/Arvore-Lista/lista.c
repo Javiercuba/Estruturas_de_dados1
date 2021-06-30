@@ -25,7 +25,7 @@ Tree *newTree()
     }
 }
 
-//Função para acionar o menu do programa.
+//Função menu do programa.
 int menu(void);
 //Função para executar as opções do menu do programa.
 void choice(Tree *mainTree, int option);
@@ -42,7 +42,7 @@ void postOrder(Tree *mainTree);
 //Função para imprimir o total de nós tem na árvore.
 int totalTree(Tree *mainTree);
 //Função para adicionar folhas na árvore.
-int addSheet(Tree *mainTree, int data, char nome);
+int addSheet(Tree *mainTree);
 //Função para remover folhas na árvore.
 int delSheet(Tree *mainTree, int data);
 struct node *delTemp1(struct node *temp1);
@@ -80,18 +80,14 @@ void choice(Tree *mainTree, int option)
     switch (option)
     {
         int numero;
-        char nome;
+       // char nome[10];
     case 1:
 
         choice2(mainTree, print());
         break;
 
     case 2:
-        printf("Digite numero do usuario: \n");
-        scanf("%d", &numero);
-       // printf("Digite nome do usuario: \n");
-       // scanf(" %s ", &nome);
-        addSheet(mainTree, numero, nome);
+        addSheet(mainTree);
         break;
 
     case 3:
@@ -154,7 +150,7 @@ void preOrder(Tree *mainTree)
     if (*mainTree != NULL)
     {
         printf("%d \n", (*mainTree)->numero);
-        printf("%s \n", (*mainTree)->nome);
+      //  printf("%s \n", (*mainTree)->nome);
         preOrder(&((*mainTree)->left));
         preOrder(&((*mainTree)->right));
     }
@@ -189,16 +185,23 @@ void postOrder(Tree *mainTree)
 }
 //FIM DA FUNCAO PÓS-ORDEM
 //INICIO DA FUNCAO ADICIONAR FOLHA
-int addSheet(Tree *mainTree, int numero, char nome)
+int addSheet(Tree *mainTree)
 {
 
     struct node *newSheet;
     newSheet = (struct node *)malloc(sizeof(struct node));
+    int numero;
+    char nomessss[10];
+    printf("Digite numero do usuario: \n");
+    scanf("%d", &numero);
+    printf("Digite nome do usuario: \n");
+    scanf("%s", newSheet->nome);
 
-    newSheet->nome[10] = nome;
+
     newSheet->numero = numero;
     newSheet->left = NULL;
     newSheet->right = NULL;
+    printf(" o nome é %s ", newSheet->nome);
 
     if (*mainTree == NULL)
         *mainTree = newSheet;
@@ -215,12 +218,12 @@ int addSheet(Tree *mainTree, int numero, char nome)
                 printf("\nValor ja inserido na arvore.\n\n");
                 return 0;
             }
-            if (numero > temp1->numero)
+            if (numero > temp1->numero) //verifica qual lado eh maior
                 temp1 = temp1->right;
             else
                 temp1 = temp1->left;
         }
-        if (numero > temp2->numero)
+        if (numero > temp2->numero) // quem vai ter o novo filho
             temp2->right = newSheet;
         else
             temp2->left = newSheet;
