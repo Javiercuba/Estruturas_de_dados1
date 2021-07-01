@@ -198,7 +198,6 @@ int busca_usuario(Tree *mainTree, int data)
 - **delTemp1(struct node *temp1)**: Função que remove um ramo e reorganiza a arvore.
 
 ```c
-
 struct node *delTemp1(struct node *temp1)
 {
 
@@ -230,8 +229,6 @@ struct node *delTemp1(struct node *temp1)
     free(temp1);
     return temp2a;
 }
-
-
 ```
 
 
@@ -276,19 +273,20 @@ int delSheet(Tree *mainTree, int data)
 
 ```
 
-
-
-
-
-
-
-
-
-
 #
 ##  Execução do código
 
-<p align="center"><img src="rainha.jpg " /></p>
+- Inserção de valores e impressão
+<p align="center"><img src="Listagem.jpg " /></p>
+
+
+- Busca de valores
+<p align="center"><img src="Busca.jpg " /></p>
+
+
+- Remoção de valores
+<p align="center"><img src="Deletando.jpg " /></p>
+
 
 #
 - Caso queira baixar o executável [Clique Aqui](https://github.com/Javiercuba/Estruturas_de_dados1/releases/download/1.0/rainha).
