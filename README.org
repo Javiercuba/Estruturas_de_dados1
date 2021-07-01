@@ -34,4 +34,7 @@ para acessar cada exercicio é so clicar nos links abaixo, ou ir navegando pelas
 
 ***** 6. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE2/Concatena#concatenando-filas][Concatena ( Fila )]]
 
+- LE3:
 
+***** 1. Exercicio [[https://github.com/Javiercuba/Estruturas_de_dados1/tree/master/LE3/Arvore-Lista#%C3%A1rvore---quest%C3%A3o-1][Arvore]]
+    
