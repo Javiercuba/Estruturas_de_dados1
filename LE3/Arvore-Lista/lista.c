@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//ESTRUTURAS
+
 //Criando a estrutura de cada nó
 struct node
 {
@@ -24,27 +24,21 @@ Tree *newTree()
         return mainTree;
     }
 }
-
-//Função menu do programa.
-int menu(void);
-//Função para executar as opções do menu do programa.
-void choice(Tree *mainTree, int option);
-//Função para o segundo menu, quando ativado a opção de imprimir.
 int print(void);
+
+int menu(void);
 //Função para executar as opções do segundo menu do programa.
 void choice2(Tree *mainTree, int option2);
-//Função para imprimir de forma pré-Ordem.
-void preOrder(Tree *mainTree);
-//Função para imprimir de forma em-Ordem.
-void inOrder(Tree *mainTree);
-//Função para imprimir de forma pós-Ordem.
-void postOrder(Tree *mainTree);
-//Função para imprimir o total de nós tem na árvore.
+
+void choice(Tree *mainTree, int option);
+
+void imprimi_arvore(Tree *mainTree);
 int totalTree(Tree *mainTree);
 //Função para adicionar folhas na árvore.
 int addSheet(Tree *mainTree);
 //Função para remover folhas na árvore.
 int delSheet(Tree *mainTree, int data);
+
 struct node *delTemp1(struct node *temp1);
 //PROGRAMA PRINCIPAL
 int main()
@@ -82,8 +76,7 @@ void choice(Tree *mainTree, int option)
         int numero;
        // char nome[10];
     case 1:
-
-        choice2(mainTree, print());
+        imprimi_arvore(mainTree);
         break;
 
     case 2:
@@ -105,84 +98,17 @@ void choice(Tree *mainTree, int option)
         printf("Opcao invalida\n");
     }
 }
-//FIM FUNCAO OPCOES DO MENU
-//INICIO FUNCAO OPCOES DO SUBMENU
-int print()
-{
-    int option2;
-    printf("1. Pre-Ordem\n");
-    printf("2. Em-Ordem\n");
-    printf("3. Pos-Ordem\n");
-    scanf("%d", &option2);
-    return option2;
-}
-//FIM FUNCAO OPCOES DO SUBMENU
-//INICIO FUNCAO DA EXECUCAO DAS OPCOES DO SUBMENU
-void choice2(Tree *mainTree, int option2)
-{
-
-    switch (option2)
-    {
-    case 1:
-        printf("Pre-Ordem\n\n");
-        preOrder(mainTree);
-
-        break;
-
-    case 2:
-        printf("Em-Ordem\n\n");
-        inOrder(mainTree);
-        break;
-
-    case 3:
-        printf("Pos-Ordem\n");
-        postOrder(mainTree);
-        break;
-
-    default:
-        printf("Opcao invalida2\n\n");
-    }
-}
-
 //INICIO DA FUNCAO PRÉ-ORDEM
-void preOrder(Tree *mainTree)
+void imprimi_arvore(Tree *mainTree)
 {
     if (*mainTree != NULL)
     {
-        printf("%d \n", (*mainTree)->numero);
-      //  printf("%s \n", (*mainTree)->nome);
-        preOrder(&((*mainTree)->left));
-        preOrder(&((*mainTree)->right));
+        printf("%d - %s\n", (*mainTree)->numero, (*mainTree)->nome);
+        imprimi_arvore(&((*mainTree)->left));
+        imprimi_arvore(&((*mainTree)->right));
     }
 }
 
-//INICIO DA FUNCAO EM-ORDEM
-void inOrder(Tree *mainTree)
-{
-    if (mainTree == NULL)
-        return;
-
-    if (*mainTree != NULL)
-    {
-        inOrder(&((*mainTree)->left));
-        printf("%d\n", (*mainTree)->numero);
-        inOrder(&((*mainTree)->right));
-    }
-}
-//FIM DA FUNCAO EM-ORDEM
-//INICIO DA FUNCAO PÓS-ORDEM
-void postOrder(Tree *mainTree)
-{
-    if (mainTree == NULL)
-        return;
-
-    if (*mainTree != NULL)
-    {
-        postOrder(&((*mainTree)->left));
-        postOrder(&((*mainTree)->right));
-        printf("%d\n", (*mainTree)->numero);
-    }
-}
 //FIM DA FUNCAO PÓS-ORDEM
 //INICIO DA FUNCAO ADICIONAR FOLHA
 int addSheet(Tree *mainTree)
@@ -201,9 +127,8 @@ int addSheet(Tree *mainTree)
     newSheet->numero = numero;
     newSheet->left = NULL;
     newSheet->right = NULL;
-    printf(" o nome é %s ", newSheet->nome);
 
-    if (*mainTree == NULL)
+    if (*mainTree == NULL)// Se a arvore estiver vazia
         *mainTree = newSheet;
     else
     {
@@ -232,7 +157,7 @@ int addSheet(Tree *mainTree)
         printf("\nValor inserido com sucesso\n\n");
     return 1;
 }
-//FIM DA FUNCAO ADICIONAR FOLHA
+
 //INICIO DA FUNCAO REMOVER FOLHA
 int delSheet(Tree *mainTree, int data)
 {
@@ -243,8 +168,9 @@ int delSheet(Tree *mainTree, int data)
     {
         if (data == temp1->numero)
         {
-            if (temp1 == *mainTree)
+            if (temp1 == *mainTree){ //Primeira posição igual
                 *mainTree = delTemp1(temp1);
+            }
             else
             {
                 if (temp2->right == temp1)
@@ -272,18 +198,19 @@ struct node *delTemp1(struct node *temp1)
     struct node *temp1a;
     struct node *temp2a;
 
-    if (temp1->left == NULL)
+    if (temp1->left == NULL) //verifica se o lado esquerdo eh igual a nulo
     {
         temp2a = temp1->right;
         free(temp1);
         return temp2a;
     }
     temp1a = temp1;
-    temp2a = temp1->left;
+
+    temp2a = temp1->left; //vai pro lado esquerdo
     while (temp2a->right != NULL)
     {
         temp1a = temp2a;
-        temp2a = temp2a->right;
+        temp2a = temp2a->right;//VALOR MAIS A DIREITA
     }
     if (temp1a != temp1)
     {
@@ -294,4 +221,3 @@ struct node *delTemp1(struct node *temp1)
     free(temp1);
     return temp2a;
 }
-//FIM DA FUNCAO REMOVER FOLHA

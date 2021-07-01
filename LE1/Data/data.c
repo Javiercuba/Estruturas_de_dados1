@@ -7,7 +7,7 @@ int main()
 {
     Data d;
     int dias=0;
-    printf("Digite o numero de dias\n");
+    printf("Digite o dia da primeira dose\n");
     scanf("%d", &d.dia);
     printf("Digite o mes\n");
     scanf("%d", &d.mes);
@@ -16,13 +16,11 @@ int main()
     
     if (validacao_data(&d) == 1)
     {
+        //formata_data(&d);
         printf("\n");
-        formata_data(&d);
-        printf("\n");
-        printf("Quantos dias voce quer somar a data?\n");
-        printf("\n");
+        printf("Quantos dias para a proxima dose?\n");
         scanf("%d", &dias);
-        printf("Resultado final\n");
+        printf("A sua proxima dose será dia:\n");
         somatorio_dias(&d,dias);
         formata_data(&d);
     }
