@@ -277,15 +277,15 @@ int delSheet(Tree *mainTree, int data)
 ##  Execução do código
 
 - Inserção de valores e impressão
-<p align="center"><img src="Listagem.jpg " /></p>
+<p align="center"><img src="Listagem.png " /></p>
 
 
 - Busca de valores
-<p align="center"><img src="Busca.jpg " /></p>
+<p align="center"><img src="Busca.png " /></p>
 
 
 - Remoção de valores
-<p align="center"><img src="Deletando.jpg " /></p>
+<p align="center"><img src="Deletando.png " /></p>
 
 
 #

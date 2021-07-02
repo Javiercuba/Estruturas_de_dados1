@@ -1,7 +1,7 @@
-#+title: Conjunto
+#+title: Listas 
 #+author: Javier Ernesto Lopez del real
 
-** Exercícios LE1 e LE2
+** Exercícios LE1, LE2 e LE3 
 
 Lembrando que aqui é o inicio do repositório, porém todas as pastas dos exercicios tem esse campo para ler,
 para acessar cada exercicio é so clicar nos links abaixo, ou ir navegando pelas pastas acima:
