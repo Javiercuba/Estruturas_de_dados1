@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -27,16 +28,15 @@ int print(void);
 
 int menu(void);
 
-void choice(Tree *mainTree, int option);
+void escolhe(Tree *mainTree, int option);
 
 int busca_usuario(Tree *mainTree, int data);
 
 void imprime_arvore(Tree *mainTree);
-
 //Função para adicionar folhas na árvore.
-int addSheet(Tree *mainTree);
+int insere(Tree *mainTree);
 //Função para remover folhas na árvore.
-int delSheet(Tree *mainTree, int data);
+int remove(Tree *mainTree, int data);
 
 struct node *delTemp1(struct node *temp1);
 
@@ -46,7 +46,7 @@ int main()
     Tree *mainTree = newTree();
     while (3 > 0)
     {
-        choice(mainTree, menu());
+        escolhe(mainTree, menu());
     }
     return 0;
 }
@@ -66,7 +66,7 @@ int menu()
 }
 
 //INICIO FUNCAO DE EXECUCAO DAS OPCOES DO MENU
-void choice(Tree *mainTree, int option)
+void escolhe(Tree *mainTree, int option)
 {
     switch (option)
     {
@@ -76,13 +76,13 @@ void choice(Tree *mainTree, int option)
         break;
 
     case 2:
-        addSheet(mainTree);
+        insere(mainTree);
         break;
 
     case 3:
         printf("Digite qual valor inteiro sera excluido: \n");
         scanf("%d", &numero);
-        delSheet(mainTree, numero);
+        remove(mainTree, numero);
         break;
     case 4:
         printf("Digite qual numero sera buscado: \n");
@@ -110,7 +110,7 @@ void imprime_arvore(Tree *mainTree)
 }
 
 //INICIO DA FUNCAO ADICIONAR FOLHA
-int addSheet(Tree *mainTree)
+int insere(Tree *mainTree)
 {
 
     struct node *newSheet;
@@ -155,7 +155,7 @@ int addSheet(Tree *mainTree)
 }
 
 //INICIO DA FUNCAO REMOVER FOLHA
-int delSheet(Tree *mainTree, int data)
+int remove(Tree *mainTree, int data)
 {
 
     struct node *temp1 = *mainTree;
